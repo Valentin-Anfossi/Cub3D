@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/07/10 04:24:19 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/07/10 14:59:50 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void debug_printcub(t_cub *cub)
 {
+	printf("== Debug print : Cub struct ==\n");
 	if(cub->no_texpath)
 		printf("NO: %s",cub->no_texpath);
 	if(cub->so_texpath)
@@ -25,8 +26,23 @@ void debug_printcub(t_cub *cub)
 	printf("Window size X,Y {%d,%d}\n",cub->winsize_x,cub->winsize_x);
 	printf("Errnum: %d\nDebug: %d\nMap_fd: %d\n",cub->errnum,cub->debug,cub->map_fd);
 	printf("Map size: X,Y {%d,%d}\n",cub->map_size_x,cub->map_size_y);
-	printf("Ceilling/Wall colors : #%06x,#%06x\n",cub->ce_color,cub->fl_color);
+	printf("Ceilling/Wall colors : 0x%06x,0x%06x\n",cub->ce_color,cub->fl_color);
 	printf("Map:\n");
+}
+
+char *parse_texturepath(char *line)
+{
+	char ** split;
+	char *re;
+
+	split = ft_split(line,' ');
+	if(split[0])
+		free(split[0]);
+	if(split[1])
+		re = ft_strdup(split[1]);
+	free(split[1]);
+	free(split);
+	return (re);
 }
 
 int	parse_color(char *line)
@@ -48,10 +64,16 @@ int	parse_color(char *line)
 	return (color);
 }
 
+void map_size(char *line, t_cub *cub)
+{
+	
+}
+
 void map_parse(char *line, t_cub *cub)
 {
 	(void)line;
 	(void)cub;
+	map_size(char *line, t_cub *cub);
 }
 
 void map_init(t_cub *cub)
@@ -62,13 +84,13 @@ void map_init(t_cub *cub)
 	while(line)
 	{
 		if(ft_strnstr(line,"EA",2) && !cub->ea_texpath)
-			cub->ea_texpath=ft_strdup(line);
+			cub->ea_texpath=parse_texturepath(line);
 		else if(ft_strnstr(line,"NO",2) && !cub->no_texpath)
-			cub->no_texpath=ft_strdup(line);
+			cub->no_texpath=parse_texturepath(line);
 		else if(ft_strnstr(line,"WE",2) && !cub->we_texpath)
-			cub->we_texpath=ft_strdup(line);
+			cub->we_texpath=parse_texturepath(line);
 		else if(ft_strnstr(line,"SO",2) && !cub->so_texpath)
-			cub->so_texpath=ft_strdup(line);
+			cub->so_texpath=parse_texturepath(line);
 		else if(ft_strnstr(line,"C ",2) && !cub->ce_color)
 			cub->ce_color = parse_color(line);
 		else if(ft_strnstr(line,"F ",2) && !cub->fl_color)

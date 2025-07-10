@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/07/10 04:13:33 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/07/10 15:00:30 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct {
 	int y;
 	int z;
 } t_v3;
+
 
 typedef struct s_cub
 {
