@@ -6,74 +6,105 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/07/10 14:59:50 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/07/10 18:44:15 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void debug_printcub(t_cub *cub)
+void add_to_map(int x, int y, t_cub* cub)
 {
-	printf("== Debug print : Cub struct ==\n");
-	if(cub->no_texpath)
-		printf("NO: %s",cub->no_texpath);
-	if(cub->so_texpath)
-		printf("SO: %s",cub->so_texpath);
-	if(cub->we_texpath)
-		printf("WE: %s",cub->we_texpath);
-	if(cub->ea_texpath)
-		printf("EA: %s",cub->ea_texpath);
-	printf("Window size X,Y {%d,%d}\n",cub->winsize_x,cub->winsize_x);
-	printf("Errnum: %d\nDebug: %d\nMap_fd: %d\n",cub->errnum,cub->debug,cub->map_fd);
-	printf("Map size: X,Y {%d,%d}\n",cub->map_size_x,cub->map_size_y);
-	printf("Ceilling/Wall colors : 0x%06x,0x%06x\n",cub->ce_color,cub->fl_color);
-	printf("Map:\n");
-}
-
-char *parse_texturepath(char *line)
-{
-	char ** split;
-	char *re;
-
-	split = ft_split(line,' ');
-	if(split[0])
-		free(split[0]);
-	if(split[1])
-		re = ft_strdup(split[1]);
-	free(split[1]);
-	free(split);
-	return (re);
-}
-
-int	parse_color(char *line)
-{
-	int color;
-	int r;
-	int g;
-	int b;
-	char **split;
-
-	while(!ft_isdigit(*line))
-		line ++;
-	split = ft_split(line,',');
-	r = ft_atoi(split[0]);
-	g = ft_atoi(split[1]);
-	b = ft_atoi(split[2]);
-	color = (r << 16) | (g << 8) | b;
+	char c;
 	
-	return (color);
+	c = cub->map_str[x][y];
+	if(c == '0' || c == ' ' || !c)
+		cub->map[x][y] = EMPTY;
+	else if(c == '1')
+		cub->map[x][y] = WALL;
+	else if(c == 'N')
+		cub->map[x][y] = P_NORTH;
+	else if(c == 'S')
+		cub->map[x][y] = P_SOUTH;
+	else if(c == 'E')
+		cub->map[x][y] = P_EAST;
+	else if(c == 'W')
+		cub->map[x][y] = P_WEST;
+	else
+		return;
 }
 
-void map_size(char *line, t_cub *cub)
+void map_parse2(t_cub *cub)
 {
-	
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	cub->map = (int **)malloc(sizeof(int *) * cub->map_size_y);
+	while(i < cub->map_size_y)
+	{
+		cub->map[i] = malloc(sizeof(int) * cub->map_size_x);
+		i ++;
+	}
+	i = 0;
+	while (i < cub->map_size_y)
+	{
+		while(j < cub->map_size_x)
+		{
+			add_to_map(i,j,cub);
+			j ++;
+		}
+		j = 0;
+		i ++;
+	}
+}
+
+int map_sizex(t_cub *cub)
+{
+	int i;
+	int j;
+	int size_x;
+
+	i = 0;
+	j = 0;
+	size_x = 0;
+	while(cub->map_str[i])
+	{
+		j = 0;
+		while(cub->map_str[i][j])
+			j ++;
+		if (j > size_x)
+			size_x = j;
+		i ++;
+	}
+	return (size_x - 1);
 }
 
 void map_parse(char *line, t_cub *cub)
 {
-	(void)line;
 	(void)cub;
-	map_size(char *line, t_cub *cub);
+	int i;
+	// int j;
+	char **map_str;
+
+	i = 0;
+	map_str = (char **)malloc (sizeof(char *) * MAP_SIZE);
+	while (line)
+	{
+		if(ft_strlen(line) > 1)
+		{
+			map_str[i] = ft_strdup(line);
+			i ++;
+		}
+		free(line);
+		line = get_next_line(cub->map_fd);
+	}
+	cub->map_str = map_str;
+	cub->map_size_y = i;
+	cub->map_size_x = map_sizex(cub);
+	printf("%d\n",cub->map_size_x);
+	printf("%d\n",cub->map_size_y);
+	map_parse2(cub);
 }
 
 void map_init(t_cub *cub)
@@ -83,58 +114,23 @@ void map_init(t_cub *cub)
 	line = get_next_line(cub->map_fd);
 	while(line)
 	{
-		if(ft_strnstr(line,"EA",2) && !cub->ea_texpath)
-			cub->ea_texpath=parse_texturepath(line);
-		else if(ft_strnstr(line,"NO",2) && !cub->no_texpath)
-			cub->no_texpath=parse_texturepath(line);
-		else if(ft_strnstr(line,"WE",2) && !cub->we_texpath)
-			cub->we_texpath=parse_texturepath(line);
-		else if(ft_strnstr(line,"SO",2) && !cub->so_texpath)
-			cub->so_texpath=parse_texturepath(line);
-		else if(ft_strnstr(line,"C ",2) && !cub->ce_color)
+		if (ft_strnstr(line,"EA",2) && !cub->ea_texpath)
+			cub->ea_texpath = parse_texturepath(line);
+		else if (ft_strnstr(line,"NO",2) && !cub->no_texpath)
+			cub->no_texpath = parse_texturepath(line);
+		else if (ft_strnstr(line,"WE",2) && !cub->we_texpath)
+			cub->we_texpath = parse_texturepath(line);
+		else if (ft_strnstr(line,"SO",2) && !cub->so_texpath)
+			cub->so_texpath = parse_texturepath(line);
+		else if (ft_strnstr(line,"C ",2) && !cub->ce_color)
 			cub->ce_color = parse_color(line);
-		else if(ft_strnstr(line,"F ",2) && !cub->fl_color)
+		else if (ft_strnstr(line,"F ",2) && !cub->fl_color)
 			cub->fl_color = parse_color(line);
 		else
 			map_parse(line,cub);
 		free(line);
 		line = get_next_line(cub->map_fd);
 	}
-	free(line);
-}
-
-t_cub *create_cub(char *path)
-{
-	t_cub *cub;
-
-	(void)path;
-	cub = (t_cub *)malloc(sizeof(t_cub));
-	cub->map_fd = open(path,O_RDONLY);
-	cub->errnum = 0;
-	cub->debug = 0;
-	map_init(cub);
-	debug_printcub(cub);
-
-	return (cub);
-}
-
-t_cub *init(int argc, char **argv)
-{
-	(void)argc;
-	(void)argv;
-	t_cub *cub;
-
-	int test_fd;
-	// if(argc != 2)
-	// 	return (0);
-	// if(!argv || !argv[1])
-	// 	return (0);
-	test_fd = open("./maps/01.cub",O_RDONLY);
-	if(test_fd < 0)
-		return (NULL);
-	close(test_fd);
-	cub = create_cub("./maps/01.cub");
-	return (cub);
 }
 
 void error_exit(t_cub *c)
