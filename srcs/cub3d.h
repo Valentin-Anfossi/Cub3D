@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/07/10 17:50:26 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/07/11 05:00:02 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,24 @@ typedef struct s_cub
 
 //FUNCTIONS
 
-//INIT/MAP
+//INIT.C
 t_cub	*init(int argc, char **argv);
 t_cub	*create_cub(char *path);
-void	map_init(t_cub *cub);
+void 	init_map(t_cub *cub);
 
-//PARSING
+//MAP.C
+void	map_init(t_cub *cub);
+void map_parse(char *line, t_cub *cub);
+void map_parse2(t_cub *cub);
+void add_to_map(int x, int y, t_cub* cub);
+int map_sizex(t_cub *cub);
+
+//PARSEUTILS.C
 char *parse_texturepath(char *line);
 int	parse_color(char *line);
+
+//ERRORS.C
+void error_exit(t_cub *c);
 
 //DEBUG
 void	debug_printcub(t_cub *cub);

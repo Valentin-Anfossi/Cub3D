@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:21:13 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/07/10 17:24:15 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/07/11 04:57:33 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,24 @@ t_cub *create_cub(char *path)
 	debug_printcub(cub);
 
 	return (cub);
+}
+
+void init_map(t_cub *cub)
+{
+	int x;
+	int y;
+
+	x = 0;
+	y = 0;
+
+	while(y < cub->map_size_y)
+	{
+		while(x < cub->map_size_x)
+		{
+			cub->map[y][x] = 0;
+			x ++;
+		}
+		x = 0;
+		y ++;
+	}
 }
