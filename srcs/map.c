@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:26:27 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/07/11 04:57:26 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/07/12 00:41:01 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ void add_to_map(int x, int y, t_cub* cub)
 	char c;
 	
 	c = cub->map_str[x][y];
-	if(y >= (int)ft_strlen(cub->map_str[x]))
+	if(y >= (int)ft_strlen(cub->map_str[x]) - 1)
 		c = '0';
-	if(c == '0' || c == ' ' || !c)
+	if(c == '0' || c == ' ' || c == 0)
 		cub->map[x][y] = EMPTY;
 	else if(c == '1')
 		cub->map[x][y] = WALL;
@@ -109,7 +109,10 @@ void add_to_map(int x, int y, t_cub* cub)
 	else if(c == 'W')
 		cub->map[x][y] = P_WEST;
 	else
-		return;
+	{
+		printf("x = %d, y = %d\n",x,y);
+		cub->errnum = ERROR_MAP;
+	}
 }
 
 int map_sizex(t_cub *cub)
