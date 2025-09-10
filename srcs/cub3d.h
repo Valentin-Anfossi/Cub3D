@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: vagabundo <vagabundo@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/07/11 08:00:37 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/11 00:57:49 by vagabundo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,50 @@
 #define ERROR_MAP 2
 #define ERROR_INPUT 1
 
-typedef struct {
-	int x;
-	int y;
-	int z;
-} t_v3;
+typedef struct s_v3
+{
+	int		x;
+	int		y;
+	int		z;
+}	t_v3;
 
+typedef struct s_draw
+{
+	void	*img;
+	char	*data;
+	int		bpp;
+	int		length;
+	int		endian;
+	int		pos_x;
+	int		pos_y;
+	int		width;
+	int		height;
+}			t_draw;
 
 typedef struct s_cub
 {
-	char *no_texpath;
-	char *so_texpath;
-	char *we_texpath;
-	char *ea_texpath;
-	
-	int winsize_x;
-	int winsize_y;
-	
-	int errnum;
-	int debug;
-	int map_fd;
-	int map_size_x;
-	int map_size_y;
-	int ce_color;
-	int fl_color;
-	char **map_str;
-	int **map;
+	void	*mlx;
+	void	*window;
+
+	t_draw	*background;
+	t_draw	*texture_no;
+	char	*no_texpath;
+	char	*so_texpath;
+	char	*we_texpath;
+	char	*ea_texpath;
+
+	int		winsize_x;
+	int		winsize_y;
+
+	int		errnum;
+	int		debug;
+	int		map_fd;
+	int		map_size_x;
+	int		map_size_y;
+	int		ce_color;
+	int		fl_color;
+	char	**map_str;
+	int		**map;
 }	t_cub;
 
 //FUNCTIONS
@@ -58,21 +76,28 @@ typedef struct s_cub
 //INIT.C
 t_cub	*init(int argc, char **argv);
 t_cub	*create_cub(char *path);
-void 	init_map(t_cub *cub);
+void	init_map(t_cub *cub);
 
 //MAP.C
 void	map_init(t_cub *cub);
-void map_parse(char *line, t_cub *cub);
-void map_parse2(t_cub *cub);
-void add_to_map(int x, int y, t_cub* cub);
-int map_sizex(t_cub *cub);
+void	map_parse(char *line, t_cub *cub);
+void	map_parse2(t_cub *cub);
+void	add_to_map(int x, int y, t_cub *cub);
+int		map_sizex(t_cub *cub);
 
 //PARSEUTILS.C
-char *parse_texturepath(char *line);
-int	parse_color(char *line);
+char	*parse_texturepath(char *line);
+int		parse_color(char *line);
 
 //ERRORS.C
-void error_exit(t_cub *c);
+void	error_exit(t_cub *c);
 
 //DEBUG
 void	debug_printcub(t_cub *cub);
+
+t_draw	*draw_background(t_cub *cub);
+
+//CLEAN.C
+void	free_all(t_cub *cub);
+void	free_texture(t_cub *cub);
+int		destroystuff(t_cub *cub);
