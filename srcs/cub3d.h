@@ -6,13 +6,14 @@
 /*   By: vagabundo <vagabundo@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/11 00:57:49 by vagabundo        ###   ########.fr       */
+/*   Updated: 2025/09/12 00:52:53 by vagabundo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minilibx-linux/mlx.h"
 #include "../minilibx-linux/mlx_int.h"
 #include "../libft/libft.h"
+#include <math.h>
 
 #define EMPTY 0
 #define WALL 1
@@ -52,6 +53,9 @@ typedef struct s_cub
 
 	t_draw	*background;
 	t_draw	*texture_no;
+	t_draw	*texture_so;
+	t_draw	*texture_we;
+	t_draw	*texture_ea;
 	char	*no_texpath;
 	char	*so_texpath;
 	char	*we_texpath;

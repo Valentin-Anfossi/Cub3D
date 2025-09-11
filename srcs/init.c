@@ -6,7 +6,7 @@
 /*   By: vagabundo <vagabundo@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:21:13 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/11 01:32:15 by vagabundo        ###   ########.fr       */
+/*   Updated: 2025/09/12 00:50:41 by vagabundo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,48 @@ t_cub	*init(int argc, char **argv)
 	return (cub);
 }
 
+int	data_img(t_cub *cub)
+{
+	cub->texture_no->data = mlx_get_data_addr(cub->texture_no->img,
+			&cub->texture_no->bpp, &cub->texture_no->length,
+			&cub->texture_no->endian);
+	cub->texture_so->data = mlx_get_data_addr(cub->texture_so->img,
+			&cub->texture_so->bpp, &cub->texture_so->length,
+			&cub->texture_so->endian);
+	cub->texture_ea->data = mlx_get_data_addr(cub->texture_ea->img,
+			&cub->texture_ea->bpp, &cub->texture_ea->length,
+			&cub->texture_ea->endian);
+	cub->texture_we->data = mlx_get_data_addr(cub->texture_we->img,
+			&cub->texture_we->bpp, &cub->texture_we->length,
+			&cub->texture_we->endian);
+	if (!cub->texture_no->data || !cub->texture_so->data
+		|| !cub->texture_ea->data || !cub->texture_we->data)
+		return (1);
+	return (0);
+}
+
 int	init_img(t_cub *cub)
 {
 	cub->background = draw_background(cub);
-	if (!cub->background->img)
-	{
-		free(cub->background->img);
+	if (!cub->background)
 		return (1);
-	}
+	cub->texture_no = malloc(sizeof(t_draw));
+	cub->texture_so = malloc(sizeof(t_draw));
+	cub->texture_we = malloc(sizeof(t_draw));
+	cub->texture_ea = malloc(sizeof(t_draw));
+	cub->texture_no->img = mlx_xpm_file_to_image(cub->mlx, cub->no_texpath,
+			&cub->texture_no->width, &cub->texture_no->height);
+	cub->texture_so->img = mlx_xpm_file_to_image(cub->mlx, cub->so_texpath,
+			&cub->texture_so->width, &cub->texture_so->height);
+	cub->texture_we->img = mlx_xpm_file_to_image(cub->mlx, cub->we_texpath,
+			&cub->texture_we->width, &cub->texture_we->height);
+	cub->texture_ea->img = mlx_xpm_file_to_image(cub->mlx, cub->ea_texpath,
+			&cub->texture_ea->width, &cub->texture_ea->height);
+	if (!cub->texture_no->img || !cub->texture_so->img
+		|| !cub->texture_we->img || !cub->texture_ea->img)
+		return (1);
+	if (data_img(cub))
+		return (1);
 	return (0);
 }
 
@@ -62,7 +96,8 @@ t_cub	*create_cub(char *path)
 	cub->ce_color = 0;
 	cub->fl_color = 0;
 	map_init(cub);
-	init_img(cub);
+	if (init_img(cub))
+		return (NULL);
 	cub->window = mlx_new_window
 		(cub->mlx, cub->winsize_x, cub->winsize_y, "Cub3d");
 	if (!cub->window)

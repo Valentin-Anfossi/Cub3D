@@ -8,6 +8,14 @@ void	free_texture(t_cub *cub)
 	free(cub->so_texpath);
 	mlx_destroy_image(cub->mlx, cub->background->img);
 	free(cub->background);
+	mlx_destroy_image(cub->mlx, cub->texture_no->img);
+	free(cub->texture_no);
+	mlx_destroy_image(cub->mlx, cub->texture_so->img);
+	free(cub->texture_so);
+	mlx_destroy_image(cub->mlx, cub->texture_we->img);
+	free(cub->texture_we);
+	mlx_destroy_image(cub->mlx, cub->texture_ea->img);
+	free(cub->texture_ea);
 }
 
 void	free_all(t_cub *cub)
@@ -39,4 +47,3 @@ int	destroystuff(t_cub *cub)
 	mlx_loop_end(cub->mlx);
 	return (0);
 }
-

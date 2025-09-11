@@ -6,7 +6,7 @@
 /*   By: vagabundo <vagabundo@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:28:36 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/11 01:11:20 by vagabundo        ###   ########.fr       */
+/*   Updated: 2025/09/11 16:13:58 by vagabundo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ char	*parse_texturepath(char *line)
 	if (split[0])
 		free(split[0]);
 	if (split[1])
+	{
+		split[1][ft_strlen(split[1]) - 1] = '\0'; //textpath finissant par \n donc chemin non valide
 		re = ft_strdup(split[1]);
+	}
 	free(split[1]);
 	free(split);
 	return (re);
