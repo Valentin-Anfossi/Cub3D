@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vagabundo <vagabundo@student.42.fr>        +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/12 00:52:53 by vagabundo        ###   ########.fr       */
+/*   Updated: 2025/09/15 08:37:17 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ typedef struct s_draw
 	int		width;
 	int		height;
 }			t_draw;
+
+typedef struct s_player
+{
+	t_v3	pos;
+	float	rot;
+	int		fov;
+} t_player;
 
 typedef struct s_cub
 {
