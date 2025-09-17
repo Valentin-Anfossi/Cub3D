@@ -6,8 +6,8 @@ void	free_texture(t_cub *cub)
 	free(cub->we_texpath);
 	free(cub->no_texpath);
 	free(cub->so_texpath);
-	mlx_destroy_image(cub->mlx, cub->background->img);
-	free(cub->background);
+	mlx_destroy_image(cub->mlx, cub->buffer->img);
+	free(cub->buffer);
 	mlx_destroy_image(cub->mlx, cub->texture_no->img);
 	free(cub->texture_no);
 	mlx_destroy_image(cub->mlx, cub->texture_so->img);

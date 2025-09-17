@@ -45,9 +45,6 @@ int	data_img(t_cub *cub)
 	cub->texture_we->data = mlx_get_data_addr(cub->texture_we->img,
 			&cub->texture_we->bpp, &cub->texture_we->length,
 			&cub->texture_we->endian);
-	cub->testSprite->data = mlx_get_data_addr(cub->testSprite->img,
-			&cub->testSprite->bpp, &cub->testSprite->length,
-			&cub->testSprite->endian);
 	if (!cub->texture_no->data || !cub->texture_so->data
 		|| !cub->texture_ea->data || !cub->texture_we->data)
 		return (1);
@@ -56,14 +53,13 @@ int	data_img(t_cub *cub)
 
 int	init_img(t_cub *cub)
 {
-	cub->background = draw_background(cub);
-	if (!cub->background)
+	cub->buffer = draw_background(cub);
+	if (!cub->buffer)
 		return (1);
 	cub->texture_no = malloc(sizeof(t_draw));
 	cub->texture_so = malloc(sizeof(t_draw));
 	cub->texture_we = malloc(sizeof(t_draw));
 	cub->texture_ea = malloc(sizeof(t_draw));
-	cub->testSprite = malloc(sizeof(t_draw));
 	cub->texture_no->img = mlx_xpm_file_to_image(cub->mlx, cub->no_texpath,
 			&cub->texture_no->width, &cub->texture_no->height);
 	cub->texture_so->img = mlx_xpm_file_to_image(cub->mlx, cub->so_texpath,
@@ -72,8 +68,6 @@ int	init_img(t_cub *cub)
 			&cub->texture_we->width, &cub->texture_we->height);
 	cub->texture_ea->img = mlx_xpm_file_to_image(cub->mlx, cub->ea_texpath,
 			&cub->texture_ea->width, &cub->texture_ea->height);
-	cub->testSprite->img = mlx_xpm_file_to_image(cub->mlx, "./tiles/Test.xpm",
-			&cub->testSprite->width, &cub->testSprite->height);
 	if (!cub->texture_no->img || !cub->texture_so->img
 		|| !cub->texture_we->img || !cub->texture_ea->img)
 		return (1);

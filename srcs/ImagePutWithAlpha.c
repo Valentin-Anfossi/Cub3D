@@ -11,10 +11,3 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int put_image_alpha(t_cub* cub, t_draw *fore, t_draw *back, int x, int y)
-{
-	t_draw *nfor;
-
-	
-}

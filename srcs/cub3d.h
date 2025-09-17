@@ -71,16 +71,12 @@ typedef struct s_cub
 	void	*window;
 	t_player	*player;
 
-	t_draw	*background;
+	t_draw	*buffer;
+	t_draw	*buffer_old;
 	t_draw	*texture_no;
 	t_draw	*texture_so;
 	t_draw	*texture_we;
 	t_draw	*texture_ea;
-	t_draw	*walls;
-	t_draw	*ui;
-	t_draw	*interface;
-	t_draw	*menu;
-	t_draw	*testSprite;
 	char	*no_texpath;
 	char	*so_texpath;
 	char	*we_texpath;

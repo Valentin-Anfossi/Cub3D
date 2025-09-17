@@ -29,11 +29,10 @@ int render_loop(t_cub *cub)
 	if(!cub->mlx)
 		return (0);
 	
-	mlx_put_image_to_window(cub->mlx,cub->window,cub->background->img,0,0);
 	draw_walls(cub);
-	mlx_put_image_to_window(cub->mlx,cub->window,cub->walls->img,0,0);
-	mlx_put_image_to_window(cub->mlx,cub->window,cub->testSprite->img,0,0);
-	// ft_memset(cub->walls->data,0,cub->winsize_x * cub ->winsize_y);
+	mlx_put_image_to_window(cub->mlx,cub->window,cub->buffer->img,0,0);
+	// cub->buffer_old = cub->buffer;
+	// ft_memset(cub->buffer->data,0,cub->winsize_x * cub ->winsize_y * sizeof(int));
 	return (1);
 }
 
