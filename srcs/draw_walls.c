@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 08:54:10 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/17 09:29:44 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/17 09:59:58 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ void	init_walls(t_cub *cub)
 	{
 		while(x < cub->winsize_x)
 		{
-			put_pixel(walls,x,y,create_argb(1,50,0,0));
+			
+			// mlx_pixel_put(cub->mlx,cub->window,x,y,create_argb(1,60,0,0));
+			put_pixel(walls,x,y,create_argb(0,50,0,0));
 			x ++;
 		}
 		x = 0;

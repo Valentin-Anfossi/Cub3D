@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/17 09:21:48 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/17 09:59:10 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int render_loop(t_cub *cub)
 	mlx_put_image_to_window(cub->mlx,cub->window,cub->background->img,0,0);
 	draw_walls(cub);
 	mlx_put_image_to_window(cub->mlx,cub->window,cub->walls->img,0,0);
+	mlx_put_image_to_window(cub->mlx,cub->window,cub->testSprite->img,0,0);
 	// ft_memset(cub->walls->data,0,cub->winsize_x * cub ->winsize_y);
 	return (1);
 }

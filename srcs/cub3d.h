@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/17 09:26:55 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/17 09:54:55 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef struct s_cub
 	t_draw	*ui;
 	t_draw	*interface;
 	t_draw	*menu;
+	t_draw	*testSprite;
 	char	*no_texpath;
 	char	*so_texpath;
 	char	*we_texpath;
