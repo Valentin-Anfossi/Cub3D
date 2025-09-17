@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/15 08:37:17 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/16 11:14:21 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,15 @@
 #define P_EAST 8
 #define P_WEST 9
 #define MAP_SIZE 500
+#define FOV 90
+
+#define WIN_SIZEX 1024
+#define WIN_SIZEY 768
 
 #define ERROR_MAP 2
 #define ERROR_INPUT 1
+
+#define MULT 128
 
 typedef struct s_v3
 {
@@ -32,6 +38,12 @@ typedef struct s_v3
 	int		y;
 	int		z;
 }	t_v3;
+
+typedef struct s_v2
+{
+	double x;
+	double y;
+} t_v2;
 
 typedef struct s_draw
 {
@@ -48,21 +60,26 @@ typedef struct s_draw
 
 typedef struct s_player
 {
-	t_v3	pos;
-	float	rot;
-	int		fov;
+	t_v2	*pos;
+	t_v2	*dir;
+	t_v2	*plane;
 } t_player;
 
 typedef struct s_cub
 {
 	void	*mlx;
 	void	*window;
+	t_player	*player;
 
 	t_draw	*background;
 	t_draw	*texture_no;
 	t_draw	*texture_so;
 	t_draw	*texture_we;
 	t_draw	*texture_ea;
+	t_draw	*walls;
+	t_draw	*ui;
+	t_draw	*interface;
+	t_draw	*menu;
 	char	*no_texpath;
 	char	*so_texpath;
 	char	*we_texpath;
@@ -80,6 +97,10 @@ typedef struct s_cub
 	int		fl_color;
 	char	**map_str;
 	int		**map;
+	int		*player_pos;
+
+	double	time;
+	double	old_time;
 }	t_cub;
 
 //FUNCTIONS
@@ -95,6 +116,10 @@ void	map_parse(char *line, t_cub *cub);
 void	map_parse2(t_cub *cub);
 void	add_to_map(int x, int y, t_cub *cub);
 int		map_sizex(t_cub *cub);
+
+//COLORS_UTILS.C
+int	color_mult(int color, float ratio);
+float remap(float ratio,float low, float high);
 
 //PARSEUTILS.C
 char	*parse_texturepath(char *line);

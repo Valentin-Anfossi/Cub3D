@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vagabundo <vagabundo@student.42.fr>        +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:26:27 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/11 00:36:56 by vagabundo        ###   ########.fr       */
+/*   Updated: 2025/09/16 05:38:00 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,11 @@ void	add_to_map(int x, int y, t_cub *cub)
 	{
 		printf("x : %d, y : %d = %c\n", x, y, c);
 		cub->errnum = ERROR_MAP;
+	}
+	if (c == 'N' || c =='S' || c=='E' || c =='W')
+	{
+		cub->player_pos[0] = x;
+		cub->player_pos[1] = y;
 	}
 }
 

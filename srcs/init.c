@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vagabundo <vagabundo@student.42.fr>        +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:21:13 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/12 00:50:41 by vagabundo        ###   ########.fr       */
+/*   Updated: 2025/09/16 11:30:00 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,50 @@ int	init_img(t_cub *cub)
 	return (0);
 }
 
+t_v2	*get_playerInitialDir(int i)
+{
+	t_v2 *dir;
+
+	dir = malloc(sizeof(t_v2));
+	if (i == 6)
+	{
+		dir->x = 1;
+		dir->y = 0;
+	}
+	else if (i == 7)
+	{
+		dir->x = -1;
+		dir->y = 0;
+	}
+	else if (i == 8)
+	{
+		dir->x = 0;
+		dir->y = 1;
+	}
+	else
+	{
+		dir->x = -1;
+		dir->y = 0;
+	}
+	return (dir);
+}
+
+t_player *player_init(t_cub *cub)
+{
+	t_player *p;
+
+	p = malloc(sizeof(t_player));
+	p->pos = malloc(sizeof(t_v2));
+	p->plane = malloc(sizeof(t_v2));
+	p->dir =  get_playerInitialDir(cub->map[cub->player_pos[0]][cub->player_pos[1]]);
+	p->pos->x = (float)cub->player_pos[0] + .5;
+	p->pos->y = (float)cub->player_pos[1] + .5;
+	p->plane->x = 0;
+	p->plane->x = 0.66;
+	return (p);
+	
+}
+
 t_cub	*create_cub(char *path)
 {
 	t_cub	*cub;
@@ -83,8 +127,8 @@ t_cub	*create_cub(char *path)
 	(void)path;
 	cub = (t_cub *)malloc(sizeof(t_cub));
 	cub->mlx = mlx_init();
-	cub->winsize_x = 1800;
-	cub->winsize_y = 980;
+	cub->winsize_x = WIN_SIZEX;
+	cub->winsize_y = WIN_SIZEY;
 	cub->map_fd = open(path, O_RDONLY);
 	cub->map_str = NULL;
 	cub->errnum = 0;
@@ -95,6 +139,7 @@ t_cub	*create_cub(char *path)
 	cub->ea_texpath = NULL;
 	cub->ce_color = 0;
 	cub->fl_color = 0;
+	cub->player_pos = malloc(sizeof(int)*2);
 	map_init(cub);
 	if (init_img(cub))
 		return (NULL);
@@ -105,6 +150,7 @@ t_cub	*create_cub(char *path)
 		free(cub);
 		return (NULL);
 	}
+	cub->player = player_init(cub);
 	debug_printcub(cub);
 	return (cub);
 }
