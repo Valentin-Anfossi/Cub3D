@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 03:14:47 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/16 03:37:35 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/17 09:24:56 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int	color_mult(int color, float ratio)
 	b = (int)(b * ratio);
 	ret = (r << 16) | (g << 8) | b;	
 	return (ret);	
+}
+
+int create_argb(int alpha, int r, int g, int b)
+{
+	return (alpha << 24 | r << 16 | g << 8 | b);
 }
 
 float remap(float ratio,float low, float high)

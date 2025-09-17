@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/16 11:14:21 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/17 09:26:55 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ int		map_sizex(t_cub *cub);
 //COLORS_UTILS.C
 int	color_mult(int color, float ratio);
 float remap(float ratio,float low, float high);
+int create_argb(int alpha, int r, int g, int b);
 
 //PARSEUTILS.C
 char	*parse_texturepath(char *line);
@@ -137,3 +138,10 @@ t_draw	*draw_background(t_cub *cub);
 void	free_all(t_cub *cub);
 void	free_texture(t_cub *cub);
 int		destroystuff(t_cub *cub);
+
+//DRAW_WALLS.C
+void	draw_walls(t_cub *cub);
+void	init_walls(t_cub *cub);
+
+//DRAWER.C
+void	put_pixel(t_draw *img, int x, int y, int color);
