@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:22:46 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/16 11:23:58 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/18 10:54:55 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	debug_printmap(t_cub *cub)
 	int	j;
 
 	i = 0;
-	j = 0;
-	while (i < cub->map_size_y)
+	while (i < cub->map_size_x)  // Parcourt les LIGNES (map_size_x)
 	{
-		while (j < cub->map_size_x)
+		j = 0;
+		while (j < cub->map_size_y)  // Parcourt les COLONNES (map_size_y)
 		{
 			if (cub->map[i][j] == WALL)
 				printf("⬜");
@@ -29,11 +29,10 @@ void	debug_printmap(t_cub *cub)
 				printf("⬛");
 			else
 				printf("🙎");
-			j ++;
+			j++;
 		}
-		i ++;
 		printf("\n");
-		j = 0;
+		i++;
 	}
 }
 
@@ -57,7 +56,7 @@ void	debug_printcub(t_cub *cub)
 	printf("Errnum: %d\nDebug: %d\nMap_fd: %d\n", cub->errnum, cub->debug, cub->map_fd);
 	printf("Map size: X, Y {%d, %d}\n", cub->map_size_x, cub->map_size_y);
 	printf("Ceilling/Wall colors : 0x%06x, 0x%06x\n", cub->ce_color, cub->fl_color);
-	printf("Player position :%d,%d\n",cub->player_pos[0],cub->player_pos[1]);
+	printf("Player position :%f,%f\n",cub->player->pos->x,cub->player->pos->y);
 	printf("Map:\n");
 	debug_printmap(cub);
 	debug_printPlayer(cub->player);

@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:21:13 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/17 10:01:23 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/18 09:42:32 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,30 @@ int	data_img(t_cub *cub)
 	return (0);
 }
 
+t_draw *init_buffer(t_cub *cub)
+{
+	t_draw	*buffer;
+
+	buffer = malloc(sizeof(t_draw));
+	buffer->img = mlx_new_image(cub->mlx, cub->winsize_x, cub->winsize_y);
+	if (!buffer->img)
+		return (NULL);
+	buffer->data = mlx_get_data_addr
+		(buffer->img, &buffer->bpp,
+			&buffer->length, &buffer->endian);
+	if (!buffer->data)
+	{
+		mlx_destroy_image(cub->mlx, buffer->img);
+		free(buffer);
+		return (NULL);
+	}
+	return (buffer);
+}
+
 int	init_img(t_cub *cub)
 {
-	cub->buffer = draw_background(cub);
+	cub->buffer = init_buffer(cub);
+	cub->buffer_old = draw_background(cub);
 	if (!cub->buffer)
 		return (1);
 	cub->texture_no = malloc(sizeof(t_draw));
@@ -111,11 +132,12 @@ t_player *player_init(t_cub *cub)
 	p = malloc(sizeof(t_player));
 	p->pos = malloc(sizeof(t_v2));
 	p->plane = malloc(sizeof(t_v2));
+	printf("playerpos:%d,%d\n",cub->player_pos[0],cub->player_pos[1]);
 	p->dir =  get_playerInitialDir(cub->map[cub->player_pos[0]][cub->player_pos[1]]);
-	p->pos->x = (float)cub->player_pos[0] + .5;
-	p->pos->y = (float)cub->player_pos[1] + .5;
+	p->pos->x = (float)cub->player_pos[0]+.5;
+	p->pos->y = (float)cub->player_pos[1]+.5;
 	p->plane->x = 0;
-	p->plane->x = 0.66;
+	p->plane->y = 0.66;
 	return (p);
 	
 }
@@ -161,15 +183,14 @@ void	init_map(t_cub *cub)
 	int	y;
 
 	x = 0;
-	y = 0;
-	while (y < cub->map_size_y)
+	while (x < cub->map_size_x)
 	{
-		while (x < cub->map_size_x)
+		y = 0;
+		while (y < cub->map_size_y)
 		{
-			cub->map[y][x] = 0;
-			x ++;
+			cub->map[x][y] = 0;
+			y ++;
 		}
-		x = 0;
-		y ++;
+		x ++;
 	}
 }

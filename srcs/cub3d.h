@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/17 09:54:55 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/18 08:01:11 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,20 @@
 #define ERROR_INPUT 1
 
 #define MULT 128
+
+typedef struct s_ray
+{
+	double rayDirX;
+	double rayDirY;
+	double sideDistX;
+	double sideDistY;
+	double deltaDistX;
+	double deltaDistY;
+	int stepX;
+	int stepY;
+	int hit;
+	int side;
+} t_ray;
 
 typedef struct s_v3
 {
@@ -139,6 +153,7 @@ int		destroystuff(t_cub *cub);
 //DRAW_WALLS.C
 void	draw_walls(t_cub *cub);
 void	init_walls(t_cub *cub);
+int has_hitWall(t_cub *cub, int mapX, int mapY, int x);
 
 //DRAWER.C
 void	put_pixel(t_draw *img, int x, int y, int color);

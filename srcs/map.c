@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:26:27 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/16 05:38:00 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/18 10:57:27 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,26 @@ void	map_init(t_cub *cub)
 void	map_parse(char *line, t_cub *cub)
 {
 	int		i;
+	int		sizex;
 
 	i = 0;
+	sizex = 0;
 	cub->map_str = (char **)malloc (sizeof(char *) * MAP_SIZE);
 	while (line)
 	{
 		if (ft_strlen(line) > 1)
 		{
 			cub->map_str[i] = ft_strdup(line);
+			if((int)ft_strlen(line) > sizex)
+				sizex = ft_strlen(line);
 			i ++;
 		}
 		free(line);
 		line = get_next_line(cub->map_fd);
 	}
-	cub->map_str[i] = NULL;
-	cub->map_size_y = i;
-	cub->map_size_x = map_sizex(cub);
+	//cub->map_str[i] = NULL;
+	cub->map_size_y = sizex-1;
+	cub->map_size_x = i;
 	map_parse2(cub);
 }
 
@@ -70,22 +74,22 @@ void	map_parse2(t_cub *cub)
 
 	i = 0;
 	j = 0;
-	cub->map = (int **)malloc(sizeof(int *) * cub->map_size_y);
-	while (i < cub->map_size_y)
+	cub->map = (int **)malloc(sizeof(int *) * cub->map_size_x);
+	while (i < cub->map_size_x)
 	{
-		cub->map[i] = malloc(sizeof(int) * cub->map_size_x);
+		cub->map[i] = malloc(sizeof(int) * cub->map_size_y);
 		i ++;
 	}
 	init_map(cub);
 	i = 0;
-	while (i < cub->map_size_y)
+	while (i < cub->map_size_x)
 	{
-		while (j < cub->map_size_x && cub->map_str[i][j])
+		j = 0;
+		while (j < cub->map_size_y && cub->map_str[i][j])
 		{
 			add_to_map(i, j, cub);
 			j ++;
 		}
-		j = 0;
 		i ++;
 	}
 }
@@ -95,7 +99,7 @@ void	add_to_map(int x, int y, t_cub *cub)
 	char	c;
 
 	c = cub->map_str[x][y];
-	if (y >= (int)ft_strlen(cub->map_str[x]) - 1)
+	if (y >= (int)ft_strlen(cub->map_str[y]) - 1)
 		c = '0';
 	if (c == '0' || c == ' ' || c == 0)
 		cub->map[x][y] = EMPTY;
@@ -118,6 +122,7 @@ void	add_to_map(int x, int y, t_cub *cub)
 	{
 		cub->player_pos[0] = x;
 		cub->player_pos[1] = y;
+		printf("pos\n");
 	}
 }
 

@@ -23,11 +23,11 @@ void	free_all(t_cub *cub)
 	int	i;
 
 	i = 0;
-	while (cub->map_str[i])
-	{
-		free(cub->map_str[i]);
-		i++;
-	}
+	// while (cub->map_str[i])
+	// {
+	// 	free(cub->map_str[i]);
+	// 	i++;
+	// }
 	free(cub->map_str);
 	i = 0;
 	while (i < cub->map_size_y)
