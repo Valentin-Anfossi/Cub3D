@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 08:54:10 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/18 09:51:38 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/18 11:52:21 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,13 @@ void	draw_walls(t_cub *cub)
 	double sideDistY;
 	double deltaDistX;
 	double deltaDistY;
-	// double perpWallDist;
+	double perpWallDist;
+	int h;
+	int lineHeight;
 	int stepX;
 	int stepY;
 	int hit;
-	// int side;
+	int side;
 	int mapX;
 	int mapY;
 
@@ -82,19 +84,30 @@ void	draw_walls(t_cub *cub)
 			{
 				sideDistX += deltaDistX;
 				mapX += stepX;
-				// side = 0;
+				side = 0;
 			}
 			else
 			{
 				sideDistY += deltaDistY;
 				mapY += stepY;
-				// side = 1;
+				side = 1;
 			}
 			// printf("mapX=%d, mapY=%d, map_size_x=%d, map_size_y=%d\n", mapX, mapY, cub->map_size_x, cub->map_size_y);
 			if(has_hitWall(cub,mapX,mapY,x))
 			{
 				// put_pixel(cub->buffer,x,384,create_argb(0,255,0,0));
+				if(side)
+				{
+					h = mapY + (1 - stepY) / 2;
+					perpWallDist = (sideDistY - deltaDistY);
+				}
+				else
+				{
+					h = mapX + (1 - stepX) / 2;
+					perpWallDist = (sideDistX - deltaDistX);
+				}
 				hit = 1;
+				lineHeight = (int) (h / perpWallDist);
 				// printf("Hit x:%d MAPX:%dMAPY:%d\n",x,mapX,mapY);
 				usleep(100);
 			}

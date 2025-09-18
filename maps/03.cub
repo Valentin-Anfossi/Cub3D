@@ -2,8 +2,8 @@ NO ./tiles/Rock.xpm
 SO ./tiles/Stone.xpm
 WE ./tiles/Wood.xpm
 EA ./tiles/Bricks.xpm
-F 30,100,30
-C 10,50,120
+F 147, 64, 64
+C 160, 160, 160
 
 11011
 00000
