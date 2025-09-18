@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/18 10:58:10 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/18 15:16:07 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 	t_cub	*cub;
 
 	cub = init(argc, argv);
-	if (!cub || cub->errnum)
+	if (!cub || cub->errnum != 0)
 		error_exit(cub);
 	mlx_hook(cub->window, 17, 1L << 17, destroystuff, cub);
 	mlx_hook(cub->window, KeyPress, KeyPressMask, handle_key, cub);

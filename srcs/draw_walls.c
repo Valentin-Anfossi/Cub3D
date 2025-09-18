@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 08:54:10 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/18 14:35:28 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/18 14:42:02 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	draw_walls(t_cub *cub)
 			if(has_hitVoid(cub,mapX,mapY))
 				hit = 1;
 			// printf("mapX=%d, mapY=%d, map_size_x=%d, map_size_y=%d\n", mapX, mapY, cub->map_size_x, cub->map_size_y);
-			else if(has_hitWall(cub,mapX,mapY,x))
+			else if(has_hitWall(cub,mapX,mapY))
 			{
 				// put_pixel(cub->buffer,x,384,create_argb(0,255,0,0));
 				if(side)
@@ -142,20 +142,20 @@ int wall_shade(double dist)
 	double clamped_dist;
 
 	// printf("%f\n",dist);
+	clamped_dist = 1.0f - ((dist) / (15)) ;
 	if(dist < 0)
 		clamped_dist = 1;
-	if(dist > 2)
+	if(dist > 15)
 		clamped_dist = 0;
-	clamped_dist = 1.0f - (dist / 3) ;
 	return(create_argb(0,255 * clamped_dist ,0,0));
 }
 
 // Returns 0 if out of bounds, 1 if wall hit
-int has_hitWall(t_cub *cub, int mapX, int mapY, int x)
+int has_hitWall(t_cub *cub, int mapX, int mapY)
 {
 	if(cub->map[mapX][mapY] > 0)
 	{
-		put_pixel(cub->buffer,x,384,create_argb(0,255,0,0));
+		// put_pixel(cub->buffer,x,384,create_argb(0,255,0,0));
 		return (1);
 	}
 	else

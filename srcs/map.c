@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:26:27 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/18 10:57:27 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/18 15:56:04 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	map_parse(char *line, t_cub *cub)
 		free(line);
 		line = get_next_line(cub->map_fd);
 	}
-	//cub->map_str[i] = NULL;
-	cub->map_size_y = sizex-1;
+	cub->map_str[i] = NULL;
+	cub->map_size_y = sizex - 1;
 	cub->map_size_x = i;
 	map_parse2(cub);
 }
@@ -71,6 +71,7 @@ void	map_parse2(t_cub *cub)
 {
 	int	i;
 	int	j;
+	int len;
 
 	i = 0;
 	j = 0;
@@ -78,6 +79,8 @@ void	map_parse2(t_cub *cub)
 	while (i < cub->map_size_x)
 	{
 		cub->map[i] = malloc(sizeof(int) * cub->map_size_y);
+		if (!cub->map[i])
+			return;
 		i ++;
 	}
 	init_map(cub);
@@ -85,9 +88,13 @@ void	map_parse2(t_cub *cub)
 	while (i < cub->map_size_x)
 	{
 		j = 0;
-		while (j < cub->map_size_y && cub->map_str[i][j])
+		len = ft_strlen(cub->map_str[i]);
+		while (j < cub->map_size_y)
 		{
-			add_to_map(i, j, cub);
+			if(j < len)
+				add_to_map(i, j, cub);
+			else
+				cub->map[i][j] = EMPTY;
 			j ++;
 		}
 		i ++;
@@ -99,9 +106,7 @@ void	add_to_map(int x, int y, t_cub *cub)
 	char	c;
 
 	c = cub->map_str[x][y];
-	if (y >= (int)ft_strlen(cub->map_str[y]) - 1)
-		c = '0';
-	if (c == '0' || c == ' ' || c == 0)
+	if (c == '0' || c == ' ')
 		cub->map[x][y] = EMPTY;
 	else if (c == '1')
 		cub->map[x][y] = WALL;
@@ -113,16 +118,10 @@ void	add_to_map(int x, int y, t_cub *cub)
 		cub->map[x][y] = P_EAST;
 	else if (c == 'W')
 		cub->map[x][y] = P_WEST;
-	else
-	{
-		printf("x : %d, y : %d = %c\n", x, y, c);
-		cub->errnum = ERROR_MAP;
-	}
 	if (c == 'N' || c =='S' || c=='E' || c =='W')
 	{
 		cub->player_pos[0] = x;
 		cub->player_pos[1] = y;
-		printf("pos\n");
 	}
 }
 
@@ -144,5 +143,5 @@ int	map_sizex(t_cub *cub)
 			size_x = j;
 		i ++;
 	}
-	return (size_x - 1);
+	return (size_x);
 }

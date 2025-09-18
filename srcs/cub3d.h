@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/18 12:29:08 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/18 14:37:45 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ int		destroystuff(t_cub *cub);
 //DRAW_WALLS.C
 void	draw_walls(t_cub *cub);
 void	init_walls(t_cub *cub);
-int has_hitWall(t_cub *cub, int mapX, int mapY, int x);
+int has_hitWall(t_cub *cub, int mapX, int mapY);
 void drawVertical(t_cub *cub,int x, int start, int end, double dist);
 int has_hitVoid(t_cub *cub, int mapX, int mapY);
 int wall_shade(double dist);
