@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 08:54:10 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/18 14:42:02 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/18 15:58:53 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,41 +141,28 @@ int wall_shade(double dist)
 {
 	double clamped_dist;
 
-	// printf("%f\n",dist);
-	clamped_dist = 1.0f - ((dist) / (15)) ;
+	clamped_dist = 1.0f - ((dist) / (SHADE_DIST)) ;
 	if(dist < 0)
 		clamped_dist = 1;
-	if(dist > 15)
+	if(dist > SHADE_DIST)
 		clamped_dist = 0;
 	return(create_argb(0,255 * clamped_dist ,0,0));
 }
 
-// Returns 0 if out of bounds, 1 if wall hit
 int has_hitWall(t_cub *cub, int mapX, int mapY)
 {
 	if(cub->map[mapX][mapY] > 0)
-	{
-		// put_pixel(cub->buffer,x,384,create_argb(0,255,0,0));
 		return (1);
-	}
 	else
-	{
 		return (0);
-	}
 }
 
 int has_hitVoid(t_cub *cub, int mapX, int mapY)
 {
 	if(mapX < 0 || mapX >= cub->map_size_x)
-	{
-		// put_pixel(cub->buffer,x,384,create_argb(0,0,0,0));
 		return (1);
-	}	
 	else if(mapY < 0 || mapY >= cub->map_size_y)
-	{
-		// put_pixel(cub->buffer,x,384,create_argb(0,0,0,0));
 		return (1);
-	}
 	else
 		return (0);
 }
