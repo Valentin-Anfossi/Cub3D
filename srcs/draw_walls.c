@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 08:54:10 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/18 11:52:21 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/18 12:41:36 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	draw_walls(t_cub *cub)
 	double deltaDistX;
 	double deltaDistY;
 	double perpWallDist;
-	int h;
+	int drawStart;
+	int drawEnd;
 	int lineHeight;
 	int stepX;
 	int stepY;
@@ -92,44 +93,68 @@ void	draw_walls(t_cub *cub)
 				mapY += stepY;
 				side = 1;
 			}
+			if(has_hitVoid(cub,mapX,mapY))
+				hit = 1;
 			// printf("mapX=%d, mapY=%d, map_size_x=%d, map_size_y=%d\n", mapX, mapY, cub->map_size_x, cub->map_size_y);
-			if(has_hitWall(cub,mapX,mapY,x))
+			else if(has_hitWall(cub,mapX,mapY,x))
 			{
 				// put_pixel(cub->buffer,x,384,create_argb(0,255,0,0));
 				if(side)
 				{
-					h = mapY + (1 - stepY) / 2;
+					// h = mapY + (1 - stepY) / 2;
 					perpWallDist = (sideDistY - deltaDistY);
 				}
 				else
 				{
-					h = mapX + (1 - stepX) / 2;
+					// h = mapX + (1 - stepX) / 2;
 					perpWallDist = (sideDistX - deltaDistX);
 				}
 				hit = 1;
-				lineHeight = (int) (h / perpWallDist);
+				lineHeight = (int) (cub->winsize_y / perpWallDist);
+				drawStart = -lineHeight / 2 + cub->winsize_y / 2;
+				if(drawStart < 0)
+					drawStart = 0;
+				drawEnd = lineHeight / 2 + cub->winsize_y / 2;
+				if(drawEnd >= cub->winsize_y)
+					drawEnd = cub->winsize_y - 1;
+				if(cub->map[mapX][mapY])
+				drawVertical(cub,x,drawStart,drawEnd,perpWallDist);
 				// printf("Hit x:%d MAPX:%dMAPY:%d\n",x,mapX,mapY);
-				usleep(100);
 			}
+			// usleep(100);
 		}
 		x ++;
 	}
 }
 
+void drawVertical(t_cub *cub,int x, int start, int end, double dist)
+{
+	while (start < end)
+	{
+		// printf("oh %d %d\n",start,end);
+		put_pixel(cub->buffer,x,start,wall_shade(dist));
+		start ++;
+	}
+}
+
+int wall_shade(double dist)
+{
+	double clamped_dist;
+
+	// printf("%f\n",dist);
+	if(dist < 0)
+		clamped_dist = 1;
+	if(dist > 3)
+		clamped_dist = 0;
+	clamped_dist = 1.0f - (dist / 3) ;
+	return(create_argb(0,255 * clamped_dist ,0,0));
+
+}
+
 // Returns 0 if out of bounds, 1 if wall hit
 int has_hitWall(t_cub *cub, int mapX, int mapY, int x)
 {
-	if(mapX < 0 || mapX >= cub->map_size_x)
-	{
-		put_pixel(cub->buffer,x,384,create_argb(0,0,0,0));
-		return (1);
-	}	
-	else if(mapY < 0 || mapY >= cub->map_size_y)
-	{
-		put_pixel(cub->buffer,x,384,create_argb(0,0,0,0));
-		return (1);
-	}
-	else if(cub->map[mapX][mapY] > 0)
+	if(cub->map[mapX][mapY] > 0)
 	{
 		put_pixel(cub->buffer,x,384,create_argb(0,255,0,0));
 		return (1);
@@ -138,4 +163,20 @@ int has_hitWall(t_cub *cub, int mapX, int mapY, int x)
 	{
 		return (0);
 	}
+}
+
+int has_hitVoid(t_cub *cub, int mapX, int mapY)
+{
+	if(mapX < 0 || mapX >= cub->map_size_x)
+	{
+		// put_pixel(cub->buffer,x,384,create_argb(0,0,0,0));
+		return (1);
+	}	
+	else if(mapY < 0 || mapY >= cub->map_size_y)
+	{
+		// put_pixel(cub->buffer,x,384,create_argb(0,0,0,0));
+		return (1);
+	}
+	else
+		return (0);
 }
