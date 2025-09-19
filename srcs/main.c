@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/19 07:15:01 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/19 08:53:25 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,15 @@ int render_loop(t_cub *cub)
 	if(!cub->mlx)
 		return (0);
 	
-	ft_memset(cub->buffer->data,0,cub->winsize_x * cub ->winsize_y * sizeof(int));
+	// ft_memset(cub->buffer->data,0,cub->winsize_x * cub ->winsize_y * sizeof(int));
 	copy_buffer(cub->buffer, cub->background, cub);
-	move_player(cub);
 	draw_walls(cub);
-	mlx_put_image_to_window(cub->mlx,cub->window,cub->buffer->img,0,0);
+	copy_buffer(cub->buffer_old, cub->buffer, cub);
+	mlx_put_image_to_window(cub->mlx,cub->window,cub->buffer_old->img,0,0);
+	move_player(cub);
 	draw_fps(cub);
 	draw_controls(cub);
+	// usleep(10);
 	// cub->buffer_old = cub->buffer;
 	return (1);
 }
