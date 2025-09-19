@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 08:54:10 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/19 15:44:27 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/19 03:50:39 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,12 +129,10 @@ void	draw_walls(t_cub *cub)
 
 void drawVertical(t_cub *cub,int x, int start, int end, double dist, int side)
 {
-	float ratio;
 	while (start < end)
 	{
 		// printf("oh %d %d\n",start,end);
-		ratio = remap(1.0f-(float)start/(cub->winsize_y/2),0,1.25);
-		put_pixel(cub->buffer,x,start,color_mult(wall_shade(dist,side),ratio));
+		put_pixel(cub->buffer,x,start,wall_shade(dist,side));
 		start ++;
 	}
 }
