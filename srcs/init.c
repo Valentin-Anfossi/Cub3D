@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:21:13 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/18 09:42:32 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/19 07:10:18 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ t_draw *init_buffer(t_cub *cub)
 int	init_img(t_cub *cub)
 {
 	cub->buffer = init_buffer(cub);
-	cub->buffer_old = draw_background(cub);
+	cub->buffer_old = init_buffer(cub);
+	cub->background = draw_background(cub);
 	if (!cub->buffer)
 		return (1);
 	cub->texture_no = malloc(sizeof(t_draw));
@@ -132,12 +133,17 @@ t_player *player_init(t_cub *cub)
 	p = malloc(sizeof(t_player));
 	p->pos = malloc(sizeof(t_v2));
 	p->plane = malloc(sizeof(t_v2));
+	p->input = malloc(sizeof(t_v2));
 	printf("playerpos:%d,%d\n",cub->player_pos[0],cub->player_pos[1]);
 	p->dir =  get_playerInitialDir(cub->map[cub->player_pos[0]][cub->player_pos[1]]);
 	p->pos->x = (float)cub->player_pos[0]+.5;
 	p->pos->y = (float)cub->player_pos[1]+.5;
 	p->plane->x = 0;
 	p->plane->y = 0.66;
+	p->speed = .05;
+	p->rot_speed = .025;
+	p->input->x = 0;
+	p->input->y = 0;
 	return (p);
 	
 }
@@ -173,6 +179,7 @@ t_cub	*create_cub(char *path)
 		return (NULL);
 	}
 	cub->player = player_init(cub);
+	gettimeofday(&(cub->start_time), NULL);
 	debug_printcub(cub);
 	return (cub);
 }

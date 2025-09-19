@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 08:54:10 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/18 15:58:53 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/19 03:50:39 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void	draw_walls(t_cub *cub)
 				if(drawEnd >= cub->winsize_y)
 					drawEnd = cub->winsize_y - 1;
 				if(cub->map[mapX][mapY])
-				drawVertical(cub,x,drawStart,drawEnd,perpWallDist);
+				drawVertical(cub,x,drawStart,drawEnd,perpWallDist,side);
 				// printf("Hit x:%d MAPX:%dMAPY:%d\n",x,mapX,mapY);
 			}
 			// usleep(100);
@@ -127,17 +127,17 @@ void	draw_walls(t_cub *cub)
 	}
 }
 
-void drawVertical(t_cub *cub,int x, int start, int end, double dist)
+void drawVertical(t_cub *cub,int x, int start, int end, double dist, int side)
 {
 	while (start < end)
 	{
 		// printf("oh %d %d\n",start,end);
-		put_pixel(cub->buffer,x,start,wall_shade(dist));
+		put_pixel(cub->buffer,x,start,wall_shade(dist,side));
 		start ++;
 	}
 }
 
-int wall_shade(double dist)
+int wall_shade(double dist, int side)
 {
 	double clamped_dist;
 
@@ -146,6 +146,8 @@ int wall_shade(double dist)
 		clamped_dist = 1;
 	if(dist > SHADE_DIST)
 		clamped_dist = 0;
+	if(side)
+		clamped_dist *= .75;
 	return(create_argb(0,255 * clamped_dist ,0,0));
 }
 

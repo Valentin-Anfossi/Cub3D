@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/18 15:59:32 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/19 07:17:44 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "../minilibx-linux/mlx_int.h"
 #include "../libft/libft.h"
 #include <math.h>
+#include <sys/time.h>
+#include <unistd.h>
 
 #define EMPTY 0
 #define WALL 1
@@ -25,13 +27,18 @@
 #define FOV 90
 #define SHADE_DIST 20
 
-#define WIN_SIZEX 1024
-#define WIN_SIZEY 768
+#define WIN_SIZEX 920
+#define WIN_SIZEY 720
 
 #define ERROR_MAP 2
 #define ERROR_INPUT 1
 
 #define MULT 128
+
+#define KEY_UP 65362
+#define KEY_DOWN 65364
+#define KEY_LEFT 65361
+#define KEY_RIGHT 65363
 
 typedef struct s_ray
 {
@@ -53,6 +60,12 @@ typedef struct s_v3
 	int		y;
 	int		z;
 }	t_v3;
+
+typedef struct s_intv2
+{
+	int x;
+	int y;
+} t_intv2;
 
 typedef struct s_v2
 {
@@ -78,6 +91,9 @@ typedef struct s_player
 	t_v2	*pos;
 	t_v2	*dir;
 	t_v2	*plane;
+	t_intv2	*input;
+	float	speed;
+	float	rot_speed;
 } t_player;
 
 typedef struct s_cub
@@ -88,6 +104,7 @@ typedef struct s_cub
 
 	t_draw	*buffer;
 	t_draw	*buffer_old;
+	t_draw	*background;
 	t_draw	*texture_no;
 	t_draw	*texture_so;
 	t_draw	*texture_we;
@@ -111,8 +128,9 @@ typedef struct s_cub
 	int		**map;
 	int		*player_pos;
 
-	double	time;
-	double	old_time;
+	struct timeval  start_time;
+	struct timeval	time;
+	struct timeval	old_time;
 }	t_cub;
 
 //FUNCTIONS
@@ -155,9 +173,12 @@ int		destroystuff(t_cub *cub);
 void	draw_walls(t_cub *cub);
 void	init_walls(t_cub *cub);
 int has_hitWall(t_cub *cub, int mapX, int mapY);
-void drawVertical(t_cub *cub,int x, int start, int end, double dist);
+void drawVertical(t_cub *cub,int x, int start, int end, double dist, int side);
 int has_hitVoid(t_cub *cub, int mapX, int mapY);
-int wall_shade(double dist);
+int wall_shade(double dist,int side);
 
 //DRAWER.C
 void	put_pixel(t_draw *img, int x, int y, int color);
+
+//FT_MEMCPYFAST.C
+void	*ft_memcpyfast(void *dest, const void *src, size_t n);
