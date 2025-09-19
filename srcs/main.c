@@ -118,6 +118,26 @@ int render_loop(t_cub *cub)
 	return (1);
 }
 
+void set_playerInitialRotation(t_cub *c)
+{
+	float oldDirX;
+	float oldPlaneX;
+	t_player *p;
+	int	angle_degrees;
+	float angle;
+
+	p = c->player;
+	angle_degrees = get_playerInitialDir(c);
+	angle = angle_degrees *  M_PI / 180.0;
+	oldDirX = p->dir->x;
+	p->dir->x = p->dir->x * cos(angle) - p->dir->y * sin(angle);
+	p->dir->y = oldDirX * sin(angle) + p->dir->y * cos(angle);
+	oldPlaneX = p->plane->x;
+	p->plane->x = p->plane->x * cos(angle) - p->plane->y * sin(angle);
+	p->plane->y = oldPlaneX * sin(angle) + p->plane->y * cos(angle);
+	
+}
+
 int	main(int argc, char **argv)
 {
 	t_cub	*cub;
@@ -132,6 +152,7 @@ int	main(int argc, char **argv)
 	// mlx_put_image_to_window(cub->mlx, cub->window, cub->texture_so->img, 200, cub->winsize_y / 2.05);
 	// mlx_put_image_to_window(cub->mlx, cub->window, cub->texture_we->img, 300, cub->winsize_y / 2.05);
 	// mlx_put_image_to_window(cub->mlx, cub->window, cub->texture_ea->img, 400, cub->winsize_y / 2.05);
+	set_playerInitialRotation(cub);
 	mlx_loop_hook(cub->mlx, render_loop, cub);
 	mlx_loop(cub->mlx);
 
