@@ -16,7 +16,7 @@ void	put_pixel(t_draw *img, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = (char *)img->data + (y * img->length + x * (img->bpp / 8));
+	dst = (char *)img->data + (y * img->length + x * (img->bpp));
 	*(unsigned int *)dst = color;
 }
 

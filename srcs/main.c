@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/19 08:53:25 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/19 11:23:30 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int handle_keyRelease(int keycode, t_cub *cub)
 
 void copy_buffer(t_draw *dest, const t_draw *src, t_cub *cub)
 {
-	ft_memcpyfast(dest->data, src->data, (cub->winsize_x * cub->winsize_y) *sizeof(int));
+	ft_memcpy(dest->data, src->data, (cub->winsize_x * cub->winsize_y) *sizeof(int));
 }
 
 

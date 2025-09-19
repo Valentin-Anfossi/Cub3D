@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/19 07:17:44 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/19 09:05:05 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_draw
 	void	*img;
 	char	*data;
 	int		bpp;
+	int		bppdiv;
 	int		length;
 	int		endian;
 	int		pos_x;
