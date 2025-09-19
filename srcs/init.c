@@ -98,32 +98,19 @@ int	init_img(t_cub *cub)
 	return (0);
 }
 
-t_v2	*get_playerInitialDir(int i)
+int get_playerInitialDir(t_cub *c)
 {
-	t_v2 *dir;
+	int i;
 
-	dir = malloc(sizeof(t_v2));
-	if (i == 6)
-	{
-		dir->x = 1;
-		dir->y = 0;
-	}
-	else if (i == 7)
-	{
-		dir->x = -1;
-		dir->y = 0;
-	}
-	else if (i == 8)
-	{
-		dir->x = 0;
-		dir->y = 1;
-	}
+	i = c->map[c->player_pos[0]][c->player_pos[1]];
+	if (i == P_NORTH)
+		return (180);
+	else if (i == P_SOUTH)
+		return (0);
+	else if (i == P_EAST)
+		return (-90);
 	else
-	{
-		dir->x = -1;
-		dir->y = 0;
-	}
-	return (dir);
+		return (-260);
 }
 
 t_player *player_init(t_cub *cub)
@@ -134,8 +121,11 @@ t_player *player_init(t_cub *cub)
 	p->pos = malloc(sizeof(t_v2));
 	p->plane = malloc(sizeof(t_v2));
 	p->input = malloc(sizeof(t_v2));
+	p->dir = malloc(sizeof(t_v2));
 	printf("playerpos:%d,%d\n",cub->player_pos[0],cub->player_pos[1]);
-	p->dir =  get_playerInitialDir(cub->map[cub->player_pos[0]][cub->player_pos[1]]);
+	// p->dir =  get_playerInitialDir(cub->map[cub->player_pos[0]][cub->player_pos[1]]);
+	p->dir->x = 1.0;
+	p->dir->y = 0.0;
 	p->pos->x = (float)cub->player_pos[0]+.5;
 	p->pos->y = (float)cub->player_pos[1]+.5;
 	p->plane->x = 0;

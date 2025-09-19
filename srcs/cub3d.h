@@ -140,6 +140,8 @@ typedef struct s_cub
 t_cub	*init(int argc, char **argv);
 t_cub	*create_cub(char *path);
 void	init_map(t_cub *cub);
+int 	get_playerInitialDir(t_cub *c);
+
 
 //MAP.C
 void	map_init(t_cub *cub);
