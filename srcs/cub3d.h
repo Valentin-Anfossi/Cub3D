@@ -25,7 +25,7 @@
 #define P_WEST 9
 #define MAP_SIZE 500
 #define FOV 90
-#define SHADE_DIST 20
+#define SHADE_DIST 10
 
 #define WIN_SIZEX 920
 #define WIN_SIZEY 720
@@ -39,20 +39,6 @@
 #define KEY_DOWN 65364
 #define KEY_LEFT 65361
 #define KEY_RIGHT 65363
-
-typedef struct s_ray
-{
-	double rayDirX;
-	double rayDirY;
-	double sideDistX;
-	double sideDistY;
-	double deltaDistX;
-	double deltaDistY;
-	int stepX;
-	int stepY;
-	int hit;
-	int side;
-} t_ray;
 
 typedef struct s_v3
 {
@@ -133,6 +119,26 @@ typedef struct s_cub
 	struct timeval	old_time;
 }	t_cub;
 
+typedef struct s_ray {
+	float cameraX;
+	float rayDirX;
+	float rayDirY;
+	float sideDistY;
+	float sideDistX;
+	float deltaDistX;
+	float deltaDistY;
+	float perpWallDist;
+	int drawStart;
+	int drawEnd;
+	int lineHeight;
+	int stepX;
+	int stepY;
+	int hit;
+	int side;
+	int mapX;
+	int mapY;
+}	t_ray;
+
 //FUNCTIONS
 
 //INIT.C
@@ -175,7 +181,7 @@ int		destroystuff(t_cub *cub);
 void	draw_walls(t_cub *cub);
 void	init_walls(t_cub *cub);
 int has_hitWall(t_cub *cub, int mapX, int mapY);
-void drawVertical(t_cub *cub,int x, int start, int end, double dist, int side);
+void drawVertical(t_cub *cub, t_ray *r, int x);
 int has_hitVoid(t_cub *cub, int mapX, int mapY);
 int wall_shade(double dist,int side);
 

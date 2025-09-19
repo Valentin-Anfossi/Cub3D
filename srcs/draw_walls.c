@@ -23,123 +23,117 @@ double dabs(double d)
 void	draw_walls(t_cub *cub)
 {
 	int x;
-	double cameraX;
-	double rayDirX;
-	double rayDirY;
-	double sideDistX;
-	double sideDistY;
-	double deltaDistX;
-	double deltaDistY;
-	double perpWallDist;
-	int drawStart;
-	int drawEnd;
-	int lineHeight;
-	int stepX;
-	int stepY;
-	int hit;
-	int side;
-	int mapX;
-	int mapY;
+
+	t_ray *r;
+	r = malloc(sizeof(t_ray));
 
 	x = 0;
 	
 	while (x < cub->winsize_x-1)
 	{
-		cameraX = 2 * x /(double)cub->winsize_x - 1;
-		rayDirX = cub->player->dir->x + cub->player->plane->x * cameraX;
-		rayDirY = cub->player->dir->y + cub->player->plane->y * cameraX;
-		mapX = (int)cub->player->pos->x;
-		mapY = (int)cub->player->pos->y;
-		hit = 0;
-		if(rayDirX == 0)
-			deltaDistX = 1e30;
+		r->cameraX = 2 * x /(double)cub->winsize_x - 1;
+		r->rayDirX = cub->player->dir->x + cub->player->plane->x * r->cameraX;
+		r->rayDirY = cub->player->dir->y + cub->player->plane->y * r->cameraX;
+		r->mapX = (int)cub->player->pos->x;
+		r->mapY = (int)cub->player->pos->y;
+		r->hit = 0;
+		if(r->rayDirX == 0)
+			r->deltaDistX = 1e30;
 		else
-			deltaDistX = dabs(1/rayDirX);
-		if(rayDirY == 0)
-			deltaDistY = 1e30;
+			r->deltaDistX = dabs(1/r->rayDirX);
+		if(r->rayDirY == 0)
+			r->deltaDistY = 1e30;
 		else
-			deltaDistY = dabs(1/rayDirY);
-		if(rayDirX < 0)
+			r->deltaDistY = dabs(1/r->rayDirY);
+		if(r->rayDirX < 0)
 		{
-			stepX = -1;
-			sideDistX = (cub->player->pos->x - mapX) * deltaDistX;
+			r->stepX = -1;
+			r->sideDistX = (cub->player->pos->x - r->mapX) * r->deltaDistX;
 		}
 		else
 		{
-			stepX = 1;
-			sideDistX = (mapX + 1.0 - cub->player->pos->x) * deltaDistX;
+			r->stepX = 1;
+			r->sideDistX = (r->mapX + 1.0 - cub->player->pos->x) * r->deltaDistX;
 		}
-		if(rayDirY < 0)
+		if(r->rayDirY < 0)
 		{
-			stepY = -1;
-			sideDistY = (cub->player->pos->y - mapY) * deltaDistY;
+			r->stepY = -1;
+			r->sideDistY = (cub->player->pos->y - r->mapY) * r->deltaDistY;
 		}
 		else
 		{
-			stepY = 1;
-			sideDistY = (mapY + 1.0 - cub->player->pos->y ) * deltaDistY;
+			r->stepY = 1;
+			r->sideDistY = (r->mapY + 1.0 - cub->player->pos->y ) * r->deltaDistY;
 		}
-		while(!hit)
+		while(!r->hit)
 		{
-			if(sideDistX < sideDistY)
+			if(r->sideDistX < r->sideDistY)
 			{
-				sideDistX += deltaDistX;
-				mapX += stepX;
-				side = 0;
+				r->sideDistX += r->deltaDistX;
+				r->mapX += r->stepX;
+				r->side = 0;
 			}
 			else
 			{
-				sideDistY += deltaDistY;
-				mapY += stepY;
-				side = 1;
+				r->sideDistY += r->deltaDistY;
+				r->mapY += r->stepY;
+				r->side = 1;
 			}
-			if(has_hitVoid(cub,mapX,mapY))
-				hit = 1;
+			if(has_hitVoid(cub,r->mapX,r->mapY))
+				r->hit = 1;
 			// printf("mapX=%d, mapY=%d, map_size_x=%d, map_size_y=%d\n", mapX, mapY, cub->map_size_x, cub->map_size_y);
-			else if(has_hitWall(cub,mapX,mapY))
+			else if(has_hitWall(cub,r->mapX,r->mapY))
 			{
 				// put_pixel(cub->buffer,x,384,create_argb(0,255,0,0));
-				if(side)
+				if(r->side)
 				{
 					// h = mapY + (1 - stepY) / 2;
-					perpWallDist = (sideDistY - deltaDistY);
+					r->perpWallDist = (r->sideDistY - r->deltaDistY);
 				}
 				else
 				{
 					// h = mapX + (1 - stepX) / 2;
-					perpWallDist = (sideDistX - deltaDistX);
+					r->perpWallDist = (r->sideDistX - r->deltaDistX);
 				}
-				hit = 1;
-				lineHeight = (int) (cub->winsize_y / perpWallDist);
-				drawStart = -lineHeight / 2 + cub->winsize_y / 2;
-				if(drawStart < 0)
-					drawStart = 0;
-				drawEnd = lineHeight / 2 + cub->winsize_y / 2;
-				if(drawEnd >= cub->winsize_y)
-					drawEnd = cub->winsize_y - 1;
-				if(cub->map[mapX][mapY])
-				drawVertical(cub,x,drawStart,drawEnd,perpWallDist,side);
+				r->hit = 1;
+				r->lineHeight = (int) (cub->winsize_y / r->perpWallDist);
+				r->drawStart = -r->lineHeight / 2 + cub->winsize_y / 2;
+				if(r->drawStart < 0)
+					r->drawStart = 0;
+				r->drawEnd = r->lineHeight / 2 + cub->winsize_y / 2;
+				if(r->drawEnd >= cub->winsize_y)
+					r->drawEnd = cub->winsize_y - 1;
+				if(cub->map[r->mapX][r->mapY])
+				// selectDrawWalls(ray,cub);
+				drawVertical(cub,r,x);
 				// printf("Hit x:%d MAPX:%dMAPY:%d\n",x,mapX,mapY);
 			}
 			// usleep(100);
 		}
 		x ++;
 	}
+	free(r);
 }
 
-void drawVertical(t_cub *cub,int x, int start, int end, double dist, int side)
+void drawVertical(t_cub *cub, t_ray *r, int x)
 {
-	while (start < end)
+	// float ratio;
+	int color;
+
+	while (r->drawStart < r->drawEnd)
 	{
+		// ratio = r->drawStart / (float)(cub->winsize_y);
+		color = wall_shade(r->perpWallDist,r->side);
+		// color = color_mult(color,ratio);
 		// printf("oh %d %d\n",start,end);
-		put_pixel(cub->buffer,x,start,wall_shade(dist,side));
-		start ++;
+		put_pixel(cub->buffer,x,r->drawStart,color);
+		r->drawStart ++;
 	}
 }
 
 int wall_shade(double dist, int side)
 {
-	double clamped_dist;
+	float clamped_dist;
 
 	clamped_dist = 1.0f - ((dist) / (SHADE_DIST)) ;
 	if(dist < 0)
@@ -153,7 +147,7 @@ int wall_shade(double dist, int side)
 
 int has_hitWall(t_cub *cub, int mapX, int mapY)
 {
-	if(cub->map[mapX][mapY] > 0)
+	if(cub->map[mapX][mapY] == WALL)
 		return (1);
 	else
 		return (0);
