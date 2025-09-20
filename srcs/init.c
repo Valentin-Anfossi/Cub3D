@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:21:13 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/20 07:38:55 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/20 14:17:45 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ t_player *player_init(t_cub *cub)
 	p->rot_speed = .01;
 	p->input->x = 0;
 	p->input->y = 0;
+	p->input->z = 0;
 	return (p);
 	
 }
@@ -158,6 +159,7 @@ t_cub	*create_cub(char *path)
 	cub->ce_color = 0;
 	cub->fl_color = 0;
 	cub->player_pos = malloc(sizeof(int)*2);
+	cub->is_mouseActive = 0;
 	map_init(cub);
 	if (init_img(cub))
 		return (NULL);

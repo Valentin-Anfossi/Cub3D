@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/20 10:26:09 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/20 14:28:16 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	handle_key(int keycode, t_cub *cub)
 {
 	if (keycode == 65307)
 		destroystuff(cub);
-	// printf("KEY %d\n",keycode);
+	printf("KEY %d\n",keycode);
 	if(keycode == KEY_UP)
 		cub->player->input->x += 1;
 	if(keycode == KEY_DOWN)
@@ -34,6 +34,13 @@ int	handle_key(int keycode, t_cub *cub)
 		cub->player->input->z += 1;
 	if(keycode == KEY_STRIGHT)
 		cub->player->input->z -= 1;
+	if(keycode == KEY_MOUSE)
+	{
+		if(cub->is_mouseActive)
+			cub->is_mouseActive = 0;
+		else
+			cub->is_mouseActive = 1;
+	}
 	return (0);
 }
 
@@ -96,14 +103,8 @@ void move_player(t_cub *c)
 	t_player *p;
 
 	p = c->player;
-	mlx_mouse_get_pos(c->mlx, c->window, &mouseX, &mouseY);
-	p->input->y = -(mouseX - c->winsize_x/2);
-	mlx_mouse_move(c->mlx,c->window,c->winsize_x/2,c->winsize_y/2);
 	if(p->input->x != 0)
 	{
-		// if(c->map[(int)(p->pos->x + p->input->x)][(int)p->pos->y] == EMPTY)
-		// {
-		// }
 			p->pos->x += p->dir->x * p->input->x * p->speed;
 			p->pos->y += p->dir->y * p->input->x * p->speed;
 	}
@@ -116,10 +117,17 @@ void move_player(t_cub *c)
 		p->plane->x = p->plane->x * cos(p->rot_speed * p->input->y) - p->plane->y * sin(p->rot_speed * p->input->y);
 		p->plane->y = oldPlaneX * sin(p->rot_speed * p->input->y) + p->plane->y * cos(p->rot_speed * p->input->y);
 	}
+	if(c->is_mouseActive)
+	{
+		mlx_mouse_get_pos(c->mlx, c->window, &mouseX, &mouseY);
+		p->input->y = -(mouseX - c->winsize_x/2);
+		mlx_mouse_move(c->mlx,c->window,c->winsize_x/2,c->winsize_y/2);
+	}
 	if(p->input->z != 0)
 	{
-		// p->pos->x += rotateVector(p->dir) 
-	}
+		p->pos->x += -p->dir->y * p->input->z * p->speed;
+		p->pos->y += p->dir->x * p->input->z * p->speed;
+	} 
 }
 
 t_v2 rotateVector(const t_v2 *vector, int deg)
@@ -127,8 +135,8 @@ t_v2 rotateVector(const t_v2 *vector, int deg)
 	float f;
 	t_v2 rotated;
 	f = deg * M_PI / 180.0f;
-	rotated.x = vector->x * cosf(deg);
-	rotated.y = vector->y * sinf(deg);
+	rotated.x = vector->x * cosf(f);
+	rotated.y = vector->y * sinf(f);
 	return (rotated);
 }
 

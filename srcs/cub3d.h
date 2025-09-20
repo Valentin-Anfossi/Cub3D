@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/20 10:04:37 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/20 14:28:41 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 #define KEY_RIGHT 65363
 #define KEY_STLEFT 97
 #define KEY_STRIGHT 100
+#define KEY_MOUSE 112
 #define TARGET_FPS 60
 
 typedef struct s_v3
@@ -116,6 +117,7 @@ typedef struct s_cub
 	char	**map_str;
 	int		**map;
 	int		*player_pos;
+	int		is_mouseActive;
 
 	struct timeval  start_time;
 	struct timeval	time;
@@ -195,3 +197,6 @@ void	put_pixel(t_draw *img, int x, int y, int color);
 
 //FT_MEMCPYFAST.C
 void	*ft_memcpyfast(void *dest, const void *src, size_t n);
+
+//MAIN.C
+t_v2 rotateVector(const t_v2 *vector, int deg);
