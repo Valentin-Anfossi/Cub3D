@@ -210,8 +210,7 @@ int	main(int argc, char **argv)
 	mlx_hook(cub->window, 17, 1L << 17, destroystuff, cub);
 	mlx_hook(cub->window, KeyPress, KeyPressMask, handle_key, cub);
 	mlx_hook(cub->window, KeyRelease, KeyRelease, handle_keyRelease, cub);
-	// mlx_do_key_autorepeatoff(cub->mlx);
-	mlx_do_key_autorepeaton(cub->mlx);
+	mlx_do_key_autorepeatoff(cub->mlx);
 	mlx_mouse_hide(cub->mlx,cub->window);
 	
 	// mlx_mouse_hook(cub->window,handle_mouse,cub);
@@ -220,7 +219,6 @@ int	main(int argc, char **argv)
 	// mlx_put_image_to_window(cub->mlx, cub->window, cub->texture_we->img, 300, cub->winsize_y / 2.05);
 	// mlx_put_image_to_window(cub->mlx, cub->window, cub->texture_ea->img, 400, cub->winsize_y / 2.05);
 	set_playerInitialRotation(cub);
-	printf("IMAGE : BPP :%d ENDIAN: %d\n", cub->texture_ea->bpp,cub->texture_ea->endian);
 	mlx_loop_hook(cub->mlx, render_loop, cub);
 	mlx_loop(cub->mlx);
 

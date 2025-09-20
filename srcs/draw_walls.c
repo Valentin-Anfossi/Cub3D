@@ -165,7 +165,6 @@ void drawVertical(t_cub *cub, t_ray *r, int x)
 		texY = (int)texPos & (curTex->height-1); // en gros c'est comme faire un modulo % mais en bitshifting
 		texPos += step;
 		put_pixel(cub->buffer,x,r->drawStart,color_mult(get_TexPixel(texX,texY,curTex),wall_shade(r->perpWallDist,r->side)));
-
 		r->drawStart ++;
 	}
 }
@@ -177,8 +176,7 @@ int get_TexPixel(int x, int y, t_draw *img)
 
 	if(x < 0 || x >= img->width || y < 0 || y >= img->height)
 		return (0x000000);
-	// pixel = img->data + (y * img->length + x * (img->bpp / 8));
-	    pixel = (char *)(img->data + y * img->length + x * 4);
+	pixel = img->data + (y * img->length + x * (img->bpp / 8));
 	if(img->endian == 1)
 		color = (pixel[0] << 16) | (pixel[1] << 8) | pixel[2];	
 	else

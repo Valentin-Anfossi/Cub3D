@@ -21,11 +21,10 @@ int	color_mult(int color, float ratio)
 	
 	r = (color >> 16) & 0xFF;
     g = (color >> 8)  & 0xFF;
-    b = color & 0xbF;
+    b = color & 0xFF;
 	r = (int)(r * ratio);
 	g = (int)(g * ratio);
 	b = (int)(b * ratio);
-
 	ret = (r << 16) | (g << 8) | b;	
 	return (ret);	
 }
