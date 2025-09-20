@@ -35,6 +35,8 @@ void	free_all(t_cub *cub)
 		free(cub->map[i]);
 		i++;
 	}
+	mlx_do_key_autorepeaton(cub->mlx);
+	mlx_mouse_show(cub->mlx, cub->window);
 	free(cub->map);
 	free_texture(cub);
 	free(cub->mlx);
