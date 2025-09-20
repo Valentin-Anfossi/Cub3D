@@ -21,7 +21,7 @@ int	handle_key(int keycode, t_cub *cub)
 {
 	if (keycode == 65307)
 		destroystuff(cub);
-	printf("KEY %d\n",keycode);
+	// printf("KEY %d\n",keycode);
 	if(keycode == KEY_UP)
 		cub->player->input->x += 1;
 	if(keycode == KEY_DOWN)
