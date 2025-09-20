@@ -120,7 +120,7 @@ t_player *player_init(t_cub *cub)
 	p = malloc(sizeof(t_player));
 	p->pos = malloc(sizeof(t_v2));
 	p->plane = malloc(sizeof(t_v2));
-	p->input = malloc(sizeof(t_v2));
+	p->input = malloc(sizeof(t_v3));
 	p->dir = malloc(sizeof(t_v2));
 	printf("playerpos:%d,%d\n",cub->player_pos[0],cub->player_pos[1]);
 	// p->dir =  get_playerInitialDir(cub->map[cub->player_pos[0]][cub->player_pos[1]]);
@@ -131,7 +131,7 @@ t_player *player_init(t_cub *cub)
 	p->plane->x = 0.66;
 	p->plane->y = 0.0;
 	p->speed = .05;
-	p->rot_speed = .025;
+	p->rot_speed = .01;
 	p->input->x = 0;
 	p->input->y = 0;
 	return (p);

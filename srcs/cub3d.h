@@ -35,10 +35,12 @@
 
 #define MULT 128
 
-#define KEY_UP 65362
-#define KEY_DOWN 65364
+#define KEY_UP 119
+#define KEY_DOWN 115
 #define KEY_LEFT 65361
 #define KEY_RIGHT 65363
+#define KEY_STLEFT 97
+#define KEY_STRIGHT 100
 #define TARGET_FPS 60
 
 typedef struct s_v3
@@ -56,8 +58,8 @@ typedef struct s_intv2
 
 typedef struct s_v2
 {
-	double x;
-	double y;
+	float x;
+	float y;
 } t_v2;
 
 typedef struct s_draw
@@ -78,7 +80,7 @@ typedef struct s_player
 	t_v2	*pos;
 	t_v2	*dir;
 	t_v2	*plane;
-	t_intv2	*input;
+	t_v3	*input;
 	float	speed;
 	float	rot_speed;
 } t_player;

@@ -21,7 +21,7 @@ int	handle_key(int keycode, t_cub *cub)
 {
 	if (keycode == 65307)
 		destroystuff(cub);
-
+	// printf("KEY %d\n",keycode);
 	if(keycode == KEY_UP)
 		cub->player->input->x += 1;
 	if(keycode == KEY_DOWN)
@@ -30,7 +30,10 @@ int	handle_key(int keycode, t_cub *cub)
 		cub->player->input->y += 1;
 	if(keycode == KEY_RIGHT)
 		cub->player->input->y -= 1;
-	
+	if(keycode == KEY_STLEFT)
+		cub->player->input->z += 1;
+	if(keycode == KEY_STRIGHT)
+		cub->player->input->z -= 1;
 	return (0);
 }
 
@@ -44,6 +47,10 @@ int handle_keyRelease(int keycode, t_cub *cub)
 		cub->player->input->y -= 1;
 	if(keycode == KEY_RIGHT)
 		cub->player->input->y += 1;
+	if(keycode == KEY_STLEFT)
+		cub->player->input->z -= 1;
+	if(keycode == KEY_STRIGHT)
+		cub->player->input->z += 1;
 	return (0);
 }
 
@@ -73,7 +80,10 @@ void draw_fps(t_cub *cub)
 void draw_controls(t_cub *cub) 
 {	
 	char str[320];
-	sprintf(str,"Input :%d, %d",cub->player->input->x, cub->player->input->y); //ATTENTION C PAS AUTORISE (JE CROIS)
+	int x;
+	int y;
+	mlx_mouse_get_pos(cub->mlx, cub->window, &x,&y);
+	sprintf(str,"Input :%d, %d Mouse : %d, %d",cub->player->input->x, cub->player->input->y,x,y); //ATTENTION C PAS AUTORISE (JE CROIS)
 	mlx_string_put(cub->mlx,cub->window,0,cub->winsize_y-50,create_argb(1,255,255,255),str);
 }
 
@@ -81,9 +91,14 @@ void move_player(t_cub *c)
 {
 	float oldDirX;
 	float oldPlaneX;
+	int mouseX;
+	int mouseY;
 	t_player *p;
 
 	p = c->player;
+	mlx_mouse_get_pos(c->mlx, c->window, &mouseX, &mouseY);
+	p->input->y = -(mouseX - c->winsize_x/2);
+	mlx_mouse_move(c->mlx,c->window,c->winsize_x/2,c->winsize_y/2);
 	if(p->input->x != 0)
 	{
 		// if(c->map[(int)(p->pos->x + p->input->x)][(int)p->pos->y] == EMPTY)
@@ -101,6 +116,20 @@ void move_player(t_cub *c)
 		p->plane->x = p->plane->x * cos(p->rot_speed * p->input->y) - p->plane->y * sin(p->rot_speed * p->input->y);
 		p->plane->y = oldPlaneX * sin(p->rot_speed * p->input->y) + p->plane->y * cos(p->rot_speed * p->input->y);
 	}
+	if(p->input->z != 0)
+	{
+		// p->pos->x += rotateVector(p->dir) 
+	}
+}
+
+t_v2 rotateVector(const t_v2 *vector, int deg)
+{
+	float f;
+	t_v2 rotated;
+	f = deg * M_PI / 180.0f;
+	rotated.x = vector->x * cosf(deg);
+	rotated.y = vector->y * sinf(deg);
+	return (rotated);
 }
 
 void cap_fps(t_cub *cub)
@@ -124,9 +153,10 @@ int render_loop(t_cub *cub)
 	draw_walls(cub);
 	copy_buffer(cub->buffer_old, cub->buffer, cub);
 	mlx_put_image_to_window(cub->mlx,cub->window,cub->buffer_old->img,0,0);
+
 	move_player(cub);
+	// draw_controls(cub);
 	draw_fps(cub);
-	draw_controls(cub);
 	cap_fps(cub);
 	// cub->buffer_old = cub->buffer;
 	return (1);
@@ -152,6 +182,16 @@ void set_playerInitialRotation(t_cub *c)
 	
 }
 
+int handle_mouse(t_cub *cub)
+{
+	int x;
+	int y;
+
+	mlx_mouse_get_pos(cub->mlx,cub->window,&x,&y);
+	// mlx_mouse_move()
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_cub	*cub;
@@ -162,6 +202,10 @@ int	main(int argc, char **argv)
 	mlx_hook(cub->window, 17, 1L << 17, destroystuff, cub);
 	mlx_hook(cub->window, KeyPress, KeyPressMask, handle_key, cub);
 	mlx_hook(cub->window, KeyRelease, KeyRelease, handle_keyRelease, cub);
+	mlx_do_key_autorepeatoff(cub->mlx);
+	mlx_mouse_hide(cub->mlx,cub->window);
+	
+	// mlx_mouse_hook(cub->window,handle_mouse,cub);
 	// mlx_put_image_to_window(cub->mlx, cub->window, cub->texture_no->img, 100, cub->winsize_y / 2.05);
 	// mlx_put_image_to_window(cub->mlx, cub->window, cub->texture_so->img, 200, cub->winsize_y / 2.05);
 	// mlx_put_image_to_window(cub->mlx, cub->window, cub->texture_we->img, 300, cub->winsize_y / 2.05);
