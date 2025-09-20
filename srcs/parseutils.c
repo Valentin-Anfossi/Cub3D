@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parseutils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vagabundo <vagabundo@student.42.fr>        +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:28:36 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/11 16:13:58 by vagabundo        ###   ########.fr       */
+/*   Updated: 2025/09/20 01:52:20 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char	*parse_texturepath(char *line)
 	char	*re;
 
 	split = ft_split(line, ' ');
+	re = NULL;
 	if (split[0])
 		free(split[0]);
 	if (split[1])

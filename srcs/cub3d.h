@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/19 07:17:44 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/20 05:09:17 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 #define P_WEST 9
 #define MAP_SIZE 500
 #define FOV 90
-#define SHADE_DIST 10
+#define SHADE_DIST 15
 
 #define WIN_SIZEX 920
 #define WIN_SIZEY 720
@@ -39,6 +39,7 @@
 #define KEY_DOWN 65364
 #define KEY_LEFT 65361
 #define KEY_RIGHT 65363
+#define TARGET_FPS 60
 
 typedef struct s_v3
 {
@@ -117,6 +118,7 @@ typedef struct s_cub
 	struct timeval  start_time;
 	struct timeval	time;
 	struct timeval	old_time;
+	double	delta_time;
 }	t_cub;
 
 typedef struct s_ray {
@@ -183,7 +185,7 @@ void	init_walls(t_cub *cub);
 int has_hitWall(t_cub *cub, int mapX, int mapY);
 void drawVertical(t_cub *cub, t_ray *r, int x);
 int has_hitVoid(t_cub *cub, int mapX, int mapY);
-int wall_shade(double dist,int side);
+float wall_shade(float dist,int side);
 
 //DRAWER.C
 void	put_pixel(t_draw *img, int x, int y, int color);

@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/19 08:53:25 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/20 07:36:21 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	handle_key(int keycode, t_cub *cub)
 	if(keycode == KEY_DOWN)
 		cub->player->input->x -= 1;
 	if(keycode == KEY_LEFT)
-		cub->player->input->y -= 1;
-	if(keycode == KEY_RIGHT)
 		cub->player->input->y += 1;
+	if(keycode == KEY_RIGHT)
+		cub->player->input->y -= 1;
 	
 	return (0);
 }
@@ -41,9 +41,9 @@ int handle_keyRelease(int keycode, t_cub *cub)
 	if(keycode == KEY_DOWN)
 		cub->player->input->x += 1;
 	if(keycode == KEY_LEFT)
-		cub->player->input->y += 1;
-	if(keycode == KEY_RIGHT)
 		cub->player->input->y -= 1;
+	if(keycode == KEY_RIGHT)
+		cub->player->input->y += 1;
 	return (0);
 }
 
@@ -61,9 +61,10 @@ void draw_fps(t_cub *cub)
     gettimeofday(&(cub->time), NULL);
     frameTime = (cub->time.tv_sec - cub->old_time.tv_sec) +
                 (cub->time.tv_usec - cub->old_time.tv_usec) * 1e-6;
-    float fps = 1.0 / frameTime;
+	cub->delta_time = frameTime * 1000;
+	float fps = (1.0 / frameTime);
 	char str[320];
-	sprintf(str,"FPS :%f",fps); //ATTENTION C PAS AUTORISE (JE CROIS)
+	sprintf(str,"FPS :%.0f",fps); //ATTENTION C PAS AUTORISE (JE CROIS)
 	mlx_string_put(cub->mlx,cub->window,0,cub->winsize_y,create_argb(1,255,255,255),str);
 }
 
@@ -100,6 +101,17 @@ void move_player(t_cub *c)
 	}
 }
 
+void cap_fps(t_cub *cub)
+{
+	double sleep_time;
+	
+	if(cub->delta_time < 1000 / TARGET_FPS)
+	{
+		sleep_time = ((1000/TARGET_FPS) - cub->delta_time) * 1000;
+		usleep(sleep_time);	
+	}
+}
+
 int render_loop(t_cub *cub)
 {
 	if(!cub->mlx)
@@ -113,7 +125,7 @@ int render_loop(t_cub *cub)
 	move_player(cub);
 	draw_fps(cub);
 	draw_controls(cub);
-	// usleep(10);
+	cap_fps(cub);
 	// cub->buffer_old = cub->buffer;
 	return (1);
 }

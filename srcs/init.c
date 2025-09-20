@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:21:13 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/19 07:10:18 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/20 07:38:55 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,13 @@ int get_playerInitialDir(t_cub *c)
 
 	i = c->map[c->player_pos[0]][c->player_pos[1]];
 	if (i == P_NORTH)
-		return (180);
+		return (90);
 	else if (i == P_SOUTH)
-		return (0);
+		return (260);
 	else if (i == P_EAST)
-		return (-90);
+		return (0);
 	else
-		return (-260);
+		return (180);
 }
 
 t_player *player_init(t_cub *cub)
@@ -124,12 +124,12 @@ t_player *player_init(t_cub *cub)
 	p->dir = malloc(sizeof(t_v2));
 	printf("playerpos:%d,%d\n",cub->player_pos[0],cub->player_pos[1]);
 	// p->dir =  get_playerInitialDir(cub->map[cub->player_pos[0]][cub->player_pos[1]]);
-	p->dir->x = 1.0;
-	p->dir->y = 0.0;
+	p->dir->x = 0.0;
+	p->dir->y = 1.0;
 	p->pos->x = (float)cub->player_pos[0]+.5;
 	p->pos->y = (float)cub->player_pos[1]+.5;
-	p->plane->x = 0;
-	p->plane->y = 0.66;
+	p->plane->x = 0.66;
+	p->plane->y = 0.0;
 	p->speed = .05;
 	p->rot_speed = .025;
 	p->input->x = 0;

@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 08:54:10 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/19 03:50:39 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/20 08:00:56 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	draw_walls(t_cub *cub)
 
 	x = 0;
 	
-	while (x < cub->winsize_x-1)
+	while (x < cub->winsize_x-1) //pour chaque colonne de lecran
 	{
 		r->cameraX = 2 * x /(double)cub->winsize_x - 1;
 		r->rayDirX = cub->player->dir->x + cub->player->plane->x * r->cameraX;
@@ -38,14 +38,14 @@ void	draw_walls(t_cub *cub)
 		r->mapY = (int)cub->player->pos->y;
 		r->hit = 0;
 		if(r->rayDirX == 0)
-			r->deltaDistX = 1e30;
+			r->deltaDistX = 1e30; // C pour remplacer INFINITY car je crois que c'est pas autorise (a verif)
 		else
 			r->deltaDistX = dabs(1/r->rayDirX);
 		if(r->rayDirY == 0)
 			r->deltaDistY = 1e30;
 		else
 			r->deltaDistY = dabs(1/r->rayDirY);
-		if(r->rayDirX < 0)
+		if(r->rayDirX < 0) 
 		{
 			r->stepX = -1;
 			r->sideDistX = (cub->player->pos->x - r->mapX) * r->deltaDistX;
@@ -103,6 +103,9 @@ void	draw_walls(t_cub *cub)
 				r->drawEnd = r->lineHeight / 2 + cub->winsize_y / 2;
 				if(r->drawEnd >= cub->winsize_y)
 					r->drawEnd = cub->winsize_y - 1;
+
+
+
 				if(cub->map[r->mapX][r->mapY])
 				// selectDrawWalls(ray,cub);
 				drawVertical(cub,r,x);
@@ -119,30 +122,61 @@ void drawVertical(t_cub *cub, t_ray *r, int x)
 {
 	// float ratio;
 	int color;
+	float wallX;
+	int texX;
+	t_draw *curTex;
+	
 
+	color = 0;
+		if(r->side == 0)
+	{
+		if(r->stepX == -1) //NORD
+			curTex = cub->texture_no;
+		else // SUD
+			curTex = cub->texture_so;
+	}
+	else
+	{
+		if(r->stepY == -1) // OUEST
+			curTex = cub->texture_we;
+		else // EST
+			curTex = cub->texture_ea;
+	}
+	
+	if(r->side == 0)
+		wallX = cub->player->pos->y + r->perpWallDist * r->rayDirY;
+	else
+		wallX = cub->player->pos->x + r->perpWallDist * r->rayDirX;
+	wallX -= floor(wallX);
+	
+	texX = (int)(wallX * (float)curTex->width);
+
+	
+	if(r->side == 0 && r->rayDirX > 0)
+		texX = curTex->width - texX - 1;
+	if(r->side == 1 && r->rayDirY < 0)
+		texX = curTex->width - texX - 1;
+
+	color = getTexPixel();
 	while (r->drawStart < r->drawEnd)
 	{
-		// ratio = r->drawStart / (float)(cub->winsize_y);
-		color = wall_shade(r->perpWallDist,r->side);
-		// color = color_mult(color,ratio);
-		// printf("oh %d %d\n",start,end);
 		put_pixel(cub->buffer,x,r->drawStart,color);
 		r->drawStart ++;
 	}
 }
 
-int wall_shade(double dist, int side)
+float wall_shade(float dist, int side)
 {
 	float clamped_dist;
 
-	clamped_dist = 1.0f - ((dist) / (SHADE_DIST)) ;
-	if(dist < 0)
-		clamped_dist = 1;
+	if(dist <= 0)
+		return (1);
 	if(dist > SHADE_DIST)
-		clamped_dist = 0;
+		return (0);
+	clamped_dist = 1.0f - ((dist) / (SHADE_DIST)) ;
 	if(side)
 		clamped_dist *= .75;
-	return(create_argb(0,255 * clamped_dist ,0,0));
+	return(clamped_dist);
 }
 
 int has_hitWall(t_cub *cub, int mapX, int mapY)
