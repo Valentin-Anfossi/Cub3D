@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/20 05:09:17 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/20 10:04:37 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 #define P_WEST 9
 #define MAP_SIZE 500
 #define FOV 90
-#define SHADE_DIST 15
+#define SHADE_DIST 14
 
 #define WIN_SIZEX 920
 #define WIN_SIZEY 720
@@ -186,6 +186,7 @@ int has_hitWall(t_cub *cub, int mapX, int mapY);
 void drawVertical(t_cub *cub, t_ray *r, int x);
 int has_hitVoid(t_cub *cub, int mapX, int mapY);
 float wall_shade(float dist,int side);
+int get_TexPixel(int x, int y, t_draw *img);
 
 //DRAWER.C
 void	put_pixel(t_draw *img, int x, int y, int color);

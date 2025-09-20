@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 08:54:10 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/20 08:00:56 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/20 10:28:40 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,13 +121,14 @@ void	draw_walls(t_cub *cub)
 void drawVertical(t_cub *cub, t_ray *r, int x)
 {
 	// float ratio;
-	int color;
 	float wallX;
+	float texPos;
 	int texX;
+	int texY;
+	float step;
 	t_draw *curTex;
 	
 
-	color = 0;
 		if(r->side == 0)
 	{
 		if(r->stepX == -1) //NORD
@@ -157,12 +158,30 @@ void drawVertical(t_cub *cub, t_ray *r, int x)
 	if(r->side == 1 && r->rayDirY < 0)
 		texX = curTex->width - texX - 1;
 
-	color = getTexPixel();
+	step = 1.0 * curTex->height/r->lineHeight; //ratio pixel texture/pixel line
+	texPos = (r->drawStart - (cub->winsize_y/2) + r->lineHeight / 2) * step; 
 	while (r->drawStart < r->drawEnd)
 	{
-		put_pixel(cub->buffer,x,r->drawStart,color);
+		texY = (int)texPos & (curTex->height-1); // en gros c'est comme faire un modulo % mais en bitshifting
+		texPos += step;
+		put_pixel(cub->buffer,x,r->drawStart,color_mult(get_TexPixel(texX,texY,curTex),wall_shade(r->perpWallDist,r->side)));
 		r->drawStart ++;
 	}
+}
+
+int get_TexPixel(int x, int y, t_draw *img)
+{
+	char *pixel;
+	int color;
+
+	if(x < 0 || x >= img->width || y < 0 || y >= img->height)
+		return (0x000000);
+	pixel = img->data + (y * img->length + x * (img->bpp / 8));
+	if(img->endian == 1)
+		color = (pixel[0] << 16) | (pixel[1] << 8) | pixel[2];	
+	else
+		color = (pixel[2] << 16) | (pixel[1] << 8) | pixel[0];
+	return (color);
 }
 
 float wall_shade(float dist, int side)

@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/20 07:36:21 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/20 10:26:09 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void draw_fps(t_cub *cub)
 	cub->delta_time = frameTime * 1000;
 	float fps = (1.0 / frameTime);
 	char str[320];
+	if(fps > 60)
+		fps = 60;
 	sprintf(str,"FPS :%.0f",fps); //ATTENTION C PAS AUTORISE (JE CROIS)
 	mlx_string_put(cub->mlx,cub->window,0,cub->winsize_y,create_argb(1,255,255,255),str);
 }
