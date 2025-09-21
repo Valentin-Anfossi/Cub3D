@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 08:54:10 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/20 10:28:40 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/20 18:43:17 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,18 +81,14 @@ void	draw_walls(t_cub *cub)
 			}
 			if(has_hitVoid(cub,r->mapX,r->mapY))
 				r->hit = 1;
-			// printf("mapX=%d, mapY=%d, map_size_x=%d, map_size_y=%d\n", mapX, mapY, cub->map_size_x, cub->map_size_y);
 			else if(has_hitWall(cub,r->mapX,r->mapY))
 			{
-				// put_pixel(cub->buffer,x,384,create_argb(0,255,0,0));
 				if(r->side)
 				{
-					// h = mapY + (1 - stepY) / 2;
 					r->perpWallDist = (r->sideDistY - r->deltaDistY);
 				}
 				else
 				{
-					// h = mapX + (1 - stepX) / 2;
 					r->perpWallDist = (r->sideDistX - r->deltaDistX);
 				}
 				r->hit = 1;
@@ -103,15 +99,9 @@ void	draw_walls(t_cub *cub)
 				r->drawEnd = r->lineHeight / 2 + cub->winsize_y / 2;
 				if(r->drawEnd >= cub->winsize_y)
 					r->drawEnd = cub->winsize_y - 1;
-
-
-
 				if(cub->map[r->mapX][r->mapY])
-				// selectDrawWalls(ray,cub);
 				drawVertical(cub,r,x);
-				// printf("Hit x:%d MAPX:%dMAPY:%d\n",x,mapX,mapY);
 			}
-			// usleep(100);
 		}
 		x ++;
 	}
@@ -120,7 +110,6 @@ void	draw_walls(t_cub *cub)
 
 void drawVertical(t_cub *cub, t_ray *r, int x)
 {
-	// float ratio;
 	float wallX;
 	float texPos;
 	int texX;
@@ -171,16 +160,16 @@ void drawVertical(t_cub *cub, t_ray *r, int x)
 
 int get_TexPixel(int x, int y, t_draw *img)
 {
-	char *pixel;
+	unsigned char *pixel;
 	int color;
 
 	if(x < 0 || x >= img->width || y < 0 || y >= img->height)
 		return (0x000000);
 	pixel = img->data + (y * img->length + x * (img->bpp / 8));
 	if(img->endian == 1)
-		color = (pixel[0] << 16) | (pixel[1] << 8) | pixel[2];	
+		color = (pixel[0] << 16) | (pixel[1] << 8) | pixel[2] << 0;	
 	else
-		color = (pixel[2] << 16) | (pixel[1] << 8) | pixel[0];
+		color = (pixel[2] << 16) | (pixel[1] << 8) | pixel[0] << 0;
 	return (color);
 }
 

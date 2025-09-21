@@ -1,7 +1,7 @@
-NO ./tiles/Test.xpm
-SO ./tiles/Stone.xpm
-WE ./tiles/Wood.xpm
-EA ./tiles/Bricks.xpm
+NO ./tiles/blackstone.xpm
+SO ./tiles/crying_obsidian.xpm
+WE ./tiles/whitestone.xpm
+EA ./tiles/bricks.xpm
 F 147, 64, 64
 C 160, 160, 160
 

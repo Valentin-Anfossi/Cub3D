@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/20 14:28:41 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/20 17:20:56 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct s_v2
 typedef struct s_draw
 {
 	void	*img;
-	char	*data;
+	unsigned char	*data;
 	int		bpp;
 	int		length;
 	int		endian;

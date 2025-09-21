@@ -16,6 +16,19 @@ void	free_texture(t_cub *cub)
 	free(cub->texture_we);
 	mlx_destroy_image(cub->mlx, cub->texture_ea->img);
 	free(cub->texture_ea);
+	mlx_destroy_image(cub->mlx, cub->background->img);
+	free(cub->background);
+	mlx_destroy_image(cub->mlx, cub->buffer_old->img);
+	free(cub->buffer_old);
+}
+
+void free_player(t_player *p)
+{
+	free(p->pos);
+	free(p->plane);
+	free(p->input);
+	free(p->dir);
+	free(p);
 }
 
 void	free_all(t_cub *cub)
@@ -30,15 +43,18 @@ void	free_all(t_cub *cub)
 	// }
 	free(cub->map_str);
 	i = 0;
-	while (i < cub->map_size_y)
+	while (i < cub->map_size_x)
 	{
 		free(cub->map[i]);
 		i++;
 	}
+	i = 0;
 	mlx_do_key_autorepeaton(cub->mlx);
 	mlx_mouse_show(cub->mlx, cub->window);
 	free(cub->map);
 	free_texture(cub);
+	free_player(cub->player);
+	free(cub->player_pos);
 	free(cub->mlx);
 	free(cub);
 }

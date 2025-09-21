@@ -74,7 +74,7 @@ t_draw	*draw_background(t_cub *cub)
 	background->img = mlx_new_image(cub->mlx, cub->winsize_x, cub->winsize_y);
 	if (!background->img)
 		return (NULL);
-	background->data = mlx_get_data_addr
+	background->data = (unsigned char*)mlx_get_data_addr
 		(background->img, &background->bpp,
 			&background->length, &background->endian);
 	if (!background->data)
