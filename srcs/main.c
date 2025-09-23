@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/22 19:57:25 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/23 08:06:28 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 - savoir l'orientation du perso (si y perso < a y mur = no texture ?)
 - redimensionner les texture en fonction du perso
 */
+
+/* si les optis de draw_walls.c suffisent pas il faudra regarder pour implementer les fixed points*/
+/* virer les compteurs ca peut aider aussi lol ou alors les draw par dessus le buffer au lieu d'utiliser put string to img*/
 #include "cub3d.h"
 
 int	handle_key(int keycode, t_cub *cub)

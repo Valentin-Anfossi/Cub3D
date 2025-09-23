@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 08:54:10 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/22 19:36:04 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/23 08:04:06 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,8 @@ void drawVertical(t_cub *cub, t_ray *r, int x)
 		put_pixel(cub->buffer,x,r->drawStart,color_mult(get_TexPixel(texX,texY,curTex),wall_shade(r->perpWallDist,r->side)));
 		r->drawStart ++;
 	}
+	// ON degage ca, instead on stock drawstart drawend texPos step dans une struct et on fait le draw dans une autre func en suivant les scanlines (x++)
+	// la on draw VERTICAL et ca doit pas aider vu que le buffer mlx est horizontal char * + length
 }
 
 int get_TexPixel(int x, int y, t_draw *img)
@@ -165,7 +167,7 @@ int get_TexPixel(int x, int y, t_draw *img)
 
 	if(x < 0 || x >= img->width || y < 0 || y >= img->height)
 		return (0x000000);
-	pixel = img->data + (y * img->length + x * (img->bpp / 8));
+	pixel = img->data + (y * img->length + x * (img->bpp / 8)); // on peut aussi precalc bpp/8 dans la struct de l'image ?
 	if(img->endian == 1)
 		color = (pixel[0] << 16) | (pixel[1] << 8) | pixel[2] << 0;	
 	else
