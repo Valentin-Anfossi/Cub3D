@@ -1,0 +1,147 @@
+Date : 2025-09-19 05:36:14
+Directory : /home/vanfossi/42_backup/Ring4/Cub3D
+Total : 112 files,  4832 codes, 1402 comments, 931 blanks, all 7165 lines
+
+Languages
++--------------+------------+------------+------------+------------+------------+
+| language     | files      | code       | comment    | blank      | total      |
++--------------+------------+------------+------------+------------+------------+
+| C            |        100 |      4,339 |      1,234 |        756 |      6,329 |
+| C++          |          3 |        237 |        100 |         72 |        409 |
+| Makefile     |          5 |        126 |         47 |         62 |        235 |
+| Shell Script |          1 |         72 |          8 |         15 |         95 |
+| Markdown     |          2 |         40 |          0 |         18 |         58 |
+| Perl         |          1 |         18 |         13 |          8 |         39 |
++--------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                             | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                |        112 |      4,832 |      1,402 |        931 |      7,165 |
+| . (Files)                                                                        |          2 |         17 |         12 |         13 |         42 |
+| libft                                                                            |         55 |      1,460 |        753 |        306 |      2,519 |
+| minilibx-linux                                                                   |         43 |      2,521 |        483 |        497 |      3,501 |
+| minilibx-linux (Files)                                                           |         39 |      2,153 |        472 |        415 |      3,040 |
+| minilibx-linux/test                                                              |          4 |        368 |         11 |         82 |        461 |
+| srcs                                                                             |         12 |        834 |        154 |        115 |      1,103 |
++----------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------+--------------+------------+------------+------------+------------+
+| filename                                                                         | language     | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------+--------------+------------+------------+------------+------------+
+| /home/vanfossi/42_backup/Ring4/Cub3D/Makefile                                    | Makefile     |         16 |         12 |         12 |         40 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/README.md                                   | Markdown     |          1 |          0 |          1 |          2 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/Makefile                              | Makefile     |         32 |         12 |         15 |         59 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_atoi.c                             | C            |         26 |         22 |          5 |         53 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_bzero.c                            | C            |         14 |         11 |          4 |         29 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_calloc.c                           | C            |         17 |         17 |          5 |         39 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_fprintf.c                          | C            |         57 |         21 |         10 |         88 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_fprintf_prints.c                   | C            |         69 |         11 |         12 |         92 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_fprintf_prints2.c                  | C            |         54 |         11 |         10 |         75 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_fprintf_utils.c                    | C            |         72 |         11 |         10 |         93 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_isalnum.c                          | C            |         10 |         11 |          3 |         24 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_isalpha.c                          | C            |         10 |         11 |          3 |         24 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_isascii.c                          | C            |          8 |         11 |          3 |         22 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_isdigit.c                          | C            |          8 |         11 |          3 |         22 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_isprint.c                          | C            |         10 |         11 |          3 |         24 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_isspace.c                          | C            |          8 |         11 |          2 |         21 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_itoa.c                             | C            |         38 |         15 |          6 |         59 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_lstadd_back.c                      | C            |         14 |         11 |          4 |         29 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_lstadd_front.c                     | C            |          6 |         11 |          3 |         20 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_lstclear.c                         | C            |         13 |         11 |          4 |         28 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_lstdelone.c                        | C            |          6 |         11 |          3 |         20 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_lstiter.c                          | C            |         11 |         11 |          4 |         26 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_lstlast.c                          | C            |         11 |         11 |          4 |         26 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_lstmap.c                           | C            |         21 |         11 |          4 |         36 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_lstnew.c                           | C            |         11 |         11 |          4 |         26 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_lstsize.c                          | C            |         14 |         11 |          4 |         29 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_memchr.c                           | C            |         18 |         15 |          4 |         37 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_memcmp.c                           | C            |         17 |         15 |          4 |         36 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_memcpy.c                           | C            |         18 |         11 |          4 |         33 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_memmove.c                          | C            |         22 |         11 |          4 |         37 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_memset.c                           | C            |         15 |         11 |          4 |         30 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_printf.c                           | C            |         57 |         21 |         10 |         88 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_printf_prints.c                    | C            |         69 |         11 |         12 |         92 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_printf_prints2.c                   | C            |         54 |         11 |         10 |         75 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_printf_utils.c                     | C            |         72 |         11 |         10 |         93 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_putchar_fd.c                       | C            |          5 |         11 |          3 |         19 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_putendl_fd.c                       | C            |         15 |         11 |          4 |         30 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_putnbr_fd.c                        | C            |         28 |         11 |          4 |         43 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_putstr_fd.c                        | C            |         14 |         11 |          4 |         29 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_split.c                            | C            |         75 |         29 |         11 |        115 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_strchr.c                           | C            |         19 |         15 |          4 |         38 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_strdup.c                           | C            |         17 |         18 |          5 |         40 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_striteri.c                         | C            |         14 |         11 |          4 |         29 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_strjoin.c                          | C            |         25 |         17 |          4 |         46 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_strlcat.c                          | C            |         19 |         21 |          6 |         46 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_strlcpy.c                          | C            |         18 |         18 |          6 |         42 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_strlen.c                           | C            |         12 |         11 |          4 |         27 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_strmapi.c                          | C            |         19 |         11 |          4 |         34 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_strncmp.c                          | C            |         11 |         16 |          3 |         30 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_strnstr.c                          | C            |         24 |         16 |          4 |         44 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_strrchr.c                          | C            |         21 |         15 |          4 |         40 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_strtrim.c                          | C            |         38 |         15 |          6 |         59 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_substr.c                           | C            |         32 |         15 |          6 |         53 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_tolower.c                          | C            |          8 |         15 |          3 |         26 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/ft_toupper.c                          | C            |          8 |         15 |          3 |         26 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/get_next_line.c                       | C            |         60 |         21 |          9 |         90 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/libft/libft.h                               | C++          |         96 |         17 |         15 |        128 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/Makefile                     | Makefile     |          6 |         10 |          7 |         23 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/Makefile.mk                  | Makefile     |         42 |         10 |         15 |         67 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/README.md                    | Markdown     |         39 |          0 |         17 |         56 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx.h                        | C++          |         39 |         70 |         31 |        140 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_clear_window.c           | C            |          7 |          9 |          6 |         22 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_destroy_display.c        | C            |          5 |         11 |          3 |         19 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_destroy_image.c          | C            |         17 |         10 |          5 |         32 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_destroy_window.c         | C            |         24 |          9 |          6 |         39 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_expose_hook.c            | C            |          7 |          9 |          7 |         23 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_ext_randr.c              | C            |         85 |          2 |         18 |        105 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_flush_event.c            | C            |          9 |          9 |          8 |         26 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_get_color_value.c        | C            |         18 |          9 |          7 |         34 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_get_data_addr.c          | C            |          9 |          9 |          6 |         24 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_hook.c                   | C            |         20 |          9 |         12 |         41 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_init.c                   | C            |         70 |         17 |         13 |        100 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_int.h                    | C++          |        102 |         13 |         26 |        141 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_int_anti_resize_win.c    | C            |         15 |          9 |          5 |         29 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_int_do_nothing.c         | C            |          3 |          9 |          5 |         17 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_int_get_visual.c         | C            |         19 |         12 |          9 |         40 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_int_param_event.c        | C            |         80 |          9 |         12 |        101 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_int_set_win_event_mask.c | C            |         18 |          9 |          8 |         35 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_int_str_to_wordtab.c     | C            |         92 |          9 |         13 |        114 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_int_wait_first_expose.c  | C            |          7 |          9 |          8 |         24 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_key_hook.c               | C            |          7 |          9 |          7 |         23 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_lib_xpm.c                | C            |         73 |          9 |         15 |         97 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_loop.c                   | C            |         45 |          9 |         10 |         64 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_loop_hook.c              | C            |          6 |          9 |          7 |         22 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_mouse.c                  | C            |         34 |          7 |          8 |         49 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_mouse_hook.c             | C            |          7 |          9 |          7 |         23 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_new_image.c              | C            |        122 |         15 |         23 |        160 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_new_window.c             | C            |         31 |         25 |          7 |         63 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_pixel_put.c              | C            |         11 |          9 |          7 |         27 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_put_image_to_window.c    | C            |         22 |          9 |          7 |         38 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_rgb.c                    | C            |        758 |          4 |          3 |        765 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_screen_size.c            | C            |         11 |          0 |          3 |         14 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_set_font.c               | C            |          9 |         17 |          5 |         31 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_string_put.c             | C            |         11 |          9 |          7 |         27 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/mlx_xpm.c                    | C            |        255 |         47 |         44 |        346 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/rgb2c.pl                     | Perl         |         18 |         13 |          8 |         39 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/test/Makefile.mk             | Makefile     |         30 |          3 |         13 |         46 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/test/main.c                  | C            |        245 |          0 |         43 |        288 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/test/new_win.c               | C            |         21 |          0 |         11 |         32 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/minilibx-linux/test/run_tests.sh            | Shell Script |         72 |          8 |         15 |         95 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/srcs/clean.c                                | C            |         40 |          5 |          5 |         50 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/srcs/colors_utils.c                         | C            |         24 |         11 |          5 |         40 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/srcs/cub3d.h                                | C            |        123 |         21 |         27 |        171 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/srcs/debug.c                                | C            |         47 |         11 |          7 |         65 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/srcs/draw_walls.c                           | C            |        142 |         18 |         10 |        170 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/srcs/drawer.c                               | C            |         50 |         11 |          6 |         67 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/srcs/errors.c                               | C            |         14 |         11 |          2 |         27 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/srcs/img.c                                  | C            |         10 |         12 |          3 |         25 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/srcs/init.c                                 | C            |        170 |         11 |         17 |        198 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/srcs/main.c                                 | C            |         51 |         21 |         15 |         87 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/srcs/map.c                                  | C            |        125 |         11 |         12 |        148 |
+| /home/vanfossi/42_backup/Ring4/Cub3D/srcs/parseutils.c                           | C            |         38 |         11 |          6 |         55 |
+| Total                                                                            |              |      4,832 |      1,402 |        931 |      7,165 |
++----------------------------------------------------------------------------------+--------------+------------+------------+------------+------------+
