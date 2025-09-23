@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/20 14:28:16 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/22 19:57:25 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void draw_fps(t_cub *cub)
 	cub->delta_time = frameTime * 1000;
 	float fps = (1.0 / frameTime);
 	char str[320];
-	if(fps > 60)
-		fps = 60;
+	// if(fps > 60)
+	// 	fps = 60;
 	sprintf(str,"FPS :%.0f",fps); //ATTENTION C PAS AUTORISE (JE CROIS)
 	mlx_string_put(cub->mlx,cub->window,0,cub->winsize_y,create_argb(1,255,255,255),str);
 }
@@ -159,13 +159,13 @@ int render_loop(t_cub *cub)
 	// ft_memset(cub->buffer->data,0,cub->winsize_x * cub ->winsize_y * sizeof(int));
 	copy_buffer(cub->buffer, cub->background, cub);
 	draw_walls(cub);
-	copy_buffer(cub->buffer_old, cub->buffer, cub);
-	mlx_put_image_to_window(cub->mlx,cub->window,cub->buffer_old->img,0,0);
+	// copy_buffer(cub->buffer_old, cub->buffer, cub);
+	mlx_put_image_to_window(cub->mlx,cub->window,cub->buffer->img,0,0);
 
 	move_player(cub);
 	// draw_controls(cub);
 	draw_fps(cub);
-	cap_fps(cub);
+	// cap_fps(cub);
 	// cub->buffer_old = cub->buffer;
 	return (1);
 }
