@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/27 21:53:38 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/27 22:00:11 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,11 +212,10 @@ int render_loop(t_cub *cub)
 {
 	if(!cub->mlx)
 		return (0);
-	copy_buffer(cub->buffer, cub->background, cub);
 	if(BONUS == 1)
-	{
 		draw_floor(cub);
-	}
+	else
+		copy_buffer(cub->buffer, cub->background, cub);
 	draw_walls(cub);
 	draw_ui(cub);
 	mlx_put_image_to_window(cub->mlx,cub->window,cub->buffer->img,0,0);

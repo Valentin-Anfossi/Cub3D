@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/27 21:58:56 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/27 22:14:56 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 #define P_WEST 9
 #define MAP_SIZE 500
 #define FOV 90
-#define SHADE_DIST 14
+#define SHADE_DIST 7
 
 #define WIN_SIZEX 900
 #define WIN_SIZEY 600
