@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/23 08:06:28 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/27 21:53:38 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void draw_fps(t_cub *cub)
 	cub->delta_time = frameTime * 1000;
 	float fps = (1.0 / frameTime);
 	char str[320];
-	// if(fps > 60)
-	// 	fps = 60;
+	if(fps > TARGET_FPS)
+		fps = TARGET_FPS;
 	sprintf(str,"FPS :%.0f",fps); //ATTENTION C PAS AUTORISE (JE CROIS)
 	mlx_string_put(cub->mlx,cub->window,0,cub->winsize_y,create_argb(1,255,255,255),str);
 }
@@ -97,6 +97,47 @@ void draw_controls(t_cub *cub)
 	mlx_string_put(cub->mlx,cub->window,0,cub->winsize_y-50,create_argb(1,255,255,255),str);
 }
 
+void move_nocol(t_player *p)
+{
+	p->pos->x += p->dir->x * p->input->x * p->speed;
+	p->pos->y += p->dir->y * p->input->x * p->speed;
+	p->pos->x += -p->dir->y * p->input->z * p->speed;
+	p->pos->y += p->dir->x * p->input->z * p->speed;
+}
+
+int is_colliding(t_cub *c, float x, float y)
+{
+	int		check[4];
+	check[0] = (int)(x - COL_DIST);
+	check[1] = (int)(x + COL_DIST);
+	check[2] = (int)(y - COL_DIST);
+	check[3] = (int)(y + COL_DIST);
+	return (
+	c->map[check[0]][(int)y] == WALL ||
+	c->map[check[1]][(int)y] == WALL ||
+	c->map[(int)x][check[2]] == WALL ||
+	c->map[(int)x][check[3]] == WALL);
+}
+
+void move_col(t_cub *c, t_player *p)
+{
+	float 	new_x;
+	float 	new_y;
+	float	test_x;
+	float	test_y;
+
+	new_x = p->pos->x + (p->dir->x * p->input->x * p->speed) + (-p->dir->y * p->input->z * p->speed);
+	new_y = p->pos->y + (p->dir->y * p->input->x * p->speed) + (p->dir->x * p->input->z * p->speed);
+	test_x = new_x;
+	test_y = p->pos->y;
+	if(!is_colliding(c, test_x, test_y))
+		p->pos->x = test_x;
+	test_y = new_y;
+	test_x = p->pos->x;
+	if(!is_colliding(c,test_x,test_y))
+		p->pos->y = test_y;
+}
+
 void move_player(t_cub *c)
 {
 	float oldDirX;
@@ -106,12 +147,15 @@ void move_player(t_cub *c)
 	t_player *p;
 
 	p = c->player;
-	if(p->input->x != 0)
+
+	if(p->input->x != 0 || p->input->z != 0)
 	{
-			p->pos->x += p->dir->x * p->input->x * p->speed;
-			p->pos->y += p->dir->y * p->input->x * p->speed;
+		if(c->player->col_true == 0)
+			move_nocol(p);
+		else
+			move_col(c,p);
 	}
-	if(p->input->y != 0)
+	if(p->input->y != 0 && !c->is_mouseActive)
 	{
 		oldDirX = p->dir->x;
 		p->dir->x = p->dir->x * cos(p->rot_speed * p->input->y) - p->dir->y * sin(p->rot_speed * p->input->y);
@@ -126,11 +170,6 @@ void move_player(t_cub *c)
 		p->input->y = -(mouseX - c->winsize_x/2);
 		mlx_mouse_move(c->mlx,c->window,c->winsize_x/2,c->winsize_y/2);
 	}
-	if(p->input->z != 0)
-	{
-		p->pos->x += -p->dir->y * p->input->z * p->speed;
-		p->pos->y += p->dir->x * p->input->z * p->speed;
-	} 
 }
 
 t_v2 rotateVector(const t_v2 *vector, int deg)
@@ -154,22 +193,37 @@ void cap_fps(t_cub *cub)
 	}
 }
 
+void draw_ui(t_cub *cub)
+{
+	int x;
+	int y;
+
+	x = 1;
+	y = 1;
+	while(x < cub->map_size_x)
+	{
+		// put_pixel(cub->buffer->img,x,y,create_argb(255,255,0,0));
+		y++;
+		x ++;
+	}
+}
+
 int render_loop(t_cub *cub)
 {
 	if(!cub->mlx)
 		return (0);
-	
-	// ft_memset(cub->buffer->data,0,cub->winsize_x * cub ->winsize_y * sizeof(int));
 	copy_buffer(cub->buffer, cub->background, cub);
+	if(BONUS == 1)
+	{
+		draw_floor(cub);
+	}
 	draw_walls(cub);
-	// copy_buffer(cub->buffer_old, cub->buffer, cub);
+	draw_ui(cub);
 	mlx_put_image_to_window(cub->mlx,cub->window,cub->buffer->img,0,0);
-
 	move_player(cub);
 	// draw_controls(cub);
 	draw_fps(cub);
-	// cap_fps(cub);
-	// cub->buffer_old = cub->buffer;
+	cap_fps(cub);
 	return (1);
 }
 
@@ -195,11 +249,7 @@ void set_playerInitialRotation(t_cub *c)
 
 int handle_mouse(t_cub *cub)
 {
-	int x;
-	int y;
-
-	mlx_mouse_get_pos(cub->mlx,cub->window,&x,&y);
-	// mlx_mouse_move()
+	(void)cub;
 	return (0);
 }
 
@@ -213,14 +263,10 @@ int	main(int argc, char **argv)
 	mlx_hook(cub->window, 17, 1L << 17, destroystuff, cub);
 	mlx_hook(cub->window, KeyPress, KeyPressMask, handle_key, cub);
 	mlx_hook(cub->window, KeyRelease, KeyRelease, handle_keyRelease, cub);
+	// mlx_hook(cub->window,KeyPress,KeyPressMask,handle_mouse,cub);
 	mlx_do_key_autorepeatoff(cub->mlx);
 	mlx_mouse_hide(cub->mlx,cub->window);
-	
 	// mlx_mouse_hook(cub->window,handle_mouse,cub);
-	// mlx_put_image_to_window(cub->mlx, cub->window, cub->texture_no->img, 100, cub->winsize_y / 2.05);
-	// mlx_put_image_to_window(cub->mlx, cub->window, cub->texture_so->img, 200, cub->winsize_y / 2.05);
-	// mlx_put_image_to_window(cub->mlx, cub->window, cub->texture_we->img, 300, cub->winsize_y / 2.05);
-	// mlx_put_image_to_window(cub->mlx, cub->window, cub->texture_ea->img, 400, cub->winsize_y / 2.05);
 	set_playerInitialRotation(cub);
 	mlx_loop_hook(cub->mlx, render_loop, cub);
 	mlx_loop(cub->mlx);

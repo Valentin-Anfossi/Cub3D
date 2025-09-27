@@ -1,0 +1,297 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 31.60      0.85     0.85      409     2.08     2.08  ft_memcpyfast
+ 30.11      1.66     0.81 469782058     0.00     0.00  color_mult_fast
+ 21.93      2.25     0.59   784871     0.00     0.00  drawVertical
+ 15.61      2.67     0.42 469782058     0.00     0.00  put_pixel
+  0.37      2.68     0.01  2073600     0.00     0.00  remap
+  0.37      2.69     0.01      409     0.02     4.47  draw_walls
+  0.00      2.69     0.00  2073600     0.00     0.00  color_mult
+  0.00      2.69     0.00      409     0.00     0.00  create_argb
+  0.00      2.69     0.00      409     0.00     0.00  draw_fps
+  0.00      2.69     0.00      409     0.00     0.00  move_player
+  0.00      2.69     0.00      409     0.00     6.55  render_loop
+  0.00      2.69     0.00       32     0.00     0.00  handle_key
+  0.00      2.69     0.00       31     0.00     0.00  handle_keyRelease
+  0.00      2.69     0.00        4     0.00     0.00  parse_texturepath
+  0.00      2.69     0.00        2     0.00     0.00  parse_color
+  0.00      2.69     0.00        1     0.00    10.00  create_cub
+  0.00      2.69     0.00        1     0.00     0.00  data_img
+  0.00      2.69     0.00        1     0.00     0.00  debug_printcub
+  0.00      2.69     0.00        1     0.00     0.00  destroystuff
+  0.00      2.69     0.00        1     0.00    10.00  draw_background
+  0.00      2.69     0.00        1     0.00     0.00  get_playerInitialDir
+  0.00      2.69     0.00        1     0.00     0.00  init
+  0.00      2.69     0.00        1     0.00    10.00  init_img
+  0.00      2.69     0.00        1     0.00     0.00  init_map
+  0.00      2.69     0.00        1     0.00     0.00  map_init
+  0.00      2.69     0.00        1     0.00     0.00  map_parse
+  0.00      2.69     0.00        1     0.00     0.00  map_parse2
+  0.00      2.69     0.00        1     0.00     0.00  player_init
+  0.00      2.69     0.00        1     0.00     0.00  set_playerInitialRotation
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2024 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 0.37% of 2.69 seconds
+
+index % time    self  children    called     name
+                0.00    2.68     409/409         mlx_loop [2]
+[1]     99.6    0.00    2.68     409         render_loop [1]
+                0.01    1.82     409/409         draw_walls [3]
+                0.85    0.00     409/409         ft_memcpyfast [5]
+                0.00    0.00     409/409         move_player [16]
+                0.00    0.00     409/409         draw_fps [15]
+-----------------------------------------------
+                                                 <spontaneous>
+[2]     99.6    0.00    2.68                 mlx_loop [2]
+                0.00    2.68     409/409         render_loop [1]
+                0.00    0.00      32/32          handle_key [17]
+                0.00    0.00      31/31          handle_keyRelease [18]
+-----------------------------------------------
+                0.01    1.82     409/409         render_loop [1]
+[3]     68.0    0.01    1.82     409         draw_walls [3]
+                0.59    1.23  784871/784871      drawVertical [4]
+-----------------------------------------------
+                0.59    1.23  784871/784871      draw_walls [3]
+[4]     67.7    0.59    1.23  784871         drawVertical [4]
+                0.81    0.00 469782058/469782058     color_mult_fast [6]
+                0.42    0.00 469782058/469782058     put_pixel [7]
+-----------------------------------------------
+                0.85    0.00     409/409         render_loop [1]
+[5]     31.6    0.85    0.00     409         ft_memcpyfast [5]
+-----------------------------------------------
+                0.81    0.00 469782058/469782058     drawVertical [4]
+[6]     30.1    0.81    0.00 469782058         color_mult_fast [6]
+-----------------------------------------------
+                0.42    0.00 469782058/469782058     drawVertical [4]
+[7]     15.6    0.42    0.00 469782058         put_pixel [7]
+-----------------------------------------------
+                0.01    0.00 2073600/2073600     draw_background [10]
+[8]      0.4    0.01    0.00 2073600         remap [8]
+-----------------------------------------------
+                0.00    0.01       1/1           main [12]
+[9]      0.4    0.00    0.01       1         create_cub [9]
+                0.00    0.01       1/1           init_img [11]
+                0.00    0.00       1/1           map_parse2 [29]
+                0.00    0.00       1/1           map_parse [28]
+                0.00    0.00       1/1           map_init [27]
+                0.00    0.00       1/1           player_init [30]
+                0.00    0.00       1/1           debug_printcub [22]
+-----------------------------------------------
+                0.00    0.01       1/1           init_img [11]
+[10]     0.4    0.00    0.01       1         draw_background [10]
+                0.01    0.00 2073600/2073600     remap [8]
+                0.00    0.00 2073600/2073600     color_mult [13]
+-----------------------------------------------
+                0.00    0.01       1/1           create_cub [9]
+[11]     0.4    0.00    0.01       1         init_img [11]
+                0.00    0.01       1/1           draw_background [10]
+                0.00    0.00       1/1           data_img [21]
+-----------------------------------------------
+                                                 <spontaneous>
+[12]     0.4    0.00    0.01                 main [12]
+                0.00    0.01       1/1           create_cub [9]
+                0.00    0.00       1/1           init [25]
+                0.00    0.00       1/1           set_playerInitialRotation [31]
+-----------------------------------------------
+                0.00    0.00 2073600/2073600     draw_background [10]
+[13]     0.0    0.00    0.00 2073600         color_mult [13]
+-----------------------------------------------
+                0.00    0.00     409/409         draw_fps [15]
+[14]     0.0    0.00    0.00     409         create_argb [14]
+-----------------------------------------------
+                0.00    0.00     409/409         render_loop [1]
+[15]     0.0    0.00    0.00     409         draw_fps [15]
+                0.00    0.00     409/409         create_argb [14]
+-----------------------------------------------
+                0.00    0.00     409/409         render_loop [1]
+[16]     0.0    0.00    0.00     409         move_player [16]
+-----------------------------------------------
+                0.00    0.00      32/32          mlx_loop [2]
+[17]     0.0    0.00    0.00      32         handle_key [17]
+                0.00    0.00       1/1           destroystuff [23]
+-----------------------------------------------
+                0.00    0.00      31/31          mlx_loop [2]
+[18]     0.0    0.00    0.00      31         handle_keyRelease [18]
+-----------------------------------------------
+                0.00    0.00       4/4           map_init [27]
+[19]     0.0    0.00    0.00       4         parse_texturepath [19]
+-----------------------------------------------
+                0.00    0.00       2/2           map_init [27]
+[20]     0.0    0.00    0.00       2         parse_color [20]
+-----------------------------------------------
+                0.00    0.00       1/1           init_img [11]
+[21]     0.0    0.00    0.00       1         data_img [21]
+-----------------------------------------------
+                0.00    0.00       1/1           create_cub [9]
+[22]     0.0    0.00    0.00       1         debug_printcub [22]
+-----------------------------------------------
+                0.00    0.00       1/1           handle_key [17]
+[23]     0.0    0.00    0.00       1         destroystuff [23]
+-----------------------------------------------
+                0.00    0.00       1/1           set_playerInitialRotation [31]
+[24]     0.0    0.00    0.00       1         get_playerInitialDir [24]
+-----------------------------------------------
+                0.00    0.00       1/1           main [12]
+[25]     0.0    0.00    0.00       1         init [25]
+-----------------------------------------------
+                0.00    0.00       1/1           map_parse2 [29]
+[26]     0.0    0.00    0.00       1         init_map [26]
+-----------------------------------------------
+                0.00    0.00       1/1           create_cub [9]
+[27]     0.0    0.00    0.00       1         map_init [27]
+                0.00    0.00       4/4           parse_texturepath [19]
+                0.00    0.00       2/2           parse_color [20]
+-----------------------------------------------
+                0.00    0.00       1/1           create_cub [9]
+[28]     0.0    0.00    0.00       1         map_parse [28]
+-----------------------------------------------
+                0.00    0.00       1/1           create_cub [9]
+[29]     0.0    0.00    0.00       1         map_parse2 [29]
+                0.00    0.00       1/1           init_map [26]
+-----------------------------------------------
+                0.00    0.00       1/1           create_cub [9]
+[30]     0.0    0.00    0.00       1         player_init [30]
+-----------------------------------------------
+                0.00    0.00       1/1           main [12]
+[31]     0.0    0.00    0.00       1         set_playerInitialRotation [31]
+                0.00    0.00       1/1           get_playerInitialDir [24]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2024 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [13] color_mult              [3] draw_walls             [29] map_parse2
+   [6] color_mult_fast         [5] ft_memcpyfast          [16] move_player
+  [14] create_argb            [24] get_playerInitialDir   [20] parse_color
+   [9] create_cub             [17] handle_key             [19] parse_texturepath
+  [21] data_img               [18] handle_keyRelease      [30] player_init
+  [22] debug_printcub         [25] init                    [7] put_pixel
+  [23] destroystuff           [11] init_img                [8] remap
+   [4] drawVertical           [26] init_map                [1] render_loop
+  [10] draw_background        [27] map_init               [31] set_playerInitialRotation
+  [15] draw_fps               [28] map_parse

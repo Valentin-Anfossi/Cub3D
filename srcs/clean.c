@@ -59,9 +59,19 @@ void	free_all(t_cub *cub)
 	free(cub);
 }
 
-int	destroystuff(t_cub *cub)
-{
-	mlx_destroy_window(cub->mlx, cub->window);
-	mlx_loop_end(cub->mlx);
-	return (0);
+int destroystuff(t_cub *cub) {
+    if (cub->buffer) {
+        if (cub->buffer->img)
+            mlx_destroy_image(cub->mlx, cub->buffer->img);
+        // if (cub->buffer->data)
+        //     free(cub->buffer->data); // Si tu as alloué data toi-même
+        free(cub->buffer);
+    }
+    // Libère les autres textures (no, so, we, ea) de la même manière
+    if (cub->window)
+        mlx_destroy_window(cub->mlx, cub->window);
+    free(cub->mlx); // Attention : mlx_destroy_display est souvent suffisant
+    free(cub);
+    exit(0);
 }
+

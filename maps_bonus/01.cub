@@ -1,0 +1,19 @@
+NO ./tiles/Rock.xpm
+SO ./tiles/Stone.xpm
+WE ./tiles/Wood.xpm
+EA ./tiles/Bricks.xpm
+FL ./tiles/Floor.xpm
+CL ./tiles/Ceiling.xpm
+
+
+F 147, 64, 64
+C 160, 160, 160
+111111111
+100000001
+101111101
+10000W101
+110111100
+100000001
+100011101
+100111101
+111111111

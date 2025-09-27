@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:22:46 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/18 10:54:55 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/27 00:31:07 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ void	debug_printcub(t_cub *cub)
 		printf("WE: %s\n", cub->we_texpath);
 	if (cub->ea_texpath)
 		printf("EA: %s\n", cub->ea_texpath);
+	if (cub->fl_texpath)
+		printf("FL: %s\n", cub->fl_texpath);
+	if (cub->cl_texpath)
+		printf("CL: %s\n", cub->cl_texpath);
 	printf("Window size X, Y {%d, %d}\n", cub->winsize_x, cub->winsize_y);
 	printf("Errnum: %d\nDebug: %d\nMap_fd: %d\n", cub->errnum, cub->debug, cub->map_fd);
 	printf("Map size: X, Y {%d, %d}\n", cub->map_size_x, cub->map_size_y);

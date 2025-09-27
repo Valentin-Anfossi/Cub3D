@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 03:14:47 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/17 09:24:56 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/24 08:03:09 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,24 @@ int	color_mult(int color, float ratio)
 	g = (int)(g * ratio);
 	b = (int)(b * ratio);
 	ret = (r << 16) | (g << 8) | b;	
-	return (ret);	
+	return (ret);
+}
+
+int	color_mult_fast(int color, int ratio, t_cub *cub)
+{
+	int r;
+	int g;
+	int b;
+	int ret;
+	
+	r = (color >> 16) & 0xFF;
+    g = (color >> 8)  & 0xFF;
+    b = color & 0xFF;
+	r = cub->shade_lut[r][ratio];
+	g = cub->shade_lut[g][ratio];
+	b = cub->shade_lut[b][ratio];
+	ret = (r << 16) | (g << 8) | b;	
+	return (ret);
 }
 
 int create_argb(int alpha, int r, int g, int b)

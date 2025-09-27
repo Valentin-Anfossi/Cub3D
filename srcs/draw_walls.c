@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 08:54:10 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/23 08:04:06 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/24 08:12:23 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void drawVertical(t_cub *cub, t_ray *r, int x)
 	int texX;
 	int texY;
 	float step;
+	int shade;
 	t_draw *curTex;
 	
 
@@ -149,15 +150,16 @@ void drawVertical(t_cub *cub, t_ray *r, int x)
 
 	step = 1.0 * curTex->height/r->lineHeight; //ratio pixel texture/pixel line
 	texPos = (r->drawStart - (cub->winsize_y/2) + r->lineHeight / 2) * step; 
+	shade = wall_shade(r->perpWallDist,r->side);
+	// (void)shade;
 	while (r->drawStart < r->drawEnd)
 	{
 		texY = (int)texPos & (curTex->height-1); // en gros c'est comme faire un modulo % mais en bitshifting
 		texPos += step;
-		put_pixel(cub->buffer,x,r->drawStart,color_mult(get_TexPixel(texX,texY,curTex),wall_shade(r->perpWallDist,r->side)));
+		put_pixel(cub->buffer,x,r->drawStart,color_mult_fast(get_TexPixel(texX,texY,curTex),shade,cub));
+		// put_pixel(cub->buffer,x,r->drawStart,get_TexPixel(texX,texY,curTex));
 		r->drawStart ++;
 	}
-	// ON degage ca, instead on stock drawstart drawend texPos step dans une struct et on fait le draw dans une autre func en suivant les scanlines (x++)
-	// la on draw VERTICAL et ca doit pas aider vu que le buffer mlx est horizontal char * + length
 }
 
 int get_TexPixel(int x, int y, t_draw *img)
@@ -178,15 +180,16 @@ int get_TexPixel(int x, int y, t_draw *img)
 float wall_shade(float dist, int side)
 {
 	float clamped_dist;
-
+	
 	if(dist <= 0)
-		return (1);
-	if(dist > SHADE_DIST)
+		return (255);
+	if(dist >= SHADE_DIST)
 		return (0);
-	clamped_dist = 1.0f - ((dist) / (SHADE_DIST)) ;
+	clamped_dist = 1.0f - (dist /SHADE_DIST);
 	if(side)
 		clamped_dist *= .75;
-	return(clamped_dist);
+	return (int)(clamped_dist * 255.0f);
+	
 }
 
 int has_hitWall(t_cub *cub, int mapX, int mapY)

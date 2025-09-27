@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:26:27 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/20 18:42:01 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/27 00:39:08 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,15 @@ void	map_init(t_cub *cub)
 			cub->we_texpath = parse_texturepath(line);
 		else if (ft_strnstr(line, "SO", 2) && !cub->so_texpath)
 			cub->so_texpath = parse_texturepath(line);
+		else if (ft_strnstr(line, "FL", 3) && !cub->fl_texpath)
+			cub->fl_texpath = parse_texturepath(line);
+		else if (ft_strnstr(line, "CL", 3) && !cub->cl_texpath)
+			cub->cl_texpath = parse_texturepath(line);
 		else if (ft_strnstr(line, "C ", 2) && !cub->ce_color)
 			cub->ce_color = parse_color(line);
 		else if (ft_strnstr(line, "F ", 2) && !cub->fl_color)
 			cub->fl_color = parse_color(line);
-		else
+		else if (line && ft_strlen(line) > 0 && line[0] != '\n')
 		{
 			map_parse(line, cub);
 			break ;
