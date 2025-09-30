@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/28 17:54:34 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/30 04:11:29 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 #define ROT_SPEED 0.05
 
 //BONUS !
-#define BONUS 0
+#define BONUS 1
 #define MOUSE_TRUE 1
 #define COL_TRUE 1
 #define COL_DIST .1

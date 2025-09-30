@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/28 17:58:02 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/30 04:12:59 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,27 @@ void draw_fps(t_cub *cub)
 		fps = TARGET_FPS;
 	sprintf(str,"FPS :%.0f",fps); //ATTENTION C PAS AUTORISE (JE CROIS)
 	mlx_string_put(cub->mlx,cub->window,0,cub->winsize_y,create_argb(1,255,255,255),str);
+}
+
+void draw_map(t_cub *cub)
+{
+	int x;
+	int y;
+
+	x = 0;
+	while(x/5 < cub->map_size_x - 1)
+	{
+		y = 0;
+		while(y/5 < cub->map_size_y - 1)
+		{
+			if(cub->map[x/5][y/5] == WALL)
+				put_pixel(cub->buffer,x,y,create_argb(255,255,0,0));
+			else
+				put_pixel(cub->buffer,x,y,create_argb(255,0,255,0));
+			y ++;
+		}
+		x ++;
+	}
 }
 
 void draw_controls(t_cub *cub) 
@@ -202,21 +223,6 @@ void cap_fps(t_cub *cub)
 	}
 }
 
-void draw_ui(t_cub *cub)
-{
-	int x;
-	int y;
-
-	x = 1;
-	y = 1;
-	while(x < cub->map_size_x)
-	{
-		// put_pixel(cub->buffer->img,x,y,create_argb(255,255,0,0));
-		y++;
-		x ++;
-	}
-}
-
 int render_loop(t_cub *cub)
 {
 	if(!cub->mlx)
@@ -226,7 +232,7 @@ int render_loop(t_cub *cub)
 	else
 		copy_buffer(cub->buffer, cub->background, cub);
 	draw_walls(cub);
-	draw_ui(cub);
+	draw_map(cub);
 	mlx_put_image_to_window(cub->mlx,cub->window,cub->buffer->img,0,0);
 	move_player(cub);
 	// draw_controls(cub);
