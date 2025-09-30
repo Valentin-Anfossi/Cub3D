@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 00:22:20 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/27 22:15:03 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/27 23:53:50 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,13 @@ void draw_floor_helper(t_cub *c, t_ray *r,int x, int y)
 	ty = (int)(c->texture_cl->height * (r->floorY - cellY)) & (c->texture_cl->height - 1);
 	r->floorX += r->floorStepX;
 	r->floorY += r->floorStepY;
-	if(y > c->winsize_y/2)
-	{
-		color = get_TexPixel(tx,ty,c->texture_fl);
-		color = color_mult_fast(color,shade,c);
-		put_pixel(c->buffer,x,y,color);
-	}
-	color = get_TexPixel(tx,ty,c->texture_cl);
+	color = get_TexPixel(tx,ty,c->texture_fl);
 	color = color_mult_fast(color,shade,c);
-	put_pixel(c->buffer,x,c->winsize_y - y - 1,color);
+	put_pixel(c->buffer,x,y,color);
+	if(c->winsize_y - y - 1 < c->winsize_y/2)
+	{
+		color = get_TexPixel(tx,ty,c->texture_cl);
+		color = color_mult_fast(color,shade,c);
+		put_pixel(c->buffer,x,c->winsize_y - y - 1,color);
+	}
 }

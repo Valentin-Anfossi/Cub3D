@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/27 22:00:11 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/09/28 17:58:02 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	handle_key(int keycode, t_cub *cub)
 {
 	if (keycode == 65307)
 		destroystuff(cub);
-	// printf("KEY %d\n",keycode);
 	if(keycode == KEY_UP)
 		cub->player->input->x += 1;
 	if(keycode == KEY_DOWN)
@@ -97,12 +96,22 @@ void draw_controls(t_cub *cub)
 	mlx_string_put(cub->mlx,cub->window,0,cub->winsize_y-50,create_argb(1,255,255,255),str);
 }
 
-void move_nocol(t_player *p)
+void move_nocol(t_cub *c, t_player *p)
 {
-	p->pos->x += p->dir->x * p->input->x * p->speed;
-	p->pos->y += p->dir->y * p->input->x * p->speed;
-	p->pos->x += -p->dir->y * p->input->z * p->speed;
-	p->pos->y += p->dir->x * p->input->z * p->speed;
+	float posX;
+	float posY;
+
+	posX = p->pos->x;
+	posX += p->dir->x * p->input->x * p->speed;
+	posX += -p->dir->y * p->input->z * p->speed;
+	if(posX < c->map_size_x && posX > 0)
+		p->pos->x = posX;
+	
+	posY = p->pos->y;
+	posY += p->dir->y * p->input->x * p->speed;
+	posY += p->dir->x * p->input->z * p->speed;
+	if(posY < c->map_size_y && posY > 0)
+		p->pos->y = posY;
 }
 
 int is_colliding(t_cub *c, float x, float y)
@@ -150,8 +159,8 @@ void move_player(t_cub *c)
 
 	if(p->input->x != 0 || p->input->z != 0)
 	{
-		if(c->player->col_true == 0)
-			move_nocol(p);
+		if(BONUS == 0)
+			move_nocol(c,p);
 		else
 			move_col(c,p);
 	}
