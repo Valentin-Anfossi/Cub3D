@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:26:27 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/27 00:39:08 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/01 18:31:06 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	map_init(t_cub *cub)
 			cub->fl_texpath = parse_texturepath(line);
 		else if (ft_strnstr(line, "CL", 3) && !cub->cl_texpath)
 			cub->cl_texpath = parse_texturepath(line);
+		else if (ft_strnstr(line, "DO", 3) && !cub->do_texpath)
+			cub->do_texpath = parse_texturepath(line);
 		else if (ft_strnstr(line, "C ", 2) && !cub->ce_color)
 			cub->ce_color = parse_color(line);
 		else if (ft_strnstr(line, "F ", 2) && !cub->fl_color)
@@ -123,6 +125,12 @@ void	add_to_map(int x, int y, t_cub *cub)
 		cub->map[x][y] = P_EAST;
 	else if (c == 'W')
 		cub->map[x][y] = P_WEST;
+	else if (c == 'S')
+		cub->map[x][y] = SPRITE;
+	else if (c == 'V')
+		cub->map[x][y] = DOOR_V;
+	else if (c == 'H')
+		cub->map[x][y] = DOOR_H;
 	if (c == 'N' || c =='S' || c=='E' || c =='W')
 	{
 		cub->player_pos[0] = x;

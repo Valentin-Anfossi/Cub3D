@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 07:13:43 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/24 09:49:21 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/02 05:17:14 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@
 void *ft_memcpyfast(void *dest, const void *src, size_t n) {
     unsigned long *ldest = (unsigned long *)dest;
     const unsigned long *lsrc = (const unsigned long *)src;
-
-    // Copie par blocs de 64 octets (alignés)
     while (n >= 64) {
         ldest[0] = lsrc[0];
         ldest[1] = lsrc[1];
@@ -54,14 +52,12 @@ void *ft_memcpyfast(void *dest, const void *src, size_t n) {
         lsrc += 8;
         n -= 64;
     }
-    // Copie des blocs restants (8 octets)
     while (n >= 8) {
         *(size_t *)ldest = *(const size_t *)lsrc;
-        ldest += 2; // size_t = 8 octets → 2 * unsigned long (4 octets)
+        ldest += 2;
         lsrc += 2;
         n -= 8;
     }
-    // Copie des octets restants
     unsigned char *uc_dest = (unsigned char *)ldest;
     const unsigned char *uc_src = (const unsigned char *)lsrc;
     while (n--)

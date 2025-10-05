@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:22:46 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/27 00:31:07 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/01 19:43:11 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	debug_printmap(t_cub *cub)
 				printf("⬜");
 			else if (cub->map[i][j] == EMPTY)
 				printf("⬛");
+			else if (cub->map[i][j] == DOOR_H || cub->map[i][j] == DOOR_V)
+				printf("🚪");
 			else
 				printf("🙎");
 			j++;
@@ -56,6 +58,8 @@ void	debug_printcub(t_cub *cub)
 		printf("FL: %s\n", cub->fl_texpath);
 	if (cub->cl_texpath)
 		printf("CL: %s\n", cub->cl_texpath);
+	if (cub->do_texpath)
+		printf("DO: %s\n", cub->do_texpath);
 	printf("Window size X, Y {%d, %d}\n", cub->winsize_x, cub->winsize_y);
 	printf("Errnum: %d\nDebug: %d\nMap_fd: %d\n", cub->errnum, cub->debug, cub->map_fd);
 	printf("Map size: X, Y {%d, %d}\n", cub->map_size_x, cub->map_size_y);
@@ -65,4 +69,20 @@ void	debug_printcub(t_cub *cub)
 	debug_printmap(cub);
 	debug_printPlayer(cub->player);
 
+}
+void draw_debug(t_cub *cub) 
+{
+    double frameTime;
+
+    cub->old_time = cub->time;
+    gettimeofday(&(cub->time), NULL);
+    frameTime = (cub->time.tv_sec - cub->old_time.tv_sec) +
+                (cub->time.tv_usec - cub->old_time.tv_usec) * 1e-6;
+	cub->delta_time = frameTime * 1000;
+	float fps = (1.0 / frameTime);
+	char str[320];
+	if(fps > TARGET_FPS)
+		fps = TARGET_FPS;
+	sprintf(str,"FPS :%.0f \n Player pos : %f %f dir : %f %f",fps,cub->player->pos->x,cub->player->pos->y,cub->player->dir->x,cub->player->dir->y); //ATTENTION C PAS AUTORISE (JE CROIS)
+	mlx_string_put(cub->mlx,cub->window,0,cub->winsize_y,create_argb(1,255,255,255),str);
 }

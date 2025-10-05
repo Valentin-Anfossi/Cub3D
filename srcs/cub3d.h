@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/30 04:11:29 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/04 03:37:19 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 
 #define EMPTY 0
 #define WALL 1
+#define SPRITE 3
+#define DOOR_V 4
+#define DOOR_H 5
 #define P_NORTH 6
 #define P_SOUTH 7
 #define P_EAST 8
@@ -110,12 +113,14 @@ typedef struct s_cub
 	t_draw	*texture_ea;
 	t_draw	*texture_fl;
 	t_draw	*texture_cl;
+	t_draw	*texture_do;
 	char	*no_texpath;
 	char	*so_texpath;
 	char	*we_texpath;
 	char	*ea_texpath;
 	char	*fl_texpath;
 	char	*cl_texpath;
+	char	*do_texpath;
 	unsigned int shade_lut[256][256];
 
 	int		winsize_x;
@@ -130,6 +135,8 @@ typedef struct s_cub
 	int		fl_color;
 	char	**map_str;
 	int		**map;
+	float	**floatmap;
+	float	*zbuffer;
 	int		*player_pos;
 	int		is_mouseActive;
 
@@ -174,6 +181,9 @@ t_cub	*create_cub(char *path);
 void	init_map(t_cub *cub);
 int 	get_playerInitialDir(t_cub *c);
 void 	init_shadelut(t_cub *cub);
+void init_floatmap(t_cub *c);
+void set_floatmap(t_cub *c);
+void init_zbuffer(t_cub *c);
 
 
 //MAP.C
@@ -198,6 +208,7 @@ void	error_exit(t_cub *c);
 
 //DEBUG
 void	debug_printcub(t_cub *cub);
+void 	draw_debug(t_cub *cub);
 
 t_draw	*draw_background(t_cub *cub);
 
@@ -227,3 +238,10 @@ t_v2 rotateVector(const t_v2 *vector, int deg);
 //DRAW_FLOOR.C
 void draw_floor(t_cub *cub);
 void draw_ceiling(t_cub *cub);
+
+//DRAW_DOORS.C
+void drawDoor(t_cub *c, t_ray *r, int x);
+int drawDoor_H(t_cub *c, t_ray *r, int x);
+void drawDoor_V(t_cub *c, t_ray *r, int x);
+int has_hitDoor(t_cub *cub, int mapX, int mapY);
+void drawDoor_H2(t_cub *c, t_ray *r, int x);

@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/30 04:12:59 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/04 12:48:10 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,44 @@ void copy_buffer(t_draw *dest, const t_draw *src, t_cub *cub)
 	ft_memcpyfast(dest->data, src->data, (cub->winsize_x * cub->winsize_y) *sizeof(int));
 }
 
-
-void draw_fps(t_cub *cub) 
+void draw_dirline(t_cub *cub, int x, int y, t_v2 *dir)
 {
-    double frameTime;
+	int i;
+	int x0;
+	int y0;
+		
+	i = 0;
+	while(i < 10)
+	{
+		x0 = x + i * dir->y;
+		y0 = y + i * dir->x;	
+		put_pixel(cub->buffer,x0,y0,0xFFFFFF);
+		i ++;
+	}
+}
 
-    cub->old_time = cub->time;
-    gettimeofday(&(cub->time), NULL);
-    frameTime = (cub->time.tv_sec - cub->old_time.tv_sec) +
-                (cub->time.tv_usec - cub->old_time.tv_usec) * 1e-6;
-	cub->delta_time = frameTime * 1000;
-	float fps = (1.0 / frameTime);
-	char str[320];
-	if(fps > TARGET_FPS)
-		fps = TARGET_FPS;
-	sprintf(str,"FPS :%.0f",fps); //ATTENTION C PAS AUTORISE (JE CROIS)
-	mlx_string_put(cub->mlx,cub->window,0,cub->winsize_y,create_argb(1,255,255,255),str);
+void put_circlemap(t_cub *cub, int x, int y, int r)
+{
+	int i;
+	int j;
+	int dx;
+	int dy;
+
+	i = x - r;
+	while(i <= x + r)
+	{
+		j = y - r;
+		while(j <= y + r)
+		{
+			dx = i - x;
+			dy = j - y;
+			if (dx * dx + dy * dy <= r * r)
+				put_pixel(cub->buffer,i,j,create_argb(255,0,255,0));
+			j ++;
+		}
+		i ++;
+	}
+	draw_dirline(cub,x,y,cub->player->dir);
 }
 
 void draw_map(t_cub *cub)
@@ -92,19 +114,23 @@ void draw_map(t_cub *cub)
 	int y;
 
 	x = 0;
-	while(x/5 < cub->map_size_x - 1)
+	put_circlemap(cub,(int)(cub->player->pos->y * 14),(cub->player->pos->x * 14),6);
+	while(x/14 < cub->map_size_x)
 	{
 		y = 0;
-		while(y/5 < cub->map_size_y - 1)
+		while(y/14 < cub->map_size_y)
 		{
-			if(cub->map[x/5][y/5] == WALL)
-				put_pixel(cub->buffer,x,y,create_argb(255,255,0,0));
-			else
-				put_pixel(cub->buffer,x,y,create_argb(255,0,255,0));
+			if(cub->map[x/14][y/14] == WALL)
+				put_pixel(cub->buffer,y,x,create_argb(255,255,0,0));
+			if(cub->map[x/14][y/14] == DOOR_H || cub->map[x/14][y/14] == DOOR_V)
+				put_pixel(cub->buffer,y,x,create_argb(255,0,0,255));
+			
 			y ++;
 		}
 		x ++;
 	}
+	
+	// put_pixel(cub->buffer,(int)(cub->player->pos->y * 10),(cub->player->pos->x * 10),create_argb(255,0,255,0));
 }
 
 void draw_controls(t_cub *cub) 
@@ -143,10 +169,10 @@ int is_colliding(t_cub *c, float x, float y)
 	check[2] = (int)(y - COL_DIST);
 	check[3] = (int)(y + COL_DIST);
 	return (
-	c->map[check[0]][(int)y] == WALL ||
-	c->map[check[1]][(int)y] == WALL ||
-	c->map[(int)x][check[2]] == WALL ||
-	c->map[(int)x][check[3]] == WALL);
+	c->floatmap[check[0]][(int)y] != 0 ||
+	c->floatmap[check[1]][(int)y] != 0 ||
+	c->floatmap[(int)x][check[2]] != 0 ||
+	c->floatmap[(int)x][check[3]] != 0);
 }
 
 void move_col(t_cub *c, t_player *p)
@@ -232,11 +258,12 @@ int render_loop(t_cub *cub)
 	else
 		copy_buffer(cub->buffer, cub->background, cub);
 	draw_walls(cub);
+	draw_sprites(cub);
 	draw_map(cub);
 	mlx_put_image_to_window(cub->mlx,cub->window,cub->buffer->img,0,0);
 	move_player(cub);
 	// draw_controls(cub);
-	draw_fps(cub);
+	draw_debug(cub);
 	cap_fps(cub);
 	return (1);
 }

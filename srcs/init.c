@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:21:13 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/27 21:57:06 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/04 03:37:01 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ int	data_img_bonus(t_cub *cub)
 	cub->texture_fl->data = (unsigned char*)mlx_get_data_addr(cub->texture_fl->img,
 			&cub->texture_fl->bpp, &cub->texture_fl->length,
 			&cub->texture_fl->endian);
+	cub->texture_do->data = (unsigned char*)mlx_get_data_addr(cub->texture_do->img,
+			&cub->texture_do->bpp, &cub->texture_do->length,
+			&cub->texture_do->endian);
 	if (!cub->texture_fl->data || !cub->texture_cl->data)
 		return (1);
 	return (0);
@@ -115,11 +118,14 @@ int init_img_bonus(t_cub *cub)
 {
 	cub->texture_cl = malloc(sizeof(t_draw));
 	cub->texture_fl = malloc(sizeof(t_draw));
+	cub->texture_do = malloc(sizeof(t_draw));
 	cub->texture_cl->img = mlx_xpm_file_to_image(cub->mlx, cub->cl_texpath,
 			&cub->texture_cl->width, &cub->texture_cl->height);
 	cub->texture_fl->img = mlx_xpm_file_to_image(cub->mlx, cub->fl_texpath,
 			&cub->texture_fl->width, &cub->texture_fl->height);
-	if (!cub->texture_cl->img || !cub->texture_fl->img)
+	cub->texture_do->img = mlx_xpm_file_to_image(cub->mlx, cub->do_texpath,
+			&cub->texture_do->width, &cub->texture_do->height);
+	if (!cub->texture_cl->img || !cub->texture_fl->img || !cub->texture_do->img)
 		return (1);
 	if (data_img_bonus(cub))
 		return (1);
@@ -206,8 +212,60 @@ t_cub	*create_cub(char *path)
 	cub->player = player_init(cub);
 	init_shadelut(cub);
 	gettimeofday(&(cub->start_time), NULL);
+	init_floatmap(cub);
+	init_zbuffer(cub);
 	debug_printcub(cub);
 	return (cub);
+}
+
+void init_zbuffer(t_cub *c)
+{
+	int i;
+	
+	i = 0;
+	c->zbuffer = malloc(sizeof(float) * c->winsize_x);
+	while(i < c->winsize_x)
+	{
+		c->zbuffer[i] = 0.0f;
+		i ++;	
+	}
+}
+
+void set_floatmap(t_cub *c)
+{
+	int x;
+	int y;
+
+	x = 0;
+	while(x < c->map_size_x)
+	{
+		y = 0;
+		while(y < c->map_size_y)
+		{
+			if(c->map[x][y] == WALL || c->map[x][y] == DOOR_V || c->map[x][y] == DOOR_H)
+				c->floatmap[x][y] = 1.0f;
+			else
+				c->floatmap[x][y] = 0.0f;
+			y ++;
+		}
+		x ++;
+	}
+}
+
+void init_floatmap(t_cub *c)
+{
+	int i;
+
+	i = 0;
+	c->floatmap = (float **)malloc(sizeof(float *) * c->map_size_x);
+	while(i < c->map_size_x)
+	{
+		c->floatmap[i] = malloc(sizeof(float) * c->map_size_y);
+		if(!c->floatmap[i])
+			return;
+		i ++;
+	}
+	set_floatmap(c);
 }
 
 void init_shadelut(t_cub *cub)

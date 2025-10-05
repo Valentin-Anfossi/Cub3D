@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 08:54:10 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/24 08:12:23 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/04 12:47:45 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,14 @@ void	draw_walls(t_cub *cub)
 				r->sideDistX += r->deltaDistX;
 				r->mapX += r->stepX;
 				r->side = 0;
+				drawDoor_H(cub,r,x);
 			}
 			else
 			{
 				r->sideDistY += r->deltaDistY;
 				r->mapY += r->stepY;
 				r->side = 1;
+				// draw_doorV(cub,r,x);
 			}
 			if(has_hitVoid(cub,r->mapX,r->mapY))
 				r->hit = 1;
@@ -151,6 +153,7 @@ void drawVertical(t_cub *cub, t_ray *r, int x)
 	step = 1.0 * curTex->height/r->lineHeight; //ratio pixel texture/pixel line
 	texPos = (r->drawStart - (cub->winsize_y/2) + r->lineHeight / 2) * step; 
 	shade = wall_shade(r->perpWallDist,r->side);
+	cub->zbuffer[x] = r->perpWallDist;
 	// (void)shade;
 	while (r->drawStart < r->drawEnd)
 	{
@@ -195,6 +198,14 @@ float wall_shade(float dist, int side)
 int has_hitWall(t_cub *cub, int mapX, int mapY)
 {
 	if(cub->map[mapX][mapY] == WALL)
+		return (1);
+	else
+		return (0);
+}
+
+int has_hitDoor(t_cub *cub, int mapX, int mapY)
+{
+	if(cub->map[mapX][mapY] == DOOR_H || cub->map[mapX][mapY] == DOOR_V)
 		return (1);
 	else
 		return (0);
