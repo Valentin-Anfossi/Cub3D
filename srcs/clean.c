@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   clean.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/12 08:31:24 by vanfossi          #+#    #+#             */
+/*   Updated: 2025/10/12 08:47:19 by vanfossi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	free_texture(t_cub *cub)
@@ -36,11 +48,6 @@ void	free_all(t_cub *cub)
 	int	i;
 
 	i = 0;
-	// while (cub->map_str[i])
-	// {
-	// 	free(cub->map_str[i]);
-	// 	i++;
-	// }
 	free(cub->map_str);
 	i = 0;
 	while (i < cub->map_size_x)
@@ -63,14 +70,11 @@ int destroystuff(t_cub *cub) {
     if (cub->buffer) {
         if (cub->buffer->img)
             mlx_destroy_image(cub->mlx, cub->buffer->img);
-        // if (cub->buffer->data)
-        //     free(cub->buffer->data); // Si tu as alloué data toi-même
         free(cub->buffer);
     }
-    // Libère les autres textures (no, so, we, ea) de la même manière
     if (cub->window)
         mlx_destroy_window(cub->mlx, cub->window);
-    free(cub->mlx); // Attention : mlx_destroy_display est souvent suffisant
+    free(cub->mlx);
     free(cub);
     exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/04 03:37:19 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/12 09:11:13 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,6 @@
 #define TARGET_FPS 60
 #define ROT_SPEED 0.05
 
-//BONUS !
-#define BONUS 1
-#define MOUSE_TRUE 1
-#define COL_TRUE 1
-#define COL_DIST .1
-#define MINIMAP_TRUE 1
-
 typedef struct s_v3
 {
 	int		x;
@@ -74,6 +67,8 @@ typedef struct s_v2
 	float y;
 } t_v2;
 
+
+
 typedef struct s_draw
 {
 	void	*img;
@@ -86,6 +81,24 @@ typedef struct s_draw
 	int		width;
 	int		height;
 }			t_draw;
+
+typedef struct s_bk
+{
+	int 	x;
+	int 	y;
+	float 	ratio;
+}			t_bk;
+
+typedef struct s_vert
+{
+	float wallX;
+	float texPos;
+	int texX;
+	int texY;
+	float step;
+	int shade;
+	t_draw *curTex;
+}	t_vert;
 
 typedef struct s_player
 {
@@ -111,16 +124,10 @@ typedef struct s_cub
 	t_draw	*texture_so;
 	t_draw	*texture_we;
 	t_draw	*texture_ea;
-	t_draw	*texture_fl;
-	t_draw	*texture_cl;
-	t_draw	*texture_do;
 	char	*no_texpath;
 	char	*so_texpath;
 	char	*we_texpath;
 	char	*ea_texpath;
-	char	*fl_texpath;
-	char	*cl_texpath;
-	char	*do_texpath;
 	unsigned int shade_lut[256][256];
 
 	int		winsize_x;
@@ -138,7 +145,6 @@ typedef struct s_cub
 	float	**floatmap;
 	float	*zbuffer;
 	int		*player_pos;
-	int		is_mouseActive;
 
 	struct timeval  start_time;
 	struct timeval	time;
@@ -245,3 +251,13 @@ int drawDoor_H(t_cub *c, t_ray *r, int x);
 void drawDoor_V(t_cub *c, t_ray *r, int x);
 int has_hitDoor(t_cub *cub, int mapX, int mapY);
 void drawDoor_H2(t_cub *c, t_ray *r, int x);
+
+//DRAW_UTILS.C
+double dabs(double d);
+int get_TexPixel(int x, int y, t_draw *img);
+float wall_shade(float dist, int side);
+int has_hitWall(t_cub *cub, int mapX, int mapY);
+int has_hitVoid(t_cub *cub, int mapX, int mapY);
+
+void	ray_helper(t_cub *cub, t_ray *r, int x);
+int		init_img(t_cub *cub);

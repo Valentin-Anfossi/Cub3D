@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 04:57:47 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/07/11 04:58:02 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/11 09:41:25 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void error_exit(t_cub *c)
 	}
 	else
 	{
-		printf("Cub3D INIT ERROR : APPRENDS A TAPER MERCI\n");
+		printf("Cub3D INIT ERROR\n");
 		exit (1);
 	}
 }

@@ -20,55 +20,9 @@ void	put_pixel(t_draw *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-// t_draw *draw_circular_background(t_cub *cub)
-// {
-// 	t_draw	*background;
-// 	background = malloc(sizeof(t_draw));
-// 	background->img = mlx_new_image(cub->mlx, cub->winsize_x, cub->winsize_y);
-// 	if (!background->img)
-// 	return (NULL);
-// 	background->data = mlx_get_data_addr
-// 	(background->img, &background->bpp,
-// 		&background->length, &background->endian);
-// 		if (!background->data)
-// 		{
-// 			mlx_destroy_image(cub->mlx, background->img);
-// 			free(background);
-// 			return (NULL);
-// 		}
-		
-		
-// 	int horizon;
-// 	int y;
-// 	float radius;
-// 	int x_start;
-// 	int x_end;
-// 	int x;
-// 	horizon = cub->winsize_y/2;
-// 	y = horizon;
-
-// 	while(y < horizon)
-// 	{
-// 		radius = (cub->winsize_y) / (y - horizon + 1);
-// 		x_start = cub->winsize_x/2 - radius;
-// 		x_end = cub->winsize_x/2 + radius;
-
-// 		if(x_start < 0) x_start = 0;
-// 		if(x_end >= cub->winsize_x) x_end = cub->winsize_x -1;
-// 		x = x_start;
-// 		while (x <= x_end);
-// 		{
-
-// 		}
-// 	}
-// }
-
-t_draw	*draw_background(t_cub *cub)
+t_draw *init_background(t_cub *cub)
 {
-	int		x;
-	int		y;
-	t_draw	*background;
-	float	ratio;
+	t_draw *background;
 
 	background = malloc(sizeof(t_draw));
 	background->img = mlx_new_image(cub->mlx, cub->winsize_x, cub->winsize_y);
@@ -83,27 +37,44 @@ t_draw	*draw_background(t_cub *cub)
 		free(background);
 		return (NULL);
 	}
-	x = 0;
-	y = 0;
-	ratio = 1;
-	while (y < cub->winsize_y)
+	return (background);
+}
+
+t_bk init_bkstruct(void)
+{
+	t_bk bk;
+
+	bk.x = 0;
+	bk.y = 0;
+	bk.ratio = 1;
+	return (bk);
+}
+
+t_draw	*draw_background(t_cub *cub)
+{
+	t_bk 	bk;
+	t_draw	*background;
+
+	background = init_background(cub);
+	bk = init_bkstruct();
+	while (bk.y < cub->winsize_y)
 	{
-		while (x < cub->winsize_x)
+		while (bk.x < cub->winsize_x)
 		{
-			if (y < cub->winsize_y / 2)
+			if (bk.y < cub->winsize_y / 2)
 			{
-				ratio = remap(1-(float)y/(cub->winsize_y/2),0,1.25);
-				put_pixel(background, x, y, color_mult(cub->ce_color,ratio));
+				bk.ratio = remap(1-(float)bk.y/(cub->winsize_y/2),0,1.25);
+				put_pixel(background, bk.x, bk.y, color_mult(cub->ce_color,bk.ratio));
 			}
 			else
 			{
-				ratio = remap((float)(y-cub->winsize_y/2)/(cub->winsize_y),0,1.25);
-				put_pixel(background, x, y, color_mult(cub->fl_color,ratio));
+				bk.ratio = remap((float)(bk.y-cub->winsize_y/2)/(cub->winsize_y),0,1.25);
+				put_pixel(background, bk.x, bk.y, color_mult(cub->fl_color,bk.ratio));
 			}
-			x++;
+			bk.x++;
 		}
-		x = 0;
-		y++;
+		bk.x = 0;
+		bk.y++;
 	}
 	return (background);
 }
