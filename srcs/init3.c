@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 09:10:15 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/12 09:10:27 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/12 10:34:01 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void init_shadelut(t_cub *cub)
 			y ++;
 		}
 		y = 0;
-		printf("\n");
 		x ++;
 	}
 }

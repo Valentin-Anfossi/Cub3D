@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/12 09:11:13 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/12 10:33:18 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,3 +261,7 @@ int has_hitVoid(t_cub *cub, int mapX, int mapY);
 
 void	ray_helper(t_cub *cub, t_ray *r, int x);
 int		init_img(t_cub *cub);
+int	handle_key(int keycode, t_cub *cub);
+int handle_keyRelease(int keycode, t_cub *cub);
+void move_player(t_cub *c);
+void set_playerInitialRotation(t_cub *c);

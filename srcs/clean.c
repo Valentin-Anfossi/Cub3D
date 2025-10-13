@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 08:31:24 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/12 08:47:19 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/12 23:02:26 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,17 @@ void free_player(t_player *p)
 	free(p);
 }
 
+void free_mapstr(t_cub *cub)
+{
+	free(cub->map);
+}
+
 void	free_all(t_cub *cub)
 {
 	int	i;
 
 	i = 0;
+	mlx_loop_end(cub->mlx);
 	free(cub->map_str);
 	i = 0;
 	while (i < cub->map_size_x)
@@ -58,24 +64,24 @@ void	free_all(t_cub *cub)
 	i = 0;
 	mlx_do_key_autorepeaton(cub->mlx);
 	mlx_mouse_show(cub->mlx, cub->window);
-	free(cub->map);
 	free_texture(cub);
 	free_player(cub->player);
+	free_mapstr(cub);
 	free(cub->player_pos);
+	mlx_destroy_window(cub->mlx, cub->window);
+	// mlx_destroy_image(cub->mlx,cub->buffer->img);
 	free(cub->mlx);
 	free(cub);
 }
 
 int destroystuff(t_cub *cub) {
-    if (cub->buffer) {
-        if (cub->buffer->img)
-            mlx_destroy_image(cub->mlx, cub->buffer->img);
-        free(cub->buffer);
-    }
-    if (cub->window)
-        mlx_destroy_window(cub->mlx, cub->window);
-    free(cub->mlx);
-    free(cub);
-    exit(0);
+	(void)cub;
+	mlx_loop_end(cub->mlx);
+    // if (cub->buffer) {
+    //     if (cub->buffer->img)
+    //         mlx_destroy_image(cub->mlx, cub->buffer->img);
+    //     // free(cub->buffer);
+    // }
+    // if (cub->window)
+	return (0);
 }
-

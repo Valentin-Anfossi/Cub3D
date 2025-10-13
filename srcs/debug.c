@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:22:46 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/11 09:54:03 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/12 10:37:45 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	debug_printmap(t_cub *cub)
 
 void debug_printPlayer(t_player *p)
 {
-	printf("Player info :\nPosition :%f,%f\nRotation :%f,%f\n",p->pos->x,p->pos->y,p->dir->x,p->dir->y);
+	printf("Player info :\nPosition :%f,%f\nRotation :%f,%f\n",
+		p->pos->x,p->pos->y,p->dir->x,p->dir->y);
 }
 
 void	debug_printcub(t_cub *cub)
@@ -54,16 +55,20 @@ void	debug_printcub(t_cub *cub)
 		printf("WE: %s\n", cub->we_texpath);
 	if (cub->ea_texpath)
 		printf("EA: %s\n", cub->ea_texpath);
-	printf("Window size X, Y {%d, %d}\n", cub->winsize_x, cub->winsize_y);
-	printf("Errnum: %d\nDebug: %d\nMap_fd: %d\n", cub->errnum, cub->debug, cub->map_fd);
+	printf("Window size X, Y {%d, %d}\n",
+		 cub->winsize_x, cub->winsize_y);
+	printf("Errnum: %d\nDebug: %d\nMap_fd: %d\n",
+		 cub->errnum, cub->debug, cub->map_fd);
 	printf("Map size: X, Y {%d, %d}\n", cub->map_size_x, cub->map_size_y);
-	printf("Ceilling/Wall colors : 0x%06x, 0x%06x\n", cub->ce_color, cub->fl_color);
-	printf("Player position :%f,%f\n",cub->player->pos->x,cub->player->pos->y);
+	printf("Ceilling/Wall colors : 0x%06x, 0x%06x\n",
+		 cub->ce_color, cub->fl_color);
+	printf("Player position :%f,%f\n", 
+		cub->player->pos->x,cub->player->pos->y);
 	printf("Map:\n");
 	debug_printmap(cub);
 	debug_printPlayer(cub->player);
-
 }
+
 void draw_debug(t_cub *cub) 
 {
     double frameTime;
@@ -77,6 +82,8 @@ void draw_debug(t_cub *cub)
 	char str[320];
 	if(fps > TARGET_FPS)
 		fps = TARGET_FPS;
-	sprintf(str,"FPS :%.0f \n Player pos : %f %f dir : %f %f",fps,cub->player->pos->x,cub->player->pos->y,cub->player->dir->x,cub->player->dir->y); //ATTENTION C PAS AUTORISE (JE CROIS)
-	mlx_string_put(cub->mlx,cub->window,0,cub->winsize_y,create_argb(1,255,255,255),str);
+	sprintf(str,"FPS :%.0f \n Player pos : %f %f dir : %f %f",
+		fps,cub->player->pos->x,cub->player->pos->y,cub->player->dir->x,cub->player->dir->y); //ATTENTION C PAS AUTORISE (JE CROIS)
+	mlx_string_put(cub->mlx,cub->window,0,cub->winsize_y,
+		create_argb(1,255,255,255),str);
 }

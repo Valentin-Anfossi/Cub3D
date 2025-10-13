@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:21:13 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/12 09:10:06 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/12 10:33:51 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_cub	*init(int argc, char **argv)
 	if (!argv[1])
 		return (0);
 	test_fd = open(argv[1], O_RDONLY);
-	printf("fd =%d \n",test_fd);
 	if (test_fd < 0)
 		return (NULL);
 	close(test_fd);
