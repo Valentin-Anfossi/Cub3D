@@ -14,6 +14,7 @@
 
 void error_exit(t_cub *c)
 {
+	free_all(c);
 	if(c && c->errnum == 1)
 	{
 		printf("Cub3D ERROR : %d (cub3d -m for help)\n",c->errnum);

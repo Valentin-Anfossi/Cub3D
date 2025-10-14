@@ -48,7 +48,7 @@ int	parse_color(char *line)
 	free(split[1]);
 	b = ft_atoi(split[2]);
 	free(split[2]);
-	printf("%d%d%d\n", r, g, b);
+	// printf("%d%d%d\n", r, g, b);
 	color = (0xFF << 24) | (r << 16) | (g << 8) | b;
 	free(split);
 	return (color);

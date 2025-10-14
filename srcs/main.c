@@ -51,7 +51,6 @@ int	main(int argc, char **argv)
 	mlx_hook(cub->window, KeyPress, KeyPressMask, handle_key, cub);
 	mlx_hook(cub->window, KeyRelease, KeyRelease, handle_keyRelease, cub);
 	mlx_do_key_autorepeatoff(cub->mlx);
-	mlx_mouse_hide(cub->mlx,cub->window);
 	set_playerInitialRotation(cub);
 	mlx_loop_hook(cub->mlx, render_loop, cub);
 	mlx_loop(cub->mlx);

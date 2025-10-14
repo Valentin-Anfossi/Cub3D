@@ -12,6 +12,8 @@
 
 #include "./cub3d.h"
 
+//set CUB->ERRNUM IF MAP ERROR (NO RETURN or someshit)
+
 void	map_init(t_cub *cub)
 {
 	char	*line;
@@ -101,6 +103,18 @@ void	map_parse2(t_cub *cub)
 		i ++;
 	}
 }
+
+// int map_parse2_helper(t_cub *cub)
+// {
+// 	cub->map = (int **)malloc(sizeof(int *) * cub->map_size_x);
+// 	while (i < cub->map_size_x)
+// 	{
+// 		cub->map[i] = malloc(sizeof(int) * cub->map_size_y);
+// 		if (!cub->map[i])
+// 			return (0);
+// 		i ++;
+// 	}	
+// }
 
 void	add_to_map(int x, int y, t_cub *cub)
 {

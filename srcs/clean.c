@@ -43,18 +43,10 @@ void free_player(t_player *p)
 	free(p);
 }
 
-void free_mapstr(t_cub *cub)
+void free_map(t_cub *cub)
 {
-	free(cub->map);
-}
+	int i;
 
-void	free_all(t_cub *cub)
-{
-	int	i;
-
-	i = 0;
-	mlx_loop_end(cub->mlx);
-	free(cub->map_str);
 	i = 0;
 	while (i < cub->map_size_x)
 	{
@@ -62,13 +54,20 @@ void	free_all(t_cub *cub)
 		i++;
 	}
 	i = 0;
+	free(cub->map_str);
+	free(cub->map);
+}
+
+void	free_all(t_cub *cub)
+{
 	mlx_do_key_autorepeaton(cub->mlx);
 	mlx_mouse_show(cub->mlx, cub->window);
 	free_texture(cub);
 	free_player(cub->player);
-	free_mapstr(cub);
+	free_map(cub);
 	free(cub->player_pos);
 	mlx_destroy_window(cub->mlx, cub->window);
+	mlx_destroy_display(cub->mlx);
 	// mlx_destroy_image(cub->mlx,cub->buffer->img);
 	free(cub->mlx);
 	free(cub);
