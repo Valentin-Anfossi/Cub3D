@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:26:27 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/12 16:22:16 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/15 16:57:57 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,10 @@ void	map_parse2(t_cub *cub)
 	{
 		cub->map[i] = malloc(sizeof(int) * cub->map_size_y);
 		if (!cub->map[i])
+		{
+			cub->errnum = 2;
 			return;
+		}
 		i ++;
 	}
 	init_map(cub);

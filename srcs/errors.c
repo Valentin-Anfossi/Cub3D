@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 04:57:47 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/12 10:28:53 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/15 16:58:53 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void error_exit(t_cub *c)
 {
-	free_all(c);
+	// free_all(c);
 	if(c && c->errnum == 1)
 	{
 		printf("Cub3D ERROR : %d (cub3d -m for help)\n",c->errnum);

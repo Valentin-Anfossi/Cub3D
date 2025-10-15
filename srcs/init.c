@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:21:13 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/12 10:33:51 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/15 16:57:07 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_cub	*init(int argc, char **argv)
 		return (0);
 	test_fd = open(argv[1], O_RDONLY);
 	if (test_fd < 0)
-		return (NULL);
+		return (0);
 	close(test_fd);
 	cub = create_cub(argv[1]);
 	return (cub);
