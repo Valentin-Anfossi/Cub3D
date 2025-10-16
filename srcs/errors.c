@@ -26,3 +26,9 @@ void error_exit(t_cub *c)
 		exit (1);
 	}
 }
+
+void error_checkmap(t_cub *c)
+{
+	
+	exit(1);
+}

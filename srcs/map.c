@@ -43,6 +43,11 @@ void	map_init(t_cub *cub)
 	}
 }
 
+int check_map(t_cub *cub)
+{
+	
+}
+
 void	map_parse(char *line, t_cub *cub)
 {
 	int		i;
@@ -63,6 +68,7 @@ void	map_parse(char *line, t_cub *cub)
 		free(line);
 		line = get_next_line(cub->map_fd);
 	}
+	check_map(cub);
 	cub->map_str[i] = NULL;
 	cub->map_size_y = sizex - 1;
 	cub->map_size_x = i;
