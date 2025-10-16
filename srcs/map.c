@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:26:27 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/15 16:57:57 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/16 23:03:54 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,6 @@ void	map_init(t_cub *cub)
 		free(line);
 		line = get_next_line(cub->map_fd);
 	}
-}
-
-int check_map(t_cub *cub)
-{
-	
 }
 
 void	map_parse(char *line, t_cub *cub)

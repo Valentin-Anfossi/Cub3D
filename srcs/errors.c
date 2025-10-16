@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 04:57:47 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/15 16:58:53 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/16 23:07:05 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,4 @@ void error_exit(t_cub *c)
 		printf("Cub3D INIT ERROR\n");
 		exit (1);
 	}
-}
-
-void error_checkmap(t_cub *c)
-{
-	
-	exit(1);
 }

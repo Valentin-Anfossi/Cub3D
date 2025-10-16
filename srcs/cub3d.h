@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/12 10:33:18 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/16 23:06:25 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,3 +265,7 @@ int	handle_key(int keycode, t_cub *cub);
 int handle_keyRelease(int keycode, t_cub *cub);
 void move_player(t_cub *c);
 void set_playerInitialRotation(t_cub *c);
+
+//CHECK_MAP.C
+
+void check_map(t_cub *c);
