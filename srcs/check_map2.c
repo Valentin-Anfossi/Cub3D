@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   img.c                                              :+:      :+:    :+:   */
+/*   check_map2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/04 02:10:11 by vagabundo         #+#    #+#             */
-/*   Updated: 2025/10/19 02:23:42 by vanfossi/je      ###   ########.fr       */
+/*   Created: 2025/10/19 02:21:45 by vanfossi/je       #+#    #+#             */
+/*   Updated: 2025/10/19 02:21:48 by vanfossi/je      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./cub3d.h"
+#include "cub3d.h"
 
-int	start_window(t_cub *cub)
+void	exit_maperror(t_cub *c)
 {
-	ft_printf("start window...\n");
-	cub->window = mlx_new_window
-		(cub->mlx, cub->winsize_x, cub->winsize_y, "cub3d");
-	if (!cub->window)
-		return (ft_printf("\nWindow error"), 1);
-	return (ft_printf ("\tOK\n"), 0);
+	int	i;
+
+	i = 0;
+	printf("Fatal error, exiting Cub3D.\n");
+	free (c->ea_texpath);
+	free (c->we_texpath);
+	free (c->no_texpath);
+	free (c->so_texpath);
+	free (c->player_pos);
+	while (i < c->map_size_x)
+	{
+		free(c->map_str[i]);
+		i ++;
+	}
+	free(c->map_str);
+	free(c);
+	exit(1);
 }

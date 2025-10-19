@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parseutils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:28:36 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/09/20 01:52:20 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/19 02:24:34 by vanfossi/je      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*parse_texturepath(char *line)
 		free(split[0]);
 	if (split[1])
 	{
-		split[1][ft_strlen(split[1]) - 1] = '\0'; //textpath finissant par \n donc chemin non valide
+		split[1][ft_strlen(split[1]) - 1] = '\0';
 		re = ft_strdup(split[1]);
 	}
 	free(split[1]);
@@ -48,7 +48,6 @@ int	parse_color(char *line)
 	free(split[1]);
 	b = ft_atoi(split[2]);
 	free(split[2]);
-	// printf("%d%d%d\n", r, g, b);
 	color = (0xFF << 24) | (r << 16) | (g << 8) | b;
 	free(split);
 	return (color);

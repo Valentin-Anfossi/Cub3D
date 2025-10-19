@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 10:25:38 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/12 08:47:52 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/19 02:23:04 by vanfossi/je      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 void	draw_walls(t_cub *cub)
 {
-	int x;
+	int		x;
+	t_ray	*r;
 
-	t_ray *r;
 	r = malloc(sizeof(t_ray));
-
 	x = 0;
-	
-	while (x < cub->winsize_x-1)
+	while (x < cub->winsize_x - 1)
 	{
-		ray_helper(cub,r,x);
+		ray_helper(cub, r, x);
 		x ++;
 	}
 	free(r);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:22:46 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/12 10:37:45 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/19 02:22:22 by vanfossi/je      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	debug_printmap(t_cub *cub)
 	int	j;
 
 	i = 0;
-	while (i < cub->map_size_x)  // Parcourt les LIGNES (map_size_x)
+	while (i < cub->map_size_x)
 	{
 		j = 0;
-		while (j < cub->map_size_y)  // Parcourt les COLONNES (map_size_y)
+		while (j < cub->map_size_y)
 		{
 			if (cub->map[i][j] == WALL)
 				printf("⬜");
@@ -38,10 +38,10 @@ void	debug_printmap(t_cub *cub)
 	}
 }
 
-void debug_printPlayer(t_player *p)
+void	debug_printplayer(t_player *p)
 {
 	printf("Player info :\nPosition :%f,%f\nRotation :%f,%f\n",
-		p->pos->x,p->pos->y,p->dir->x,p->dir->y);
+		p->pos->x, p->pos->y, p->dir->x, p->dir->y);
 }
 
 void	debug_printcub(t_cub *cub)
@@ -56,34 +56,33 @@ void	debug_printcub(t_cub *cub)
 	if (cub->ea_texpath)
 		printf("EA: %s\n", cub->ea_texpath);
 	printf("Window size X, Y {%d, %d}\n",
-		 cub->winsize_x, cub->winsize_y);
+		cub->winsize_x, cub->winsize_y);
 	printf("Errnum: %d\nDebug: %d\nMap_fd: %d\n",
-		 cub->errnum, cub->debug, cub->map_fd);
+		cub->errnum, cub->debug, cub->map_fd);
 	printf("Map size: X, Y {%d, %d}\n", cub->map_size_x, cub->map_size_y);
 	printf("Ceilling/Wall colors : 0x%06x, 0x%06x\n",
-		 cub->ce_color, cub->fl_color);
-	printf("Player position :%f,%f\n", 
-		cub->player->pos->x,cub->player->pos->y);
+		cub->ce_color, cub->fl_color);
+	printf("Player position :%f,%f\n",
+		cub->player->pos->x, cub->player->pos->y);
 	printf("Map:\n");
 	debug_printmap(cub);
-	debug_printPlayer(cub->player);
+	debug_printplayer(cub->player);
 }
 
-void draw_debug(t_cub *cub) 
+void	draw_debug(t_cub *cub)
 {
-    double frameTime;
+	double	frame_time;
+	float	fps;
+	char	str[320];
 
-    cub->old_time = cub->time;
-    gettimeofday(&(cub->time), NULL);
-    frameTime = (cub->time.tv_sec - cub->old_time.tv_sec) +
-                (cub->time.tv_usec - cub->old_time.tv_usec) * 1e-6;
-	cub->delta_time = frameTime * 1000;
-	float fps = (1.0 / frameTime);
-	char str[320];
-	if(fps > TARGET_FPS)
+	cub->old_time = cub->time;
+	gettimeofday(&(cub->time), NULL);
+	frame_time = (cub->time.tv_sec - cub->old_time.tv_sec)
+		+ (cub->time.tv_usec - cub->old_time.tv_usec) * 1e-6;
+	cub->delta_time = frame_time * 1000;
+	fps = (1.0 / frame_time);
+	if (fps > TARGET_FPS)
 		fps = TARGET_FPS;
-	sprintf(str,"FPS :%.0f \n Player pos : %f %f dir : %f %f",
-		fps,cub->player->pos->x,cub->player->pos->y,cub->player->dir->x,cub->player->dir->y); //ATTENTION C PAS AUTORISE (JE CROIS)
-	mlx_string_put(cub->mlx,cub->window,0,cub->winsize_y,
-		create_argb(1,255,255,255),str);
+	mlx_string_put(cub->mlx, cub->window, 0, cub->winsize_y,
+		create_argb(1, 255, 255, 255), str);
 }

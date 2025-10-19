@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   init3.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 09:10:15 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/12 10:34:01 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/19 02:24:01 by vanfossi/je      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void init_shadelut(t_cub *cub)
+void	init_shadelut(t_cub *cub)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;
-	while(x < 256)
+	while (x < 256)
 	{
 		while (y < 256)
 		{

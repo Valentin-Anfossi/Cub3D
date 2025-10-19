@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:21:13 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/15 16:57:07 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/19 02:23:49 by vanfossi/je      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,20 @@ t_cub	*init(int argc, char **argv)
 
 int	data_img(t_cub *cub)
 {
-	cub->texture_no->data = (unsigned char*)mlx_get_data_addr(cub->texture_no->img,
+	cub->texture_no->data = (unsigned char *)mlx_get_data_addr(
+			cub->texture_no->img,
 			&cub->texture_no->bpp, &cub->texture_no->length,
 			&cub->texture_no->endian);
-	cub->texture_so->data = (unsigned char*)mlx_get_data_addr(cub->texture_so->img,
+	cub->texture_so->data = (unsigned char *)mlx_get_data_addr(
+			cub->texture_so->img,
 			&cub->texture_so->bpp, &cub->texture_so->length,
 			&cub->texture_so->endian);
-	cub->texture_ea->data = (unsigned char*)mlx_get_data_addr(cub->texture_ea->img,
+	cub->texture_ea->data = (unsigned char *)mlx_get_data_addr(
+			cub->texture_ea->img,
 			&cub->texture_ea->bpp, &cub->texture_ea->length,
 			&cub->texture_ea->endian);
-	cub->texture_we->data = (unsigned char*)mlx_get_data_addr(cub->texture_we->img,
+	cub->texture_we->data = (unsigned char *)mlx_get_data_addr(
+			cub->texture_we->img,
 			&cub->texture_we->bpp, &cub->texture_we->length,
 			&cub->texture_we->endian);
 	if (!cub->texture_no->data || !cub->texture_so->data
@@ -51,7 +55,7 @@ int	data_img(t_cub *cub)
 	return (0);
 }
 
-t_draw *init_buffer(t_cub *cub)
+t_draw	*init_buffer(t_cub *cub)
 {
 	t_draw	*buffer;
 
@@ -59,7 +63,7 @@ t_draw *init_buffer(t_cub *cub)
 	buffer->img = mlx_new_image(cub->mlx, cub->winsize_x, cub->winsize_y);
 	if (!buffer->img)
 		return (NULL);
-	buffer->data = (unsigned char*)mlx_get_data_addr
+	buffer->data = (unsigned char *)mlx_get_data_addr
 		(buffer->img, &buffer->bpp,
 			&buffer->length, &buffer->endian);
 	if (!buffer->data)
@@ -98,9 +102,9 @@ int	init_img(t_cub *cub)
 	return (0);
 }
 
-int get_playerInitialDir(t_cub *c)
+int	get_playerinitialdir(t_cub *c)
 {
-	int i;
+	int	i;
 
 	i = c->map[c->player_pos[0]][c->player_pos[1]];
 	if (i == P_NORTH)

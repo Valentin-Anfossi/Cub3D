@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 08:31:24 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/12 23:02:26 by vanfossi         ###   ########.fr       */
+/*   Updated: 2025/10/19 02:21:55 by vanfossi/je      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	free_texture(t_cub *cub)
 	free(cub->buffer_old);
 }
 
-void free_player(t_player *p)
+void	free_player(t_player *p)
 {
 	free(p->pos);
 	free(p->plane);
@@ -43,9 +43,9 @@ void free_player(t_player *p)
 	free(p);
 }
 
-void free_map(t_cub *cub)
+void	free_map(t_cub *cub)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < cub->map_size_x)
@@ -68,19 +68,13 @@ void	free_all(t_cub *cub)
 	free(cub->player_pos);
 	mlx_destroy_window(cub->mlx, cub->window);
 	mlx_destroy_display(cub->mlx);
-	// mlx_destroy_image(cub->mlx,cub->buffer->img);
 	free(cub->mlx);
 	free(cub);
 }
 
-int destroystuff(t_cub *cub) {
+int	destroystuff(t_cub *cub)
+{
 	(void)cub;
 	mlx_loop_end(cub->mlx);
-    // if (cub->buffer) {
-    //     if (cub->buffer->img)
-    //         mlx_destroy_image(cub->mlx, cub->buffer->img);
-    //     // free(cub->buffer);
-    // }
-    // if (cub->window)
 	return (0);
 }
