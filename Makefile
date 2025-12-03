@@ -10,17 +10,40 @@
 #                                                                              #
 # **************************************************************************** #
 
+
 NAME	= cub3D
 
 LIBFT	= ./libft/libft.a
 
-SRCS	= ./srcs/*.c
+SRCS	= 	./srcs/check_map.c \
+			./srcs/check_map2.c \
+			./srcs/clean.c \
+			./srcs/colors_utils.c \
+			./srcs/debug.c \
+			./srcs/draw_background.c \
+			./srcs/draw_ray.c \
+			./srcs/draw_utils.c \
+			./srcs/draw_vertical.c \
+			./srcs/draw_walls.c \
+			./srcs/drawer.c \
+			./srcs/errors.c \
+			./srcs/ft_memcpyfast.c \
+			./srcs/handle_keys.c \
+			./srcs/img.c \
+			./srcs/init.c \
+			./srcs/init2.c \
+			./srcs/init3.c \
+			./srcs/main.c \
+			./srcs/map_utils.c \
+			./srcs/map.c \
+			./srcs/movement.c \
+			./srcs/parseutils.c \
 
 MLX = ./minilibx-linux/libmlx_Linux.a
 
 all: $(NAME)
 
-$(NAME): $(SRCS) $(LIBFT)
+$(NAME): $(SRCS) $(MLX) $(LIBFT)
 	cc -g -Wall -Wextra -Werror $(SRCS) $(MLX) $(LIBFT) -o $(NAME) -lX11 -lXext -lm -O3
 
 $(LIBFT):
@@ -31,13 +54,16 @@ $(MLX):
 
 clean:
 	@rm -f $(NAME)
+	@make -C ./libft clean
+	@make -C ./minilibx-linux clean
 
 fclean: clean
 	@make -C ./libft fclean
-	
-# @make -C ./minilibx-linux fclean
 
 gprof : $(SRCS) $(LIBFT)
 	gcc -pg -Wall -Wextra -Werror $(SRCS) $(MLX) $(LIBFT) -o $(NAME) -lX11 -lXext -lm -O3
 
 re: fclean all
+
+
+
