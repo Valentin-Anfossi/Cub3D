@@ -131,9 +131,16 @@ void	add_to_map(int x, int y, t_cub *cub)
 		cub->map[x][y] = P_EAST;
 	else if (c == 'W')
 		cub->map[x][y] = P_WEST;
+
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 	{
+		if (cub->player_pos[0] != 0 && cub->player_pos != 0)
+		{
+			printf("Error : Player position declared twice\n");
+			
+		}
 		cub->player_pos[0] = x;
 		cub->player_pos[1] = y;
 	}
 }
+

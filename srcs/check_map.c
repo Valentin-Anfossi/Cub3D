@@ -111,6 +111,11 @@ void	check_map(t_cub *c)
 		printf("Invalid/missing texture file.\n");
 		exit_maperror(c);
 	}
+	else if (!player_check(c))
+	{
+		printf("Invalid player position.\n");
+		exit_maperror(c);
+	}
 	else
 		return ;
 }

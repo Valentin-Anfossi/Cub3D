@@ -260,7 +260,6 @@ int		get_texpixel(int x, int y, t_draw *img);
 float	wall_shade(float dist, int side);
 int		has_hitwall(t_cub *cub, int map_x, int map_y);
 int		has_hitvoid(t_cub *cub, int map_x, int map_y);
-
 void	ray_helper(t_cub *cub, t_ray *r, int x);
 int		init_img(t_cub *cub);
 int		handle_key(int keycode, t_cub *cub);
@@ -272,10 +271,11 @@ void	set_playerinitialrot(t_cub *c);
 
 void	check_map(t_cub *c);
 void	exit_maperror(t_cub *c);
-
 t_draw	*init_background(t_cub *cub);
 t_draw	*draw_background(t_cub *cub);
 float	normimerde(t_cub *c, int bky);
 t_bk	init_bkstruct(void);
-
 int		map_sizex(t_cub *cub);
+
+//CHECK_PLAYER.C
+int player_check(t_cub *c);

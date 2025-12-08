@@ -27,7 +27,7 @@ void	error_exit(t_cub *c)
 	}
 	else
 	{
-		printf("Cub3D INIT ERROR\n");
+		printf("Cub3D Erreur initialisation\n");
 		exit (1);
 	}
 }
