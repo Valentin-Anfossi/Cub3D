@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/19 02:22:09 by vanfossi/je      ###   ########.fr       */
+/*   Updated: 2025/12/08 22:33:47 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,3 +279,6 @@ int		map_sizex(t_cub *cub);
 
 //CHECK_PLAYER.C
 int player_check(t_cub *c);
+
+//CHECK_INIT.C
+int check_init(t_cub *c);

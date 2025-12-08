@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:03:43 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/19 02:21:37 by vanfossi/je      ###   ########.fr       */
+/*   Updated: 2025/12/08 22:33:18 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,15 @@ int	char_check(char *str)
 	return (1);
 }
 
-int player_check(t_cub *c,int i)
-{
-	
-}
-
 int	check_mapstr(t_cub *c)
 {
 	int	i;
-	int p;
 
 	i = 0;
-	p = 0;
 	if (!c->map_size_x)
 		return (0);
 	while (i < c->map_size_x)
 	{
-		player_check(c,i);
 		if (!char_check (c->map_str[i]))
 			return (0);
 		i ++;
@@ -117,11 +109,6 @@ void	check_map(t_cub *c)
 	else if (!file_check(c))
 	{
 		printf("Invalid/missing texture file.\n");
-		exit_maperror(c);
-	}
-	else if (!player_check(c))
-	{
-		printf("Invalid player position.\n");
 		exit_maperror(c);
 	}
 	else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 09:09:20 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/19 02:23:56 by vanfossi/je      ###   ########.fr       */
+/*   Updated: 2025/12/08 19:03:25 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_cub	*create_cub(char *path)
 	cub = create_cub_h(path);
 	map_init(cub);
 	cub->mlx = mlx_init();
-	if (init_img(cub))
+	if (init_img(cub) || !check_init(cub))
 		return (NULL);
 	cub->window = mlx_new_window
 		(cub->mlx, cub->winsize_x, cub->winsize_y, "Cub3d");
