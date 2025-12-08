@@ -59,15 +59,23 @@ int	char_check(char *str)
 	return (1);
 }
 
+int player_check(t_cub *c,int i)
+{
+	
+}
+
 int	check_mapstr(t_cub *c)
 {
 	int	i;
+	int p;
 
 	i = 0;
+	p = 0;
 	if (!c->map_size_x)
 		return (0);
 	while (i < c->map_size_x)
 	{
+		player_check(c,i);
 		if (!char_check (c->map_str[i]))
 			return (0);
 		i ++;
