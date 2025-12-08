@@ -29,7 +29,7 @@ int check_init(t_cub *c)
     //check if color missing
     //check if color invalid
     //check if map too small
-    //check i
+    //check 
     
     // check_playerpos(c)
     return (1);

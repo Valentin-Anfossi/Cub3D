@@ -17,7 +17,7 @@ void	exit_maperror(t_cub *c)
 	int	i;
 
 	i = 0;
-	printf("Fatal error, exiting Cub3D.\n");
+	printf("Map error.\n");
 	free (c->ea_texpath);
 	free (c->we_texpath);
 	free (c->no_texpath);

@@ -20,9 +20,15 @@ t_cub	*init(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 	if (argc != 2)
+	{
+		printf("Invalid arguments (needs ./cub3d path/to/map.cub)\n");
 		return (0);
+	}
 	if (!argv[1])
+	{
+		printf("Invalid argument (empty ?)\n");
 		return (0);
+	}
 	test_fd = open(argv[1], O_RDONLY);
 	if (test_fd < 0)
 		return (0);
