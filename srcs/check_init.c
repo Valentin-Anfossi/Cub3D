@@ -24,7 +24,12 @@ int check_init(t_cub *c)
 {
     (void)c;
     //check player positions
-    //check if map missing/empty
+    //check if map missing in mapfile
+    //check if filetype wrong
+    //check if color missing
+    //check if color invalid
+    //check if map too small
+    //check i
     
     // check_playerpos(c)
     return (1);

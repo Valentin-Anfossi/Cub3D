@@ -98,7 +98,7 @@ void	check_map(t_cub *c)
 {
 	if (!param_check(c))
 	{
-		printf("Invalid parameters (textures or colors missing).\n");
+		printf("Invalid map file format (files/textures/map not in order or incomplete)\n");
 		exit_maperror(c);
 	}
 	else if (!check_mapstr(c))
