@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_background.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 02:22:29 by vanfossi/je       #+#    #+#             */
-/*   Updated: 2025/10/19 02:22:40 by vanfossi/je      ###   ########.fr       */
+/*   Updated: 2025/12/13 06:13:50 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_bk	init_bkstruct(void)
 	return (bk);
 }
 
-float	normimerde(t_cub *c, int bky)
+float	drawbk_helper(t_cub *c, int bky)
 {
 	float	re;
 
@@ -49,7 +49,7 @@ t_draw	*draw_background(t_cub *cub)
 			}
 			else
 			{
-				bk.rt = normimerde(cub, bk.y);
+				bk.rt = drawbk_helper(cub, bk.y);
 				put_pixel(bg, bk.x, bk.y, color_mult(cub->fl_color, bk.rt));
 			}
 			bk.x++;

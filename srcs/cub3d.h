@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/12/08 22:33:47 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/04 06:49:55 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -273,7 +273,7 @@ void	check_map(t_cub *c);
 void	exit_maperror(t_cub *c);
 t_draw	*init_background(t_cub *cub);
 t_draw	*draw_background(t_cub *cub);
-float	normimerde(t_cub *c, int bky);
+float	drawbk_helper(t_cub *c, int bky);
 t_bk	init_bkstruct(void);
 int		map_sizex(t_cub *cub);
 
@@ -282,3 +282,9 @@ int player_check(t_cub *c);
 
 //CHECK_INIT.C
 int check_init(t_cub *c);
+
+//FILE_CHECK.C
+void file_error(int err);
+int ends_with_dotcub(char *str);
+void file_check(int argc, char **argv);
+

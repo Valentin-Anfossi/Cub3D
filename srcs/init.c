@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:21:13 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/19 02:23:49 by vanfossi/je      ###   ########.fr       */
+/*   Updated: 2026/01/04 06:15:27 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,15 @@ t_cub	*init(int argc, char **argv)
 	}
 	if (!argv[1])
 	{
-		printf("Invalid argument (empty ?)\n");
+		printf("Invalid arguments (unexpected eof or no arguments)\n");
 		return (0);
 	}
 	test_fd = open(argv[1], O_RDONLY);
 	if (test_fd < 0)
+	{
+		printf("Invalid mapfile (doesn't exist or cannot open)\n");
 		return (0);
+	}
 	close(test_fd);
 	cub = create_cub(argv[1]);
 	return (cub);

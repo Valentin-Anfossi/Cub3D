@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/19 02:24:06 by vanfossi/je      ###   ########.fr       */
+/*   Updated: 2026/01/04 06:37:06 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*Un truc a change avec un des packages, on voit plus larriere des murs quand on passe a travers ???*/
 
 #include "cub3d.h"
 
@@ -45,6 +47,7 @@ int	main(int argc, char **argv)
 {
 	t_cub	*cub;
 
+	
 	cub = init(argc, argv);
 	if (!cub || cub->errnum != 0)
 		error_exit(cub);
@@ -55,6 +58,7 @@ int	main(int argc, char **argv)
 	set_playerinitialrot(cub);
 	mlx_loop_hook(cub->mlx, render_loop, cub);
 	mlx_loop(cub->mlx);
+	mlx_do_key_autorepeaton(cub->mlx);
 	free_all(cub);
 	return (0);
 }
