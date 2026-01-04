@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:26:27 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/04 11:42:03 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/04 12:01:30 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,34 @@ void	map_init(t_cub *cub)
 	}
 }
 
-void map_init(t_cub *cub)
+void parse_textures(t_cub *cub, char *line)
 {
 	
+	parse_textnorth(t_cub *cub, char *line)
+}
+
+void parse_map(t_cub *cub, char *line)
+{
+	
+}
+
+void map_init(t_cub *cub)
+{
+	char *line;
+	
+	line = get_next_line(cub->map_fd);
+	
+	parse_textures(cub,line);
+	parse_map(cub,line);
+	while(line)
+	{
+		while(ft_strlen(line) <= 1 && line[0] == '\n')
+		{
+			free(line);
+			line = get_next_line(cub->map_fd);
+		}
+		parse_textures(cub,line);
+	}
 }
 
 void	map_parse(char *line, t_cub *cub)
