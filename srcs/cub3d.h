@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/04 06:49:55 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/04 11:36:00 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ typedef struct s_ray
 //FUNCTIONS
 
 //INIT.C
-t_cub	*init(int argc, char **argv);
+t_cub	*init(char **argv);
 t_cub	*create_cub(char *path);
 void	init_map(t_cub *cub);
 int		get_playerinitialdir(t_cub *c);

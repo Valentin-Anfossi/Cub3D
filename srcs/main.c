@@ -6,11 +6,9 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/04 08:02:30 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/04 11:35:40 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*Un truc a change avec un des packages, on voit plus larriere des murs quand on passe a travers ???*/
 
 #include "cub3d.h"
 
@@ -48,7 +46,7 @@ int	main(int argc, char **argv)
 	t_cub	*cub;
 
 	file_check(argc,argv);
-	cub = init(argc, argv);
+	cub = init(argv);
 	if (!cub || cub->errnum != 0)
 		error_exit(cub);
 	mlx_hook(cub->window, 17, 1L << 17, destroystuff, cub);

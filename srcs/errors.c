@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 04:57:47 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/19 02:23:30 by vanfossi/je      ###   ########.fr       */
+/*   Updated: 2026/01/04 11:35:03 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	error_exit(t_cub *c)
 	}
 	else
 	{
-		printf("Cub3D Erreur initialisation\n");
+		printf("Cub3D Exiting...\n");
 		exit (1);
 	}
 }

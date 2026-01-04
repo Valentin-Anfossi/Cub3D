@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:26:27 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/19 02:24:23 by vanfossi/je      ###   ########.fr       */
+/*   Updated: 2026/01/04 11:42:03 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./cub3d.h"
+
+//en cours : il faut check si les parametres de textures sont dans lordre dans le file
+//on fait deja la verif si la texture est bonne plus loin donc pas besoin
 
 void	map_init(t_cub *cub)
 {
@@ -39,6 +42,11 @@ void	map_init(t_cub *cub)
 		free(line);
 		line = get_next_line(cub->map_fd);
 	}
+}
+
+void map_init(t_cub *cub)
+{
+	
 }
 
 void	map_parse(char *line, t_cub *cub)

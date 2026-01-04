@@ -6,36 +6,16 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:21:13 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/04 06:15:27 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/04 11:36:06 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./cub3d.h"
 
-t_cub	*init(int argc, char **argv)
+t_cub	*init(char **argv)
 {
 	t_cub	*cub;
-	int		test_fd;
-
-	(void)argc;
-	(void)argv;
-	if (argc != 2)
-	{
-		printf("Invalid arguments (needs ./cub3d path/to/map.cub)\n");
-		return (0);
-	}
-	if (!argv[1])
-	{
-		printf("Invalid arguments (unexpected eof or no arguments)\n");
-		return (0);
-	}
-	test_fd = open(argv[1], O_RDONLY);
-	if (test_fd < 0)
-	{
-		printf("Invalid mapfile (doesn't exist or cannot open)\n");
-		return (0);
-	}
-	close(test_fd);
+	
 	cub = create_cub(argv[1]);
 	return (cub);
 }
