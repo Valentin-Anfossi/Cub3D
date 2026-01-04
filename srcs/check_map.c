@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:03:43 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/12/08 22:33:18 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/04 06:54:30 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	check_mapstr(t_cub *c)
 	return (1);
 }
 
-int	file_check(t_cub *c)
+int	textfiles_check(t_cub *c)
 {
 	int	test_fd;
 
@@ -106,7 +106,7 @@ void	check_map(t_cub *c)
 		printf("Invalid map.\n");
 		exit_maperror(c);
 	}
-	else if (!file_check(c))
+	else if (!textfiles_check(c))
 	{
 		printf("Invalid/missing texture file.\n");
 		exit_maperror(c);

@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/04 06:37:06 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/04 08:02:30 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 {
 	t_cub	*cub;
 
-	
+	file_check(argc,argv);
 	cub = init(argc, argv);
 	if (!cub || cub->errnum != 0)
 		error_exit(cub);
