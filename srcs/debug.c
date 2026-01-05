@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:22:46 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/19 02:22:22 by vanfossi/je      ###   ########.fr       */
+/*   Updated: 2026/01/05 15:54:19 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,24 @@ void	debug_printmap(t_cub *cub)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (i < cub->map_size_x)
+	j = 0;
+	while (j < cub->map_size_y)
 	{
-		j = 0;
-		while (j < cub->map_size_y)
+		i = 0;
+		while (i < cub->map_size_x)
 		{
-			if (cub->map[i][j] == WALL)
+			if (cub->map[j][i] == WALL)
 				printf("⬜");
-			else if (cub->map[i][j] == EMPTY)
+			else if (cub->map[j][i] == EMPTY)
 				printf("⬛");
-			else if (cub->map[i][j] == DOOR_H || cub->map[i][j] == DOOR_V)
+			else if (cub->map[j][i] == DOOR_H || cub->map[j][i] == DOOR_V)
 				printf("🚪");
 			else
 				printf("🙎");
-			j++;
+			i++;
 		}
 		printf("\n");
-		i++;
+		j++;
 	}
 }
 

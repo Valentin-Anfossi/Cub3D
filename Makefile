@@ -6,7 +6,7 @@
 #    By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/09 17:41:00 by vanfossi          #+#    #+#              #
-#    Updated: 2026/01/04 06:50:43 by vanfossi         ###   ########.fr        #
+#    Updated: 2026/01/05 13:48:51 by vanfossi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,10 @@ SRCS	= 	./srcs/check_map.c \
 			./srcs/movement.c \
 			./srcs/parseutils.c \
 			./srcs/check_init.c \
-			./srcs/file_check.c
+			./srcs/file_check.c \
+			./srcs/map_check.c \
+			./srcs/map_check2.c \
+			./srcs/check_mapstr.c
 
 MLX = ./minilibx-linux/libmlx_Linux.a
 

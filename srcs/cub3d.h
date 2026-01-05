@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/04 11:36:00 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/05 15:07:03 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 #define FOV 90
 #define SHADE_DIST 7
 
-#define WIN_SIZEX 900
-#define WIN_SIZEY 600
+#define WIN_SIZEX 1920
+#define WIN_SIZEY 1080
 
 #define ERROR_MAP 2
 #define ERROR_INPUT 1
@@ -186,6 +186,7 @@ void	init_shadelut(t_cub *cub);
 void	init_floatmap(t_cub *c);
 void	set_floatmap(t_cub *c);
 void	init_zbuffer(t_cub *c);
+void 	map_init_helper(t_cub *cub);
 
 //CLEAN.C
 void	free_texture(t_cub *cub);
@@ -288,3 +289,21 @@ void file_error(int err);
 int ends_with_dotcub(char *str);
 void file_check(int argc, char **argv);
 
+//MAP_CHECK.C
+int get_notexpath(t_cub *cub);
+int get_sotexpath(t_cub *cub);
+int get_wetexpath(t_cub *cub);
+int get_eatexpath(t_cub *cub);
+
+//MAP_CHECK2.C
+int get_floorclr(t_cub *cub);
+int get_clclr(t_cub *cub);
+int	parse_color2(char *line);
+int parsecolor2_helper(char **split, int color);
+int is_line_empty(char *line);
+
+//CHECK_MAPSTR.C
+int check_foremptylines(t_cub *cub);
+int is_notwall(int c);
+int is_empty(t_cub *c,int x,int y);
+int check_ismapclosed(t_cub *cub);

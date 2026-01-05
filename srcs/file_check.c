@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 06:37:43 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/04 11:32:10 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/05 09:09:24 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ void file_check(int argc, char **argv)
     temp_fd = open(argv[1], O_RDONLY);
     if(temp_fd < 0)
         file_error(3);
+    close(temp_fd);
 }

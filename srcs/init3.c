@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init3.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 09:10:15 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/19 02:24:01 by vanfossi/je      ###   ########.fr       */
+/*   Updated: 2026/01/05 15:48:09 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ void	init_map(t_cub *cub)
 	int	x;
 	int	y;
 
-	x = 0;
-	while (x < cub->map_size_x)
+	y = 0;
+	while (y < cub->map_size_y)
 	{
-		y = 0;
-		while (y < cub->map_size_y)
+		x = 0;
+		while (x < cub->map_size_x)
 		{
-			cub->map[x][y] = 0;
-			y ++;
+			cub->map[y][x] = 0;
+			x ++;
 		}
-		x ++;
+		y ++;
 	}
 }

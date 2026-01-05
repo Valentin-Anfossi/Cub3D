@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:03:43 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/04 06:54:30 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/05 15:34:05 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,18 @@ int	char_check(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (i == 0 || i == (int)ft_strlen(str) - 2)
-		{
-			if (str[i] != '1' && str[i] != ' ')
-				return (0);
-		}
-		if (str[i] == ' ')
-		{
-			while (str[i] == ' ')
-				i ++;
-			if (str[i] != '1' && str[i] != '\n')
-				return (0);
-		}
+		// if (i == 0 || i == (int)ft_strlen(str) - 2)
+		// {
+		// 	if (str[i] != '1' && str[i] != ' ')
+		// 		return (0);
+		// }
+		// if (str[i] == ' ')
+		// {
+		// 	while (str[i] == ' ')
+		// 		i ++;
+		// 	// if (str[i] != '1' && str[i] != '\n')
+		// 	// 	return (0);
+		// }
 		c = str[i];
 		if (c != '0' && c != '1' && c != 'N' && c != 'S' && c != 'W'
 			&& c != 'E' && c != ' ' && c != '\n')
@@ -64,9 +64,9 @@ int	check_mapstr(t_cub *c)
 	int	i;
 
 	i = 0;
-	if (!c->map_size_x)
+	if (!c->map_size_y)
 		return (0);
-	while (i < c->map_size_x)
+	while (i < c->map_size_y)
 	{
 		if (!char_check (c->map_str[i]))
 			return (0);
@@ -78,7 +78,7 @@ int	check_mapstr(t_cub *c)
 int	textfiles_check(t_cub *c)
 {
 	int	test_fd;
-
+;
 	test_fd = open(c->no_texpath, O_RDONLY);
 	if (test_fd == -1)
 		return (0);
@@ -96,16 +96,29 @@ int	textfiles_check(t_cub *c)
 
 void	check_map(t_cub *c)
 {
-	if (!param_check(c))
-	{
-		printf("Invalid map file format (files/textures/map not in order or incomplete)\n");
-		exit_maperror(c);
-	}
-	else if (!check_mapstr(c))
+	if (!check_mapstr(c))
 	{
 		printf("Invalid map.\n");
 		exit_maperror(c);
 	}
+	if(!check_foremptylines(c))
+	{
+		printf("Empty line in map.\n");
+		exit_maperror(c);
+	}
+	if(!check_ismapclosed(c)) // aussi check si player est sur un mur
+	{
+		printf("Map isn't closed.\n");
+		exit_maperror(c);
+	}
+	// else if(!check_multipleplayer(c)) // aussi check si 1 player est present
+	// {
+	//		
+	// }
+	// else if(!check_maptoosmall(c))
+	// {
+		
+	// }
 	else if (!textfiles_check(c))
 	{
 		printf("Invalid/missing texture file.\n");

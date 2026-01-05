@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parseutils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:28:36 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/19 02:24:34 by vanfossi/je      ###   ########.fr       */
+/*   Updated: 2026/01/05 11:04:05 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
