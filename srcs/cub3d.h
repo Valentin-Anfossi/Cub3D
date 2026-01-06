@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 16:04:57 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 16:17:59 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -264,8 +264,6 @@ int		has_hitwall(t_cub *cub, int map_x, int map_y);
 int		has_hitvoid(t_cub *cub, int map_x, int map_y);
 void	ray_helper(t_cub *cub, t_ray *r, int x);
 int		init_img(t_cub *cub);
-int		handle_key(int keycode, t_cub *cub);
-int		handle_keyrelease(int keycode, t_cub *cub);
 void	move_player(t_cub *c);
 void	set_playerinitialrot(t_cub *c);
 
@@ -319,3 +317,8 @@ void map_init_helper(t_cub *cub);
 //BONUS.C
 void move_col(t_cub *c, t_player *p);
 void mouse_rotate(t_cub *c);
+
+//HANDLE_KEYS.C
+int	handle_mouse(t_cub *cub);
+int	handle_key(int keycode, t_cub *cub);
+int	handle_keyrelease(int keycode, t_cub *cub);
