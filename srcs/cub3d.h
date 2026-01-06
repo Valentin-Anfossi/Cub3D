@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 16:17:59 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 16:39:17 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@
 #define KEY_STLEFT 97
 #define KEY_STRIGHT 100
 #define KEY_MOUSE 112
+#define KEY_MAP 65 
 #define TARGET_FPS 60
 #define ROT_SPEED 0.05
+#define MOUSE_SENS 0.5
 
 typedef struct s_v3
 {
@@ -317,6 +319,7 @@ void map_init_helper(t_cub *cub);
 //BONUS.C
 void move_col(t_cub *c, t_player *p);
 void mouse_rotate(t_cub *c);
+void draw_minimap(t_cub *cub);
 
 //HANDLE_KEYS.C
 int	handle_mouse(t_cub *cub);

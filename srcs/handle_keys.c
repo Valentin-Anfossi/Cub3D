@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_keys.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 10:30:17 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/19 02:23:38 by vanfossi/je      ###   ########.fr       */
+/*   Updated: 2026/01/06 16:34:19 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

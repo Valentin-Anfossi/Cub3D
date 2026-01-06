@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 15:19:47 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 16:25:47 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 17:04:19 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,49 @@ void mouse_rotate(t_cub *cub)
 	int y;
 
     mlx_mouse_get_pos(cub->mlx,cub->window,&x,&y);
-    cub->player->input->y = -(x - (cub->winsize_x/2));   
+    cub->player->input->y = (int)((-(x - (cub->winsize_x/2))) * MOUSE_SENS);   
 	mlx_mouse_move(cub->mlx,cub->window,cub->winsize_x/2,cub->winsize_y/2);
+}
+
+void draw_line(t_cub *cub, int x1, int x2, int y, int color)
+{
+    while(x1 <= x2)
+    {
+        put_pixel(cub->buffer,x1,y,color);
+        x1++;
+    }
+}
+
+void draw_circle(t_cub *cub,int x0, int y0, int radius)
+{
+    int x;
+    int y;
+    int err;
+
+    x = radius;
+    y = 0;
+    err = 0;
+
+    while(x >= y)
+    {
+        draw_line(cub,x0 - x,x0 + x, y0 + y, create_argb(1,0,255,0));
+        draw_line(cub,x0 - x,x0 + x, y0 - y, create_argb(1,0,255,0));
+        draw_line(cub,x0 - y,x0 + y, y0 + x, create_argb(1,0,255,0));
+        draw_line(cub,x0 - y,x0 + y, y0 - x, create_argb(1,0,255,0));
+        
+        y += 1;
+        err += 1 + 2*y;
+        if(2*(err - x) + 1 > 0)
+        {
+            x -= 1;
+            err += 1 - 2 * x;
+        }
+    }
+}
+
+void draw_minimap(t_cub *cub)
+{
+    draw_circle(cub, 25, 25, 10);
+    // put_pixel(cub->buffer,(cub->winsize_y/3)/2,(cub->winsize_y/3)/2,create_argb(1,255,0,0));
+    // draw_line(cub,0,50,10,create_argb(1,0,255,0));
 }
