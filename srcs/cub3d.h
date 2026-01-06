@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 15:29:13 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 16:04:57 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 #define SHADE_DIST 7
 #define COL_DIST .1
 
-#define WIN_SIZEX 640
-#define WIN_SIZEY 480
+#define WIN_SIZEX 1280
+#define WIN_SIZEY 920
 
 #define ERROR_MAP 2
 #define ERROR_INPUT 1
@@ -318,3 +318,4 @@ void map_init_helper(t_cub *cub);
 
 //BONUS.C
 void move_col(t_cub *c, t_player *p);
+void mouse_rotate(t_cub *c);

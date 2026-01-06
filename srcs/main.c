@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 15:18:44 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 16:04:26 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,16 @@ void	cap_fps(t_cub *cub)
 
 int	render_loop(t_cub *cub)
 {
+
 	if (!cub->mlx)
 		return (0);
 	copy_buffer(cub->buffer, cub->background, cub);
 	draw_walls(cub);
 	mlx_put_image_to_window(cub->mlx, cub->window, cub->buffer->img, 0, 0);
 	move_player(cub);
+	mouse_rotate(cub);
 	cap_fps(cub);
+	
 	return (1);
 }
 

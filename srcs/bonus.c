@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 15:19:47 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 15:42:01 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 16:02:39 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,15 @@ void move_col(t_cub *c, t_player *p)
     {
 		p->pos->y = test_y;
     }
+}
+
+void mouse_rotate(t_cub *cub)
+{
+    int x;
+	int y;
+
+    mlx_mouse_get_pos(cub->mlx,cub->window,&x,&y);
+    cub->player->input->z = x - (cub->winsize_x/2);   
+	mlx_mouse_move(cub->mlx,cub->window,cub->winsize_x/2,cub->winsize_y/2);
+	printf("%d,%d ",x,y);
 }
