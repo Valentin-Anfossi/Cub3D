@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 15:19:47 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 17:04:19 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 17:51:03 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,41 @@ void draw_circle(t_cub *cub,int x0, int y0, int radius)
     }
 }
 
+void draw_square(t_cub *cub, int x0, int y0, int size,int color)
+{
+    int y;
+
+    y = y0;
+    while(y < (y0 + size))
+    {
+        draw_line(cub,x0,x0+size,y,color);
+        y ++;
+    }
+}
+
 void draw_minimap(t_cub *cub)
 {
-    draw_circle(cub, 25, 25, 10);
+    draw_square(cub, 0, 0, cub->winsize_y/4,create_argb(0,255,0,0));
+    draw_square(cub, 3, 3, (cub->winsize_y/4)-6,create_argb(0,0,0,0));
+    draw_circle(cub, (cub->winsize_y/4)/2, (cub->winsize_y/4) /2, 5);
+
+    float xpos = cub->player->pos->x;
+    float ypos = cub->player->pos->y;
+    int x = 0;
+    int y = 0;
+    
+    while(x <= 100)
+    {
+        y = 0;
+        while(y <= 100)
+        {
+            if(cub->map[(int)(ypos-(y*.025))][(int)(xpos-(x*0.025))] == WALL)
+                put_pixel(cub->buffer,y,x,create_argb(1,0,255,0));
+            y ++;
+        }
+        x ++;
+    }
+    
     // put_pixel(cub->buffer,(cub->winsize_y/3)/2,(cub->winsize_y/3)/2,create_argb(1,255,0,0));
     // draw_line(cub,0,50,10,create_argb(1,0,255,0));
 }
