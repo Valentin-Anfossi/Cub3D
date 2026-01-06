@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 15:07:33 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:29:13 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 #define MAP_SIZE 500
 #define FOV 90
 #define SHADE_DIST 7
+#define COL_DIST .1
 
 #define WIN_SIZEX 640
 #define WIN_SIZEY 480
@@ -312,6 +313,8 @@ int check_ismapclosed(t_cub *cub);
 int check_player(t_cub *cub);
 
 //MAP_INIT.C
-
 void map_init(t_cub *cub);
 void map_init_helper(t_cub *cub);
+
+//BONUS.C
+void move_col(t_cub *c, t_player *p);

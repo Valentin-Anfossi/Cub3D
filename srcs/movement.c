@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 17:50:58 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 11:31:57 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:28:44 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	move_player(t_cub *c)
 	p = c->player;
 	if (p->input->x != 0 || p->input->z != 0)
 	{
-		move_nocol(c, p);
+		move_col(c, p);
 	}
 	if (p->input->y != 0)
 	{

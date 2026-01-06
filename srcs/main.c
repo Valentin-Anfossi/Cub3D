@@ -6,11 +6,17 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/05 15:42:47 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:18:44 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+//WALLCOLLISIONS ✅
+//MINIMAP ✅
+//DOORS
+//SPRITES 
+//ROTATEMOUSE ✅
 
 void	copy_buffer(t_draw *dest, const t_draw *src, t_cub *cub)
 {
