@@ -6,89 +6,11 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:26:27 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 12:10:30 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:07:00 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./cub3d.h"
-
-//en cours : il faut check si les parametres de textures sont dans lordre dans le file
-//on fait deja la verif si la texture est bonne plus loin donc pas besoin
-
-// void	map_init(t_cub *cub)
-// {
-// 	char	*line;
-
-// 	line = get_next_line(cub->map_fd);
-// 	while (line)
-// 	{
-// 		if (ft_strnstr(line, "EA", 2) && !cub->ea_texpath)
-// 			cub->ea_texpath = parse_texturepath(line);
-// 		else if (ft_strnstr(line, "NO", 2) && !cub->no_texpath)
-// 			cub->no_texpath = parse_texturepath(line);
-// 		else if (ft_strnstr(line, "WE", 2) && !cub->we_texpath)
-// 			cub->we_texpath = parse_texturepath(line);
-// 		else if (ft_strnstr(line, "SO", 2) && !cub->so_texpath)
-// 			cub->so_texpath = parse_texturepath(line);
-// 		else if (ft_strnstr(line, "C ", 2) && !cub->ce_color)
-// 			cub->ce_color = parse_color(line);
-// 		else if (ft_strnstr(line, "F ", 2) && !cub->fl_color)
-// 			cub->fl_color = parse_color(line);
-// 		else if (line && ft_strlen(line) > 0 && line[0] != '\n')
-// 		{
-// 			map_parse(line, cub);
-// 			break ;
-// 		}
-// 		free(line);
-// 		line = get_next_line(cub->map_fd);
-// 	}
-// }
-
-void map_init(t_cub *cub)
-{
-	if(!get_notexpath(cub))
-	{
-		printf("Error with texture North (invalid, absent or wrong order)\n");
-		exit_maperror(cub);	
-	}
-	if(!get_sotexpath(cub))
-	{
-		printf("Error with texture South (invalid, absent or wrong order)\n");
-		exit_maperror(cub);
-	}
-	if(!get_wetexpath(cub))
-	{
-		printf("Error with texture West (invalid, absent or wrong order)\n");
-		exit_maperror(cub);
-	}
-	if(!get_eatexpath(cub))
-	{
-		printf("Error with texture East (invalid, absent or wrong order)\n");
-		exit_maperror(cub);
-	}
-	map_init_helper(cub);
-}
-
-void map_init_helper(t_cub *cub)
-{
-	if(!get_floorclr(cub))
-	{
-		printf("Error with floor color (invalid RGB, absent or wrong order)\n");
-		exit_maperror(cub);
-	}
-	if(!get_clclr(cub))
-	{
-		printf("Error with ceiling color (invalid RGB, absent or wrong order)\n");
-		exit_maperror(cub);
-	}
-	map_parse(get_next_line(cub->map_fd),cub);
-}
-
-//Skip empty lines
-//check if line start with NO (if it doesn't = error)
-//add NO to no_texpath
-//etc.. with WE EA SO C F
-//for colors, check if rgb format is correct
 
 void	map_parse(char *line, t_cub *cub)
 {

@@ -6,11 +6,9 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 06:37:43 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/05 09:09:24 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:12:46 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//Here we check for obvious file related errors like missing file, wrong extension etc...
 
 #include "cub3d.h"
 
@@ -24,6 +22,8 @@ void file_error(int err)
         printf("Invalid mapfile (doesn't exist or cannot open)\n");
     if(err == 4)
         printf("Invalid file type (must end with .cub)\n");
+    if(err == 5)
+        printf("Empty file.\n");
     exit(1);
 }
 
@@ -54,7 +54,9 @@ int ends_with_dotcub(char *str)
 void file_check(int argc, char **argv)
 {
     int temp_fd;
-    
+    size_t i;
+    char *buf;
+
 	if (argc != 2)
         file_error(1);
     if (!argv[1])
@@ -64,5 +66,8 @@ void file_check(int argc, char **argv)
     temp_fd = open(argv[1], O_RDONLY);
     if(temp_fd < 0)
         file_error(3);
+    i = read(temp_fd,&buf,(size_t)8);
+    if(i == 0)
+        file_error(5);
     close(temp_fd);
 }

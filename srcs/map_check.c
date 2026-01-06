@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 09:21:52 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 12:12:34 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:04:44 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,15 @@ int get_notexpath(t_cub *cub)
 
     index = 0;
     line = get_next_line(cub->map_fd);
-    while(ft_strlen(line) == 0)
+    while(ft_strlen(line) == 1)
     {
-        if(!line)
-            return (0);
         free(line);
         line = get_next_line(cub->map_fd);
     }
     while(line[index] == ' ')
         index++;
-    if(!line[index] || !line[index + 1] || line[index] != 'N' || line[index+1] != 'O')
+    if(!line[index] || !line[index + 1] || line[index] != 'N' 
+        || line[index+1] != 'O')
     {
         free(line);
         return (0);
@@ -48,14 +47,15 @@ int get_sotexpath(t_cub *cub)
 
     index = 0;
     line = get_next_line(cub->map_fd);
-    while(ft_strlen(line) == 0)
+    while(ft_strlen(line) == 1)
     {
         free(line);
         line = get_next_line(cub->map_fd);
     }
     while(line[index] == ' ')
         index++;
-    if(!line[index] || !line[index + 1] || line[index] != 'S' || line[index+1] != 'O')
+    if(!line[index] || !line[index + 1] 
+        || line[index] != 'S' || line[index+1] != 'O')
     {
         free(line);
         return (0);
@@ -75,14 +75,15 @@ int get_wetexpath(t_cub *cub)
 
     index = 0;
     line = get_next_line(cub->map_fd);
-    while(ft_strlen(line) == 0)
+    while(ft_strlen(line) == 1)
     {
         free(line);
         line = get_next_line(cub->map_fd);
     }
     while(line[index] == ' ')
         index++;
-    if(!line[index] || !line[index + 1] || line[index] != 'W' || line[index+1] != 'E')
+    if(!line[index] || !line[index + 1] 
+        || line[index] != 'W' || line[index+1] != 'E')
     {
         free(line);
         return (0);
@@ -102,14 +103,15 @@ int get_eatexpath(t_cub *cub)
 
     index = 0;
     line = get_next_line(cub->map_fd);
-    while(ft_strlen(line) == 0)
+    while(ft_strlen(line) == 1)
     {
         free(line);
         line = get_next_line(cub->map_fd);
     }
     while(line[index] == ' ')
         index++;
-    if(!line[index] || !line[index + 1] || line[index] != 'E' || line[index+1] != 'A')
+    if(!line[index] || !line[index + 1] 
+        || line[index] != 'E' || line[index+1] != 'A')
     {
         free(line);
         return (0);

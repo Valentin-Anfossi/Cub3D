@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 13:46:55 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 11:43:18 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:12:54 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ int is_empty(t_cub *c,int x,int y)
     m = c->map_str;
     if (x == 0 || y == 0 || y == c->map_size_y - 1)
         return (1);
-    if(ft_isspace(m[y-1][x]) || ft_isspace(m[y+1][x]) || ft_isspace(m[y][x-1]) || ft_isspace(m[y][x+1]))
+    if(ft_isspace(m[y-1][x]) || ft_isspace(m[y+1][x]) || ft_isspace(m[y][x-1])
+         || ft_isspace(m[y][x+1]))
         return (1);
     return (0);
 }
@@ -72,5 +73,3 @@ int is_notwall(int c)
         return (1);
     return (0);
 }
-
-

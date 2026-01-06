@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:03:43 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 12:20:29 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:11:24 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	check_mapstr(t_cub *c)
 int	textfiles_check(t_cub *c)
 {
 	int	test_fd;
-;
+
 	test_fd = open(c->no_texpath, O_RDONLY);
 	if (test_fd == -1)
 		return (0);
