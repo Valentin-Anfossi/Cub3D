@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 09:21:52 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/05 11:55:47 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 12:12:34 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int get_notexpath(t_cub *cub)
     line = get_next_line(cub->map_fd);
     while(ft_strlen(line) == 0)
     {
+        if(!line)
+            return (0);
         free(line);
         line = get_next_line(cub->map_fd);
     }
@@ -35,7 +37,6 @@ int get_notexpath(t_cub *cub)
     while(line[index] == ' ')
         index++;
     cub->no_texpath = ft_substr(line,index,ft_strlen(line) - (index + 1));
-        printf("TEXPATH :%s\n",cub->no_texpath);
     free(line);
     return (1);
 }
@@ -64,7 +65,6 @@ int get_sotexpath(t_cub *cub)
         index++;
     cub->so_texpath = ft_substr(line,index,ft_strlen(line) - (index + 1));
     free(line);
-    printf("TEXPATH :%s\n",cub->so_texpath);
     return (1);
 }
 
@@ -92,7 +92,6 @@ int get_wetexpath(t_cub *cub)
         index++;
     cub->we_texpath = ft_substr(line,index,ft_strlen(line) - (index + 1));
     free(line);
-    printf("TEXPATH :%s\n",cub->we_texpath);
     return (1);    
 }
 
@@ -120,6 +119,5 @@ int get_eatexpath(t_cub *cub)
         index++;
     cub->ea_texpath = ft_substr(line,index,ft_strlen(line) - (index + 1));
     free(line);
-    printf("TEXPATH :%s\n",cub->ea_texpath);
     return (1);
 }

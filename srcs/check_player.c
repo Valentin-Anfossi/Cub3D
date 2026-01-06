@@ -3,34 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:12:23 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/12/08 14:12:38 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 10:36:03 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int playerdouble_check(t_cub *c)
+int check_player(t_cub *cub)
 {
-    int x;
-    int y;
+	int i;
+	int j;
+	char c;
+	int p;
 
-    x = 0;
-    y = 0;
-    return (1);
-}
-
-int playeronedge_check(t_cub *c)
-{
-    return (1);
-}
-
-int player_check(t_cub *c)
-{
-	if(!playerdouble_check(c))
+	i = 0;
+	p = 0;
+	while(cub->map_str[i])
+	{
+		j = 0;
+		while(cub->map_str[i][j])
+		{
+			c  = cub->map_str[i][j];
+			if (c == 'N' || c == 'S' || c == 'E' || c =='W')
+				p ++;
+			j ++;
+		}
+		i ++;
+	}
+	if (p != 1)
+	{
+		printf("Invalid player count.\n");
 		return (0);
-    if(!playeronedge_check(c))
-        return (0);
+	}
+	return (1);
 }

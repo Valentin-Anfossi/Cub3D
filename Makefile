@@ -6,7 +6,7 @@
 #    By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/09 17:41:00 by vanfossi          #+#    #+#              #
-#    Updated: 2026/01/05 13:48:51 by vanfossi         ###   ########.fr        #
+#    Updated: 2026/01/06 10:37:26 by vanfossi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ SRCS	= 	./srcs/check_map.c \
 			./srcs/file_check.c \
 			./srcs/map_check.c \
 			./srcs/map_check2.c \
-			./srcs/check_mapstr.c
+			./srcs/check_mapstr.c \
+			./srcs/check_player.c
 
 MLX = ./minilibx-linux/libmlx_Linux.a
 

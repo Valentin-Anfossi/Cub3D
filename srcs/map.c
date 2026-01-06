@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:26:27 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/05 16:49:23 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 12:10:30 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,10 @@ void	map_parse(char *line, t_cub *cub)
 	sizex = 0;
 	cub->map_str = (char **)malloc (sizeof(char *) * MAP_SIZE);
 	while(is_line_empty(line))
+	{
+		free(line);
 		line = get_next_line(cub->map_fd);
+	}
 	while (line)
 	{
 		cub->map_str[i] = ft_strdup(line);
@@ -121,7 +124,12 @@ void	map_parse2_init(t_cub *cub)
 	int	i;
 
 	i = 0;
-	cub->map = (int **)malloc(sizeof(int *) * cub->map_size_x);
+	cub->map = (int **)malloc(sizeof(int *) * cub->map_size_y);
+	if(!cub->map)
+	{
+		cub->errnum = 2;
+		return ;
+	}
 	while (i < cub->map_size_y)
 	{
 		cub->map[i] = malloc(sizeof(int) * cub->map_size_x);
@@ -182,11 +190,6 @@ void	add_to_map(int x, int y, t_cub *cub)
 
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 	{
-		if (cub->player_pos[0] != 0 && cub->player_pos != 0)
-		{
-			printf("Error : Player position declared twice\n");
-			
-		}
 		cub->player_pos[0] = x;
 		cub->player_pos[1] = y;
 	}

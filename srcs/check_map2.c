@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 02:21:45 by vanfossi/je       #+#    #+#             */
-/*   Updated: 2025/10/19 02:21:48 by vanfossi/je      ###   ########.fr       */
+/*   Updated: 2026/01/06 11:54:21 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,15 @@ void	exit_maperror(t_cub *c)
 	free (c->no_texpath);
 	free (c->so_texpath);
 	free (c->player_pos);
-	while (i < c->map_size_x)
+	if(c->map_str)
 	{
-		free(c->map_str[i]);
-		i ++;
+		while (c->map_str[i])
+		{
+			free(c->map_str[i]);
+			i ++;
+		}
+		free(c->map_str);
 	}
-	free(c->map_str);
 	free(c);
 	exit(1);
 }

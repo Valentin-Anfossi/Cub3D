@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 08:31:24 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/19 02:21:55 by vanfossi/je      ###   ########.fr       */
+/*   Updated: 2026/01/06 11:35:07 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	free_map(t_cub *cub)
 	int	i;
 
 	i = 0;
-	while (i < cub->map_size_x)
+	while (i < cub->map_size_y)
 	{
 		free(cub->map[i]);
 		i++;

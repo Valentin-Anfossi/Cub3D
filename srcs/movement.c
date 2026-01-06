@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 17:50:58 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/19 02:24:30 by vanfossi/je      ###   ########.fr       */
+/*   Updated: 2026/01/06 11:31:57 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	move_nocol(t_cub *c, t_player *p)
 	pos_x = p->pos->x;
 	pos_x += p->dir->x * p->input->x * p->speed;
 	pos_x += -p->dir->y * p->input->z * p->speed;
-	if (pos_x < c->map_size_x && pos_x > 0)
+	if (pos_x < c->map_size_y && pos_x > 0)
 		p->pos->x = pos_x;
 	pos_y = p->pos->y;
 	pos_y += p->dir->y * p->input->x * p->speed;
 	pos_y += p->dir->x * p->input->z * p->speed;
-	if (pos_y < c->map_size_y && pos_y > 0)
+	if (pos_y < c->map_size_x && pos_y > 0)
 		p->pos->y = pos_y;
 }
 

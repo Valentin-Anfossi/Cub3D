@@ -1,0 +1,30 @@
+==47728== Memcheck, a memory error detector
+==47728== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==47728== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==47728== Command: ./cub3D maps/bad/map_middle.cub
+==47728== 
+==47728== 
+==47728== HEAP SUMMARY:
+==47728==     in use at exit: 14 bytes in 1 blocks
+==47728==   total heap usage: 35 allocs, 34 frees, 263,947 bytes allocated
+==47728== 
+==47728== 14 bytes in 1 blocks are still reachable in loss record 1 of 1
+==47728==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==47728==    by 0x1167B5: ft_substr (in /home/vanfossi/Cub3D/cub3D)
+==47728==    by 0x116BD8: get_rest (in /home/vanfossi/Cub3D/cub3D)
+==47728==    by 0x116D71: get_next_line (in /home/vanfossi/Cub3D/cub3D)
+==47728==    by 0x113744: get_floorclr (map_check2.c:36)
+==47728==    by 0x1127C4: map_init_helper (map.c:74)
+==47728==    by 0x1127C4: map_init (map.c:69)
+==47728==    by 0x111C5A: create_cub (init2.c:65)
+==47728==    by 0x10FA34: main (main.c:49)
+==47728== 
+==47728== LEAK SUMMARY:
+==47728==    definitely lost: 0 bytes in 0 blocks
+==47728==    indirectly lost: 0 bytes in 0 blocks
+==47728==      possibly lost: 0 bytes in 0 blocks
+==47728==    still reachable: 14 bytes in 1 blocks
+==47728==         suppressed: 0 bytes in 0 blocks
+==47728== 
+==47728== For lists of detected and suppressed errors, rerun with: -s
+==47728== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

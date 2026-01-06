@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:03:43 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/05 15:34:05 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 12:20:29 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,13 @@ int	char_check(char *str)
 	i = 0;
 	while (str[i])
 	{
-		// if (i == 0 || i == (int)ft_strlen(str) - 2)
-		// {
-		// 	if (str[i] != '1' && str[i] != ' ')
-		// 		return (0);
-		// }
-		// if (str[i] == ' ')
-		// {
-		// 	while (str[i] == ' ')
-		// 		i ++;
-		// 	// if (str[i] != '1' && str[i] != '\n')
-		// 	// 	return (0);
-		// }
 		c = str[i];
 		if (c != '0' && c != '1' && c != 'N' && c != 'S' && c != 'W'
 			&& c != 'E' && c != ' ' && c != '\n')
-			return (0);
+			{
+				printf("Invalid char in map.\n");
+				return (0);
+			}
 		i ++;
 	}
 	return (1);
@@ -65,7 +56,10 @@ int	check_mapstr(t_cub *c)
 
 	i = 0;
 	if (!c->map_size_y)
+	{
+		printf("Map missing ?\n");
 		return (0);
+	}
 	while (i < c->map_size_y)
 	{
 		if (!char_check (c->map_str[i]))
@@ -98,7 +92,6 @@ void	check_map(t_cub *c)
 {
 	if (!check_mapstr(c))
 	{
-		printf("Invalid map.\n");
 		exit_maperror(c);
 	}
 	if(!check_foremptylines(c))
@@ -106,24 +99,22 @@ void	check_map(t_cub *c)
 		printf("Empty line in map.\n");
 		exit_maperror(c);
 	}
-	if(!check_ismapclosed(c)) // aussi check si player est sur un mur
+	if(!check_ismapclosed(c))
 	{
 		printf("Map isn't closed.\n");
 		exit_maperror(c);
 	}
-	// else if(!check_multipleplayer(c)) // aussi check si 1 player est present
-	// {
-	//		
-	// }
-	// else if(!check_maptoosmall(c))
-	// {
-		
-	// }
 	else if (!textfiles_check(c))
 	{
 		printf("Invalid/missing texture file.\n");
 		exit_maperror(c);
 	}
+	else if(!check_player(c))
+	{
+		exit_maperror(c);
+	}
 	else
 		return ;
 }
+
+

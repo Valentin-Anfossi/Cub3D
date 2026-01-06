@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:41:27 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/05 11:46:54 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 12:00:39 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,11 @@ int	parse_color2(char *line)
     }
     if(color != 3)
     {
-        while(split)
+        color = 0;
+        while(split[color])
         {
-            free(*split);
-            split ++;
+            free(split[color]);
+            color ++;
         }
         free(split);
         return (-1);

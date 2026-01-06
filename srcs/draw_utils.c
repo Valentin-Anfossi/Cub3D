@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 02:21:22 by vanfossi/je       #+#    #+#             */
-/*   Updated: 2025/10/19 02:22:53 by vanfossi/je      ###   ########.fr       */
+/*   Updated: 2026/01/06 11:27:28 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ int	has_hitwall(t_cub *cub, int map_x, int map_y)
 
 int	has_hitvoid(t_cub *cub, int map_x, int map_y)
 {
-	if (map_x < 0 || map_x >= cub->map_size_x)
+	if (map_x < 0 || map_x >= cub->map_size_y)
 		return (1);
-	else if (map_y < 0 || map_y >= cub->map_size_y)
+	else if (map_y < 0 || map_y >= cub->map_size_x)
 		return (1);
 	else
 		return (0);

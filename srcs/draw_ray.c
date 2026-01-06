@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 15:56:12 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/19 02:22:47 by vanfossi/je      ###   ########.fr       */
+/*   Updated: 2026/01/06 11:24:03 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ray_start(t_cub *cub, t_ray *r, int x)
 {
-	r->camera_x = 2 * x / (double)cub->winsize_x - 1;
-	r->raydir_x = cub->player->dir->x + cub->player->plane->x * r->camera_x;
+	r->camera_x = 2 * x / (double)cub->winsize_x - 1; 
+	r->raydir_x = cub->player->dir->x + cub->player->plane->x * r->camera_x; 
 	r->raydir_y = cub->player->dir->y + cub->player->plane->y * r->camera_x;
 	r->map_x = (int)cub->player->pos->x;
 	r->map_y = (int)cub->player->pos->y;
@@ -30,7 +30,7 @@ void	ray_start(t_cub *cub, t_ray *r, int x)
 		r->delta_disty = dabs(1 / r->raydir_y);
 }
 
-void	ray_dir(t_cub *cub, t_ray *r)
+void	ray_dir(t_cub *cub, t_ray *r) 
 {
 	if (r->raydir_x < 0)
 	{

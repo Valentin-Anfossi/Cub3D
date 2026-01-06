@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/05 15:07:03 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 10:36:32 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,3 +307,6 @@ int check_foremptylines(t_cub *cub);
 int is_notwall(int c);
 int is_empty(t_cub *c,int x,int y);
 int check_ismapclosed(t_cub *cub);
+
+//CHECK_PLAYER.C
+int check_player(t_cub *cub);
