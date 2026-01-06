@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 10:36:32 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/06 14:17:43 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 #define FOV 90
 #define SHADE_DIST 7
 
-#define WIN_SIZEX 1920
-#define WIN_SIZEY 1080
+#define WIN_SIZEX 640
+#define WIN_SIZEY 480
 
 #define ERROR_MAP 2
 #define ERROR_INPUT 1
