@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 09:09:20 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 14:43:53 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/07 11:55:23 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_cub	*create_cub_h(char *path)
 	cub->ea_texpath = NULL;
 	cub->ce_color = 0;
 	cub->fl_color = 0;
+	cub->map_fullscreen = 0;
 	cub->player_pos = malloc(sizeof(int) * 2);
 	cub->delta_time = 0;
 	return (cub);
@@ -63,6 +64,7 @@ t_cub	*create_cub(char *path)
 
 	cub = create_cub_h(path);
 	map_init(cub);
+	cub->minimap = malloc_minimap();
 	cub->mlx = mlx_init();
 	if (init_img(cub))
 		return (NULL);

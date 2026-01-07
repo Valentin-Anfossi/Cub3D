@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 16:39:17 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/07 12:02:55 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 #define KEY_STLEFT 97
 #define KEY_STRIGHT 100
 #define KEY_MOUSE 112
-#define KEY_MAP 65 
+#define KEY_MAP 32 
 #define TARGET_FPS 60
 #define ROT_SPEED 0.05
 #define MOUSE_SENS 0.5
@@ -112,11 +112,25 @@ typedef struct s_player
 	float	rot_speed;
 }	t_player;
 
+typedef struct s_minimap
+{
+	float zoom;
+    int map_sizey;
+    int map_sizex;
+    float xpos;
+    float ypos;
+    int x;
+    int y;
+    float xmap;
+    float ymap;
+}	t_minimap;
+
 typedef struct s_cub
 {
 	void			*mlx;
 	void			*window;
 	t_player		*player;
+	t_minimap		*minimap;
 
 	t_draw			*buffer;
 	t_draw			*buffer_old;
@@ -148,6 +162,7 @@ typedef struct s_cub
 	struct timeval	time;
 	struct timeval	old_time;
 	double			delta_time;
+	int				map_fullscreen;
 }	t_cub;
 
 typedef struct s_ray
@@ -177,6 +192,8 @@ typedef struct s_ray
 	int		map_x;
 	int		map_y;
 }	t_ray;
+
+
 
 //FUNCTIONS
 
@@ -318,8 +335,11 @@ void map_init_helper(t_cub *cub);
 
 //BONUS.C
 void move_col(t_cub *c, t_player *p);
+t_minimap *malloc_minimap();
 void mouse_rotate(t_cub *c);
 void draw_minimap(t_cub *cub);
+void draw_minimap_helper(t_cub *cub, t_minimap *mi);
+
 
 //HANDLE_KEYS.C
 int	handle_mouse(t_cub *cub);
