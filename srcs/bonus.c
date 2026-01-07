@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 15:19:47 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/07 12:04:19 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/07 15:42:50 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void mouse_rotate(t_cub *cub)
 	mlx_mouse_move(cub->mlx,cub->window,cub->winsize_x/2,cub->winsize_y/2);
 }
 
-void draw_line(t_cub *cub, int x1, int x2, int y, int color)
+void draw_hline(t_cub *cub, int x1, int x2, int y, int color)
 {
     while(x1 <= x2)
     {
@@ -82,10 +82,10 @@ void draw_circle(t_cub *cub,int x0, int y0, int radius)
 
     while(x >= y)
     {
-        draw_line(cub,x0 - x,x0 + x, y0 + y, create_argb(1,255,255,255));
-        draw_line(cub,x0 - x,x0 + x, y0 - y, create_argb(1,255,255,255));
-        draw_line(cub,x0 - y,x0 + y, y0 + x, create_argb(1,255,255,255));
-        draw_line(cub,x0 - y,x0 + y, y0 - x, create_argb(1,255,255,255));
+        draw_hline(cub,x0 - x,x0 + x, y0 + y, create_argb(1,255,255,255));
+        draw_hline(cub,x0 - x,x0 + x, y0 - y, create_argb(1,255,255,255));
+        draw_hline(cub,x0 - y,x0 + y, y0 + x, create_argb(1,255,255,255));
+        draw_hline(cub,x0 - y,x0 + y, y0 - x, create_argb(1,255,255,255));
         
         y += 1;
         err += 1 + 2*y;
@@ -104,7 +104,7 @@ void draw_square(t_cub *cub, int x0, int y0, int size,int color)
     y = y0;
     while(y < (y0 + size))
     {
-        draw_line(cub,x0,x0+size,y,color);
+        draw_hline(cub,x0,x0+size,y,color);
         y ++;
     }
 }
@@ -137,6 +137,8 @@ void draw_minimap_helper(t_cub *cub, t_minimap *mi)
 {
     int wall;
 
+    mi->y = 0;
+    mi->x = 0;
     while(mi->y <= mi->map_sizex)
     {
         mi->x = 0;
@@ -144,7 +146,7 @@ void draw_minimap_helper(t_cub *cub, t_minimap *mi)
         {
             mi->xmap = mi->xpos + (mi->x - ((mi->map_sizey) / 2)) * mi->zoom;
             mi->ymap = mi->ypos + (mi->y - ((mi->map_sizex) / 2)) * mi->zoom;
-            if(mi->xmap <= cub->map_size_y && mi->xmap > 0 && mi->ymap <= cub->map_size_x && mi->ymap > 0)
+            if(mi->xmap < cub->map_size_y && mi->xmap >= 0 && mi->ymap < cub->map_size_x && mi->ymap >= 0)
             {
                 wall = cub->map[(int)mi->xmap][(int)mi->ymap];
                 if(wall == 1)
@@ -154,9 +156,75 @@ void draw_minimap_helper(t_cub *cub, t_minimap *mi)
         }
         mi->y ++;
     }
-    mi->y = 0;
-    mi->x = 0;
-    draw_circle(cub, (mi->map_sizex)/2, (mi->map_sizey)/2, 5);    
+
+    draw_minimap_player(cub,mi);
+}
+
+void	draw_line(t_v2 p1, t_v2 p2, t_cub *cub, int norminette)
+{
+	float	dx;
+	float	dy;
+	float	x;
+	float	y;
+	float	step;
+
+	dx = p2.x - p1.x;
+	dy = p2.y - p1.y;
+	if (fabs(dx) >= fabs(dy))
+		step = fabs(dx);
+	else
+		step = fabs(dy);
+	dx = dx / step;
+	dy = dy / step;
+	x = p1.x;
+	y = p1.y;
+	while (norminette <= step)
+	{
+        put_pixel(cub->buffer,x,y,create_argb(1,255,64,64));
+		x = x + dx;
+		y = y + dy;
+		norminette ++;
+	}
+}
+
+void draw_minimap_player(t_cub *cub, t_minimap *mi)
+{
+    t_v2 p0;
+    t_v2 p1;
+
+    p0.x = (mi->map_sizex/2) ;
+    p0.y = (mi->map_sizey/2) ;
+    if(cub->map_fullscreen)
+    {
+        p1.x = p0.x + (7.5 *(cub->player->dir->y));
+        p1.y = p0.y + (7.5 *(cub->player->dir->x));
+        draw_circle(cub, (mi->map_sizex)/2, (mi->map_sizey)/2, 5);
+        draw_thickline(p0,p1,cub);
+    }
+    else
+    {
+        p1.x = p0.x + (12.5 *(cub->player->dir->y));
+        p1.y = p0.y + (12.5 *(cub->player->dir->x));
+        draw_circle(cub, (mi->map_sizex)/2, (mi->map_sizey)/2, 10);
+        draw_thickline(p0,p1,cub);
+    }    
+}
+
+void draw_thickline(t_v2 p0, t_v2 p1, t_cub *cub)
+{
+    draw_line(p0,p1,cub,0);
+    p0.y += 1;
+    p1.y += 1;
+    draw_line(p0,p1,cub,0);
+    p0.x += 1;
+    p1.x += 1;
+    draw_line(p0,p1,cub,0);
+    p0.y -= 2;
+    p1.y -= 2;
+    draw_line(p0,p1,cub,0);
+    p0.x -= 2;
+    p1.x -= 2;
+    draw_line(p0,p1,cub,0);
 }
 
 t_minimap *malloc_minimap()
@@ -215,29 +283,3 @@ t_minimap *malloc_minimap()
 //     }
 // }
 
-// void	draw_line(t_v2 p1, t_v2 p2, t_cub *cub, int norminette)
-// {
-// 	float	dx;
-// 	float	dy;
-// 	float	x;
-// 	float	y;
-// 	float	step;
-
-// 	dx = p2.x - p1.x;
-// 	dy = p2.y - p1.y;
-// 	if (fabs(dx) >= fabs(dy))
-// 		step = fabs(dx);
-// 	else
-// 		step = fabs(dy);
-// 	dx = dx / step;
-// 	dy = dy / step;
-// 	x = p1.x;
-// 	y = p1.y;
-// 	while (norminette <= step)
-// 	{
-//         put_pixel(cub->buffer,x,y,create_argb(1,255,255,255));
-// 		x = x + dx;
-// 		y = y + dy;
-// 		norminette ++;
-// 	}
-// }

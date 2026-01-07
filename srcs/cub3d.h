@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/07 12:02:55 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/07 15:31:13 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -339,7 +339,8 @@ t_minimap *malloc_minimap();
 void mouse_rotate(t_cub *c);
 void draw_minimap(t_cub *cub);
 void draw_minimap_helper(t_cub *cub, t_minimap *mi);
-
+void draw_minimap_player(t_cub *cub, t_minimap *mi);
+void draw_thickline(t_v2 p0, t_v2 p1, t_cub *cub);
 
 //HANDLE_KEYS.C
 int	handle_mouse(t_cub *cub);
