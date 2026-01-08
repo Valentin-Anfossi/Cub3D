@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus3.c                                           :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/08 10:00:52 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/08 10:57:30 by vanfossi         ###   ########.fr       */
+/*   Created: 2025/07/11 04:57:47 by vanfossi          #+#    #+#             */
+/*   Updated: 2026/01/04 11:35:03 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./cub3d.h"
 
-t_minimap	*malloc_minimap(void)
+void	errormap_exit(t_cub *c)
 {
-	t_minimap	*minimap;
-
-	minimap = malloc(sizeof(t_minimap));
-	minimap->map_sizex = 0;
-	minimap->map_sizey = 0;
-	minimap->x = 0;
-	minimap->y = 0;
-	minimap->xpos = 0;
-	minimap->ypos = 0;
-	minimap->xmap = 0;
-	minimap->ymap = 0;
-	minimap->zoom = 0;
-	return (minimap);
+	free(c);
+	exit(1);
 }
 
-void	draw_hline_w(t_cub *cub, int x1, int x2, int y)
+void	error_exit(t_cub *c)
 {
-	while (x1 <= x2)
+	if (c && c->errnum == 1)
 	{
-		put_pixel(cub->buffer, x1, y, create_argb(1, 255, 255, 255));
-		x1++;
+		printf("Cub3D ERROR : %d (cub3d -m for help)\n", c->errnum);
+		exit (c->errnum);
+	}
+	else
+	{
+		printf("Cub3D Exiting...\n");
+		exit (1);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/08 18:58:12 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/08 18:34:51 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,23 @@ typedef struct s_ray
 }	t_ray;
 
 //FUNCTIONS
+//BONUS.C
+void		draw_square(t_cub *cub, int x0, int y0, int size);
+void		draw_minimap(t_cub *cub);
+void		draw_minimap_helper(t_cub *cub, t_minimap *mi);
+void		draw_line(t_v2 p1, t_v2 p2, t_cub *cub, int norminette);
+void		draw_minimap_player(t_cub *cub, t_minimap *mi);
+
+//BONUS2.C
+int			is_colliding(t_cub *c, float x, float y);
+void		move_col(t_cub *c, t_player *p);
+void		mouse_rotate(t_cub *cub);
+void		draw_hline(t_cub *cub, int x1, int x2, int y);
+void		draw_circle(t_cub *cub, int x0, int y0, int radius);
+
+//BONUS3.C
+t_minimap	*malloc_minimap(void);
+void		draw_hline_w(t_cub *cub, int x1, int x2, int y);
 
 //CHECK_MAP.C
 int			param_check(t_cub *c);

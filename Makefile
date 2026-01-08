@@ -6,7 +6,7 @@
 #    By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/09 17:41:00 by vanfossi          #+#    #+#              #
-#    Updated: 2026/01/08 18:36:39 by vanfossi         ###   ########.fr        #
+#    Updated: 2026/01/08 22:32:32 by vanfossi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,18 +25,18 @@ SRCS	= 	./srcs/check_map.c ./srcs/check_map2.c ./srcs/clean.c \
 			./srcs/parseutils.c ./srcs/file_check.c ./srcs/map_check.c \
 			./srcs/map_check2.c ./srcs/check_mapstr.c ./srcs/check_player.c \
 			./srcs/map_init.c \
-			./srcs/bonus.c ./srcs/bonus2.c ./srcs/bonus3.c
+			
 
-SRCS_BONUS = 
+SRCS_BONUS  = $(SRCS:./srcs/%=./srcs_bonus/%) \
+			./srcs_bonus/bonus.c ./srcs_bonus/bonus2.c \
+			./srcs_bonus/bonus3.c
 
 
 MLX = ./minilibx-linux/libmlx_Linux.a
 
 all: $(NAME)
 
-bonus : $(BONUS)
-
-$(BONUS): $(SRCS_BONUS) $(MLX) $(LIBFT)
+bonus: $(SRCS_BONUS) $(MLX) $(LIBFT)
 	cc -g -Wall -Wextra -Werror $(SRCS_BONUS) $(MLX) $(LIBFT) -o $(NAME) -lX11 -lXext -lm -O3
 
 $(NAME): $(SRCS) $(MLX) $(LIBFT)
