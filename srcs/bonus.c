@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 15:19:47 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/08 10:55:28 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/08 18:43:01 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,18 +110,8 @@ void	draw_minimap_player(t_cub *cub, t_minimap *mi)
 
 	p0.x = (mi->map_sizex / 2);
 	p0.y = (mi->map_sizey / 2);
-	if (cub->map_fullscreen)
-	{
-		p1.x = p0.x + (7.5 *(cub->player->dir->y));
-		p1.y = p0.y + (7.5 *(cub->player->dir->x));
-		draw_circle(cub, (mi->map_sizex) / 2, (mi->map_sizey) / 2, 5);
-		draw_line(p0, p1, cub, 0);
-	}
-	else
-	{
-		p1.x = p0.x + (12.5 *(cub->player->dir->y));
-		p1.y = p0.y + (12.5 *(cub->player->dir->x));
-		draw_circle(cub, (mi->map_sizex) / 2, (mi->map_sizey) / 2, 10);
-		draw_line(p0, p1, cub, 0);
-	}
+	p1.x = p0.x + (12.5 *(cub->player->dir->y));
+	p1.y = p0.y + (12.5 *(cub->player->dir->x));
+	draw_circle(cub, (mi->map_sizex) / 2, (mi->map_sizey) / 2, 10);
+	draw_line(p0, p1, cub, 0);
 }

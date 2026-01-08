@@ -6,7 +6,7 @@
 #    By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/09 17:41:00 by vanfossi          #+#    #+#              #
-#    Updated: 2026/01/08 10:55:16 by vanfossi         ###   ########.fr        #
+#    Updated: 2026/01/08 18:36:39 by vanfossi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,40 +15,19 @@ NAME	= cub3D
 
 LIBFT	= ./libft/libft.a
 
-SRCS	= 	./srcs/check_map.c \
-			./srcs/check_map2.c \
-			./srcs/clean.c \
-			./srcs/colors_utils.c \
-			./srcs/debug.c \
-			./srcs/draw_background.c \
-			./srcs/draw_ray.c \
-			./srcs/draw_utils.c \
-			./srcs/draw_vertical.c \
-			./srcs/draw_walls.c \
-			./srcs/drawer.c \
-			./srcs/errors.c \
-			./srcs/ft_memcpyfast.c \
-			./srcs/handle_keys.c \
-			./srcs/img.c \
-			./srcs/init.c \
-			./srcs/init2.c \
-			./srcs/init3.c \
-			./srcs/main.c \
-			./srcs/map_utils.c \
-			./srcs/map.c \
-			./srcs/movement.c \
-			./srcs/parseutils.c \
-			./srcs/file_check.c \
-			./srcs/map_check.c \
-			./srcs/map_check2.c \
-			./srcs/check_mapstr.c \
-			./srcs/check_player.c \
+SRCS	= 	./srcs/check_map.c ./srcs/check_map2.c ./srcs/clean.c \
+			./srcs/colors_utils.c ./srcs/debug.c ./srcs/draw_background.c \
+			./srcs/draw_ray.c ./srcs/draw_utils.c ./srcs/draw_vertical.c \
+			./srcs/draw_walls.c ./srcs/drawer.c ./srcs/errors.c \
+			./srcs/ft_memcpyfast.c ./srcs/handle_keys.c ./srcs/img.c \
+			./srcs/init.c ./srcs/init2.c ./srcs/init3.c ./srcs/main.c \
+			./srcs/map_utils.c ./srcs/map.c ./srcs/movement.c \
+			./srcs/parseutils.c ./srcs/file_check.c ./srcs/map_check.c \
+			./srcs/map_check2.c ./srcs/check_mapstr.c ./srcs/check_player.c \
 			./srcs/map_init.c \
-			./srcs/bonus.c \
-			./srcs/bonus2.c \
-			./srcs/bonus3.c
+			./srcs/bonus.c ./srcs/bonus2.c ./srcs/bonus3.c
 
-SRCS_BONUS = $(foo:./srcs/=./srcs_bonus/)
+SRCS_BONUS = 
 
 
 MLX = ./minilibx-linux/libmlx_Linux.a

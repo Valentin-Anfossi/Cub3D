@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:58:19 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/08 10:57:18 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/08 18:40:10 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,11 @@ void	mouse_rotate(t_cub *cub)
 	int	y;
 
 	mlx_mouse_get_pos(cub->mlx, cub->window, &x, &y);
-	cub->player->input->y = (int)((-(x - (cub->winsize_x / 2))) * MOUSE_SENS);
+	if (cub->player->input->y == 0)
+	{
+		cub->player->input->y = (int)((-(x - (cub->winsize_x / 2)))
+				* MOUSE_SENS);
+	}
 	mlx_mouse_move(cub->mlx, cub->window, cub->winsize_x / 2,
 		cub->winsize_y / 2);
 }

@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/08 10:57:49 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/08 18:34:51 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 #define KEY_STLEFT 97
 #define KEY_STRIGHT 100
 #define KEY_MOUSE 112
-#define KEY_MAP 32 
+#define KEY_MAP 32
 #define TARGET_FPS 60
 #define ROT_SPEED 0.05
 #define MOUSE_SENS 0.5
@@ -114,15 +114,15 @@ typedef struct s_player
 
 typedef struct s_minimap
 {
-	float zoom;
-    int map_sizey;
-    int map_sizex;
-    float xpos;
-    float ypos;
-    int x;
-    int y;
-    float xmap;
-    float ymap;
+	float	zoom;
+	int		map_sizey;
+	int		map_sizex;
+	float	xpos;
+	float	ypos;
+	int		x;
+	int		y;
+	float	xmap;
+	float	ymap;
 }	t_minimap;
 
 typedef struct s_cub
@@ -193,165 +193,169 @@ typedef struct s_ray
 	int		map_y;
 }	t_ray;
 
-
-
 //FUNCTIONS
-
-//INIT.C
-t_cub	*init(char **argv);
-t_cub	*create_cub(char *path);
-void	init_map(t_cub *cub);
-int		get_playerinitialdir(t_cub *c);
-void	init_shadelut(t_cub *cub);
-void	init_floatmap(t_cub *c);
-void	set_floatmap(t_cub *c);
-void	init_zbuffer(t_cub *c);
-void 	map_init_helper(t_cub *cub);
-
-//CLEAN.C
-void	free_texture(t_cub *cub);
-void	free_player(t_player *p);
-void	free_map(t_cub *cub);
-void	free_all(t_cub *cub);
-int		destroystuff(t_cub *cub);
-
-//MAP.C
-void	map_init(t_cub *cub);
-void	map_parse(char *line, t_cub *cub);
-void	map_parse2(t_cub *cub);
-void	add_to_map(int x, int y, t_cub *cub);
-int		map_sizex(t_cub *cub);
-
-//COLORS_UTILS.C
-int		color_mult(int color, float ratio);
-float	remap(float ratio, float low, float high);
-int		create_argb(int alpha, int r, int g, int b);
-int		color_mult_fast(int color, int ratio, t_cub *cub);
-
-//PARSEUTILS.C
-char	*parse_texturepath(char *line);
-int		parse_color(char *line);
-
-//ERRORS.C
-void	error_exit(t_cub *c);
-
-//DEBUG
-void	debug_printcub(t_cub *cub);
-void	draw_debug(t_cub *cub);
-
-t_draw	*draw_background(t_cub *cub);
-
-//CLEAN.C
-void	free_all(t_cub *cub);
-void	free_texture(t_cub *cub);
-int		destroystuff(t_cub *cub);
-
-//DRAW_WALLS.C
-void	draw_walls(t_cub *cub);
-void	init_walls(t_cub *cub);
-int		has_hitwall(t_cub *cub, int map_x, int map_y);
-void	draw_vertical(t_cub *cub, t_ray *r, int x);
-int		has_hitvoid(t_cub *cub, int map_x, int map_y);
-float	wall_shade(float dist, int side);
-int		get_texpixel(int x, int y, t_draw *img);
-
-//DRAWER.C
-void	put_pixel(t_draw *img, int x, int y, int color);
-
-//FT_MEMCPYFAST.C
-void	*ft_memcpyfast(void *dest, const void *src, size_t n);
-
-//MAIN.C
-t_v2	rotate_vector(const t_v2 *vector, int deg);
-
-//DRAW_FLOOR.C
-void	draw_floor(t_cub *cub);
-void	draw_ceiling(t_cub *cub);
-
-//DRAW_DOORS.C
-void	drawDoor(t_cub *c, t_ray *r, int x);
-int		drawDoor_H(t_cub *c, t_ray *r, int x);
-void	drawDoor_V(t_cub *c, t_ray *r, int x);
-int		has_hitDoor(t_cub *cub, int map_x, int map_y);
-void	drawDoor_H2(t_cub *c, t_ray *r, int x);
-
-//DRAW_UTILS.C
-double	dabs(double d);
-int		get_texpixel(int x, int y, t_draw *img);
-float	wall_shade(float dist, int side);
-int		has_hitwall(t_cub *cub, int map_x, int map_y);
-int		has_hitvoid(t_cub *cub, int map_x, int map_y);
-void	ray_helper(t_cub *cub, t_ray *r, int x);
-int		init_img(t_cub *cub);
-void	move_player(t_cub *c);
-void	set_playerinitialrot(t_cub *c);
-
-//CHECK_MAP.C
-
-void	check_map(t_cub *c);
-void	exit_maperror(t_cub *c);
-t_draw	*init_background(t_cub *cub);
-t_draw	*draw_background(t_cub *cub);
-float	drawbk_helper(t_cub *c, int bky);
-t_bk	init_bkstruct(void);
-int		map_sizex(t_cub *cub);
-
-//CHECK_PLAYER.C
-int player_check(t_cub *c);
-
-//CHECK_INIT.C
-int check_init(t_cub *c);
-
-//FILE_CHECK.C
-void file_error(int err);
-int ends_with_dotcub(char *str);
-void file_check(int argc, char **argv);
-
-//MAP_CHECK.C
-int get_notexpath(t_cub *cub);
-int get_sotexpath(t_cub *cub);
-int get_wetexpath(t_cub *cub);
-int get_eatexpath(t_cub *cub);
-
-//MAP_CHECK2.C
-int get_floorclr(t_cub *cub);
-int get_clclr(t_cub *cub);
-int	parse_color2(char *line);
-int parsecolor2_helper(char **split, int color);
-int is_line_empty(char *line);
-
-//CHECK_MAPSTR.C
-int check_foremptylines(t_cub *cub);
-int is_notwall(int c);
-int is_empty(t_cub *c,int x,int y);
-int check_ismapclosed(t_cub *cub);
-
-//CHECK_PLAYER.C
-int check_player(t_cub *cub);
-
-//MAP_INIT.C
-void map_init(t_cub *cub);
-void map_init_helper(t_cub *cub);
-
-//HANDLE_KEYS.C
-int	handle_mouse(t_cub *cub);
-int	handle_key(int keycode, t_cub *cub);
-int	handle_keyrelease(int keycode, t_cub *cub);
-
 //BONUS.C
-void	draw_square(t_cub *cub, int x0, int y0, int size);
-void	draw_minimap(t_cub *cub);
-void	draw_minimap_helper(t_cub *cub, t_minimap *mi);
-void	draw_line(t_v2 p1, t_v2 p2, t_cub *cub, int norminette);
-void	draw_minimap_player(t_cub *cub, t_minimap *mi);
+void		draw_square(t_cub *cub, int x0, int y0, int size);
+void		draw_minimap(t_cub *cub);
+void		draw_minimap_helper(t_cub *cub, t_minimap *mi);
+void		draw_line(t_v2 p1, t_v2 p2, t_cub *cub, int norminette);
+void		draw_minimap_player(t_cub *cub, t_minimap *mi);
 
 //BONUS2.C
-int	is_colliding(t_cub *c, float x, float y);
-void	move_col(t_cub *c, t_player *p);
-void	mouse_rotate(t_cub *cub);
-void	draw_hline(t_cub *cub, int x1, int x2, int y);
-void	draw_circle(t_cub *cub, int x0, int y0, int radius);
+int			is_colliding(t_cub *c, float x, float y);
+void		move_col(t_cub *c, t_player *p);
+void		mouse_rotate(t_cub *cub);
+void		draw_hline(t_cub *cub, int x1, int x2, int y);
+void		draw_circle(t_cub *cub, int x0, int y0, int radius);
 
 //BONUS3.C
 t_minimap	*malloc_minimap(void);
-void	draw_hline_w(t_cub *cub, int x1, int x2, int y);
+void		draw_hline_w(t_cub *cub, int x1, int x2, int y);
+
+//CHECK_MAP.C
+int			param_check(t_cub *c);
+int			char_check(char *str);
+int			check_mapstr(t_cub *c);
+int			textfiles_check(t_cub *c);
+void		check_map(t_cub *c);
+
+//CHECK_MAP2.C
+void		exit_maperror(t_cub *c);
+
+//CHECK_MAPSTR.C
+int			check_foremptylines(t_cub *cub);
+int			check_ismapclosed(t_cub *cub);
+int			is_empty(t_cub *c, int x, int y);
+int			is_notwall(int c);
+
+//CHECK_PLAYER.C
+int			check_player(t_cub *cub);
+
+//CLEAN.C
+void		free_texture(t_cub *cub);
+void		free_player(t_player *p);
+void		free_map(t_cub *cub);
+void		free_all(t_cub *cub);
+int			destroystuff(t_cub *cub);
+
+//COLORS_UTILS.C
+int			color_mult(int color, float ratio);
+int			color_mult_fast(int color, int ratio, t_cub *cub);
+int			create_argb(int alpha, int r, int g, int b);
+float		remap(float ratio, float low, float high);
+
+//DEBUG.C
+void		debug_printmap(t_cub *cub);
+void		debug_printplayer(t_player *p);
+void		debug_printcub(t_cub *cub);
+void		draw_debug(t_cub *cub);
+
+//DRAW_BACKGROUND.C
+t_bk		init_bkstruct(void);
+float		drawbk_helper(t_cub *c, int bky);
+t_draw		*draw_background(t_cub *cub);
+
+//DRAW_RAY.C
+void		ray_start(t_cub *cub, t_ray *r, int x);
+void		ray_dir(t_cub *cub, t_ray *r);
+void		ray_side(t_ray *r);
+void		ray_hit(t_cub *cub, t_ray *r);
+void		ray_helper(t_cub *cub, t_ray *r, int x);
+
+//DRAW_UTILS.C
+double		dabs(double d);
+int			get_texpixel(int x, int y, t_draw *img);
+float		wall_shade(float dist, int side);
+int			has_hitwall(t_cub *cub, int map_x, int map_y);
+int			has_hitvoid(t_cub *cub, int map_x, int map_y);
+
+//DRAW_VERTICAL.C
+void		draw_vside(t_cub *cub, t_ray *r, t_vert *v);
+void		draw_vertical(t_cub *cub, t_ray *r, int x);
+
+//DRAW_WALLS.C
+void		draw_walls(t_cub *cub);
+
+//DRAWER.C
+void		put_pixel(t_draw *img, int x, int y, int color);
+t_draw		*init_background(t_cub *cub);
+
+//ERRORS.C
+void		errormap_exit(t_cub *c);
+void		error_exit(t_cub *c);
+
+//FILE_CHECK.C
+void		file_error(int err);
+int			ends_with_dotcub(char *str);
+void		file_check(int argc, char **argv);
+
+//FT_MEMCPYFAST.C
+void		*ft_memcpyfast(void *dest, const void *src, size_t n);
+
+//HANDLE_KEYS.C
+int			handle_key(int keycode, t_cub *cub);
+int			handle_keyrelease(int keycode, t_cub *cub);
+int			handle_mouse(t_cub *cub);
+
+//IMG.C
+int			start_window(t_cub *cub);
+
+//INIT.C
+t_cub		*init(char **argv);
+int			data_img(t_cub *cub);
+t_draw		*init_buffer(t_cub *cub);
+int			init_img(t_cub *cub);
+int			get_playerinitialdir(t_cub *c);
+
+//INIT2.C
+t_player	*player_init(t_cub *cub);
+t_cub		*create_cub_h(char *path);
+t_cub		*create_cub(char *path);
+void		set_floatmap(t_cub *c);
+void		init_floatmap(t_cub *c);
+
+//INIT3.C
+void		init_shadelut(t_cub *cub);
+void		init_map(t_cub *cub);
+
+//MAIN.C
+void		copy_buffer(t_draw *dest, const t_draw *src, t_cub *cub);
+void		cap_fps(t_cub *cub);
+int			render_loop(t_cub *cub);
+int			main(int argc, char **argv);
+
+//MAP_CHECK.C
+int			get_notexpath(t_cub *cub);
+int			get_sotexpath(t_cub *cub);
+int			get_wetexpath(t_cub *cub);
+int			get_eatexpath(t_cub *cub);
+
+//MAP_CHECK2.C
+int			is_line_empty(char *line);
+int			get_floorclr(t_cub *cub);
+int			get_clclr(t_cub *cub);
+int			parse_color2(char *line);
+int			parsecolor2_helper(char **split, int color);
+
+//MAP_INIT.C
+void		map_init(t_cub *cub);
+void		map_init_helper(t_cub *cub);
+
+//MAP_UTILS.C
+int			map_sizex(t_cub *cub);
+
+//MAP.C
+void		map_parse(char *line, t_cub *cub);
+void		map_parse2_init(t_cub *cub);
+void		map_parse2(t_cub *cub);
+void		add_to_map(int x, int y, t_cub *cub);
+
+//MOVEMENT.C
+void		move_nocol(t_cub *c, t_player *p);
+void		move_player(t_cub *c);
+t_v2		rotate_vector(const t_v2 *vector, int deg);
+void		set_playerinitialrot(t_cub *c);
+
+//PARSEUTILS.C
+char		*parse_texturepath(char *line);
+int			parse_color(char *line);
