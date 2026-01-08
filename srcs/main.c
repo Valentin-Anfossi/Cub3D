@@ -6,17 +6,11 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/07 10:12:38 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/08 10:29:42 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-//WALLCOLLISIONS ✅
-//MINIMAP ✅
-//DOORS
-//SPRITES 
-//ROTATEMOUSE ✅
 
 void	copy_buffer(t_draw *dest, const t_draw *src, t_cub *cub)
 {
@@ -44,9 +38,8 @@ int	render_loop(t_cub *cub)
 	draw_minimap(cub);
 	mlx_put_image_to_window(cub->mlx, cub->window, cub->buffer->img, 0, 0);
 	move_player(cub);
-	// mouse_rotate(cub);
+	mouse_rotate(cub);
 	cap_fps(cub);
-	
 	return (1);
 }
 
@@ -54,7 +47,7 @@ int	main(int argc, char **argv)
 {
 	t_cub	*cub;
 
-	file_check(argc,argv);
+	file_check(argc, argv);
 	cub = init(argv);
 	if (!cub || cub->errnum != 0)
 		error_exit(cub);
@@ -64,7 +57,7 @@ int	main(int argc, char **argv)
 	mlx_hook(cub->window, KeyPress, KeyPressMask, handle_key, cub);
 	mlx_hook(cub->window, KeyRelease, KeyRelease, handle_keyrelease, cub);
 	mlx_do_key_autorepeatoff(cub->mlx);
-	mlx_mouse_hide(cub->mlx,cub->window);
+	mlx_mouse_hide(cub->mlx, cub->window);
 	set_playerinitialrot(cub);
 	mlx_loop_hook(cub->mlx, render_loop, cub);
 	mlx_loop(cub->mlx);

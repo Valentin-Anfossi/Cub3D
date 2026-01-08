@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:03:43 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 15:11:24 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/08 10:22:50 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ int	char_check(char *str)
 		c = str[i];
 		if (c != '0' && c != '1' && c != 'N' && c != 'S' && c != 'W'
 			&& c != 'E' && c != ' ' && c != '\n')
-			{
-				printf("Invalid char in map.\n");
-				return (0);
-			}
+		{
+			printf("Invalid char in map.\n");
+			return (0);
+		}
 		i ++;
 	}
 	return (1);
@@ -94,12 +94,12 @@ void	check_map(t_cub *c)
 	{
 		exit_maperror(c);
 	}
-	if(!check_foremptylines(c))
+	if (!check_foremptylines(c))
 	{
 		printf("Empty line in map.\n");
 		exit_maperror(c);
 	}
-	if(!check_ismapclosed(c))
+	if (!check_ismapclosed(c))
 	{
 		printf("Map isn't closed.\n");
 		exit_maperror(c);
@@ -109,12 +109,10 @@ void	check_map(t_cub *c)
 		printf("Invalid/missing texture file.\n");
 		exit_maperror(c);
 	}
-	else if(!check_player(c))
+	else if (!check_player(c))
 	{
 		exit_maperror(c);
 	}
 	else
 		return ;
 }
-
-

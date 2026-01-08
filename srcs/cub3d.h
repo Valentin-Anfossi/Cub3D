@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/07 15:31:13 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/08 10:57:49 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -333,16 +333,25 @@ int check_player(t_cub *cub);
 void map_init(t_cub *cub);
 void map_init_helper(t_cub *cub);
 
-//BONUS.C
-void move_col(t_cub *c, t_player *p);
-t_minimap *malloc_minimap();
-void mouse_rotate(t_cub *c);
-void draw_minimap(t_cub *cub);
-void draw_minimap_helper(t_cub *cub, t_minimap *mi);
-void draw_minimap_player(t_cub *cub, t_minimap *mi);
-void draw_thickline(t_v2 p0, t_v2 p1, t_cub *cub);
-
 //HANDLE_KEYS.C
 int	handle_mouse(t_cub *cub);
 int	handle_key(int keycode, t_cub *cub);
 int	handle_keyrelease(int keycode, t_cub *cub);
+
+//BONUS.C
+void	draw_square(t_cub *cub, int x0, int y0, int size);
+void	draw_minimap(t_cub *cub);
+void	draw_minimap_helper(t_cub *cub, t_minimap *mi);
+void	draw_line(t_v2 p1, t_v2 p2, t_cub *cub, int norminette);
+void	draw_minimap_player(t_cub *cub, t_minimap *mi);
+
+//BONUS2.C
+int	is_colliding(t_cub *c, float x, float y);
+void	move_col(t_cub *c, t_player *p);
+void	mouse_rotate(t_cub *cub);
+void	draw_hline(t_cub *cub, int x1, int x2, int y);
+void	draw_circle(t_cub *cub, int x0, int y0, int radius);
+
+//BONUS3.C
+t_minimap	*malloc_minimap(void);
+void	draw_hline_w(t_cub *cub, int x1, int x2, int y);

@@ -6,28 +6,28 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:12:23 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 10:36:03 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/08 10:26:34 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int check_player(t_cub *cub)
+int	check_player(t_cub *cub)
 {
-	int i;
-	int j;
-	char c;
-	int p;
+	int		i;
+	int		j;
+	char	c;
+	int		p;
 
 	i = 0;
 	p = 0;
-	while(cub->map_str[i])
+	while (cub->map_str[i])
 	{
 		j = 0;
-		while(cub->map_str[i][j])
+		while (cub->map_str[i][j])
 		{
-			c  = cub->map_str[i][j];
-			if (c == 'N' || c == 'S' || c == 'E' || c =='W')
+			c = cub->map_str[i][j];
+			if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 				p ++;
 			j ++;
 		}

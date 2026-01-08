@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:21:13 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/04 11:36:06 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/08 10:29:04 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_cub	*init(char **argv)
 {
 	t_cub	*cub;
-	
+
 	cub = create_cub(argv[1]);
 	return (cub);
 }

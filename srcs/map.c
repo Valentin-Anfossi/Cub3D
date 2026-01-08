@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:26:27 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 15:07:00 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/08 10:33:36 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	map_parse(char *line, t_cub *cub)
 	i = 0;
 	sizex = 0;
 	cub->map_str = (char **)malloc (sizeof(char *) * MAP_SIZE);
-	while(is_line_empty(line))
+	while (is_line_empty(line))
 	{
 		free(line);
 		line = get_next_line(cub->map_fd);
@@ -35,7 +35,7 @@ void	map_parse(char *line, t_cub *cub)
 		line = get_next_line(cub->map_fd);
 	}
 	cub->map_str[i] = NULL;
-	cub->map_size_y = i; //mapsizex 1 PB
+	cub->map_size_y = i;
 	cub->map_size_x = sizex - 1;
 	check_map(cub);
 	map_parse2(cub);
@@ -47,7 +47,7 @@ void	map_parse2_init(t_cub *cub)
 
 	i = 0;
 	cub->map = (int **)malloc(sizeof(int *) * cub->map_size_y);
-	if(!cub->map)
+	if (!cub->map)
 	{
 		cub->errnum = 2;
 		return ;
@@ -109,11 +109,9 @@ void	add_to_map(int x, int y, t_cub *cub)
 		cub->map[x][y] = P_EAST;
 	else if (c == 'W')
 		cub->map[x][y] = P_WEST;
-
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 	{
 		cub->player_pos[0] = x;
 		cub->player_pos[1] = y;
 	}
 }
-

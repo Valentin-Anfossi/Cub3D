@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 08:31:24 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/06 11:35:07 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/08 10:59:12 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	free_all(t_cub *cub)
 	free(cub->player_pos);
 	mlx_destroy_window(cub->mlx, cub->window);
 	mlx_destroy_display(cub->mlx);
+	free(cub->minimap);
 	free(cub->mlx);
 	free(cub);
 }

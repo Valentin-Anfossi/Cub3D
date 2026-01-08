@@ -6,7 +6,7 @@
 #    By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/09 17:41:00 by vanfossi          #+#    #+#              #
-#    Updated: 2026/01/06 15:29:11 by vanfossi         ###   ########.fr        #
+#    Updated: 2026/01/08 10:55:16 by vanfossi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,11 +44,21 @@ SRCS	= 	./srcs/check_map.c \
 			./srcs/check_mapstr.c \
 			./srcs/check_player.c \
 			./srcs/map_init.c \
-			./srcs/bonus.c 
+			./srcs/bonus.c \
+			./srcs/bonus2.c \
+			./srcs/bonus3.c
+
+SRCS_BONUS = $(foo:./srcs/=./srcs_bonus/)
+
 
 MLX = ./minilibx-linux/libmlx_Linux.a
 
 all: $(NAME)
+
+bonus : $(BONUS)
+
+$(BONUS): $(SRCS_BONUS) $(MLX) $(LIBFT)
+	cc -g -Wall -Wextra -Werror $(SRCS_BONUS) $(MLX) $(LIBFT) -o $(NAME) -lX11 -lXext -lm -O3
 
 $(NAME): $(SRCS) $(MLX) $(LIBFT)
 	cc -g -Wall -Wextra -Werror $(SRCS) $(MLX) $(LIBFT) -o $(NAME) -lX11 -lXext -lm -O3
