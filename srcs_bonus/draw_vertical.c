@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_vertical.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi/jelucian <vanfossi@student.42n    +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 11:22:45 by vanfossi          #+#    #+#             */
-/*   Updated: 2025/10/19 02:23:00 by vanfossi/je      ###   ########.fr       */
+/*   Updated: 2026/01/09 10:34:15 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ void	draw_vside(t_cub *cub, t_ray *r, t_vert *v)
 	if (r->side == 0)
 	{
 		if (r->step_x == -1)
-			v->cur_tex = cub->texture_no;
-		else
 			v->cur_tex = cub->texture_so;
+		else
+			v->cur_tex = cub->texture_no;
 	}
 	else
 	{
 		if (r->step_y == -1)
-			v->cur_tex = cub->texture_we;
-		else
 			v->cur_tex = cub->texture_ea;
+		else
+			v->cur_tex = cub->texture_we;
 	}
 	if (r->side == 0)
 		v->wall_x = cub->player->pos->y + r->perpwall_dist * r->raydir_y;
