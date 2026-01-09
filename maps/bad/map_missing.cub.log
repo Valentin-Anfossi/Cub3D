@@ -1,14 +1,14 @@
-==47732== Memcheck, a memory error detector
-==47732== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==47732== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==47732== Command: ./cub3D maps/bad/map_missing.cub
-==47732== 
-==47732== 
-==47732== HEAP SUMMARY:
-==47732==     in use at exit: 0 bytes in 0 blocks
-==47732==   total heap usage: 50 allocs, 50 frees, 268,081 bytes allocated
-==47732== 
-==47732== All heap blocks were freed -- no leaks are possible
-==47732== 
-==47732== For lists of detected and suppressed errors, rerun with: -s
-==47732== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==21138== Memcheck, a memory error detector
+==21138== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==21138== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==21138== Command: ./cub3D maps/bad/map_missing.cub
+==21138== 
+==21138== 
+==21138== HEAP SUMMARY:
+==21138==     in use at exit: 0 bytes in 0 blocks
+==21138==   total heap usage: 50 allocs, 50 frees, 268,097 bytes allocated
+==21138== 
+==21138== All heap blocks were freed -- no leaks are possible
+==21138== 
+==21138== For lists of detected and suppressed errors, rerun with: -s
+==21138== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

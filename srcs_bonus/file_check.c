@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 06:37:43 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/08 10:33:29 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/09 11:03:47 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 void	file_error(int err)
 {
 	if (err == 1)
-		printf("Invalid arguments (needs ./cub3d path/to/map.cub)\n");
+		printf("Error\nInvalid arguments (needs ./cub3d path/to/map.cub)\n");
 	if (err == 2)
-		printf("Invalid arguments (unexpected eof or no arguments)\n");
+		printf("Error\nInvalid arguments (unexpected eof or no arguments)\n");
 	if (err == 3)
-		printf("Invalid mapfile (doesn't exist or cannot open)\n");
+		printf("Error\nInvalid mapfile (doesn't exist or cannot open)\n");
 	if (err == 4)
-		printf("Invalid file type (must end with .cub)\n");
+		printf("Error\nInvalid file type (must end with .cub)\n");
 	if (err == 5)
-		printf("Empty file.\n");
+		printf("Error\nEmpty file.\n");
 	exit(1);
 }
 

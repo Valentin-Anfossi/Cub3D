@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 08:31:24 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/08 10:59:12 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/09 11:10:13 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	free_map(t_cub *cub)
 void	free_all(t_cub *cub)
 {
 	mlx_do_key_autorepeaton(cub->mlx);
-	mlx_mouse_show(cub->mlx, cub->window);
+	// mlx_mouse_show(cub->mlx, cub->window);
 	free_texture(cub);
 	free_player(cub->player);
 	free_map(cub);

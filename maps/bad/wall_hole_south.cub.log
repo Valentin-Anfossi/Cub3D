@@ -1,14 +1,14 @@
-==47840== Memcheck, a memory error detector
-==47840== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==47840== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==47840== Command: ./cub3D maps/bad/wall_hole_south.cub
-==47840== 
-==47840== 
-==47840== HEAP SUMMARY:
-==47840==     in use at exit: 0 bytes in 0 blocks
-==47840==   total heap usage: 97 allocs, 97 frees, 268,897 bytes allocated
-==47840== 
-==47840== All heap blocks were freed -- no leaks are possible
-==47840== 
-==47840== For lists of detected and suppressed errors, rerun with: -s
-==47840== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==21231== Memcheck, a memory error detector
+==21231== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==21231== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==21231== Command: ./cub3D maps/bad/wall_hole_south.cub
+==21231== 
+==21231== 
+==21231== HEAP SUMMARY:
+==21231==     in use at exit: 0 bytes in 0 blocks
+==21231==   total heap usage: 97 allocs, 97 frees, 268,913 bytes allocated
+==21231== 
+==21231== All heap blocks were freed -- no leaks are possible
+==21231== 
+==21231== For lists of detected and suppressed errors, rerun with: -s
+==21231== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

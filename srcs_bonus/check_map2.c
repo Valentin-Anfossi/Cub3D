@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 02:21:45 by vanfossi/je       #+#    #+#             */
-/*   Updated: 2026/01/08 10:23:56 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/09 11:00:53 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	exit_maperror(t_cub *c)
 	int	i;
 
 	i = 0;
-	printf("Map error.\n");
+	printf("Error\nMap error.\n");
 	free (c->ea_texpath);
 	free (c->we_texpath);
 	free (c->no_texpath);

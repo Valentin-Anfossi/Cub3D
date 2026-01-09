@@ -1,29 +1,29 @@
-==47803== Memcheck, a memory error detector
-==47803== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==47803== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==47803== Command: ./cub3D maps/bad/textures_none.cub
-==47803== 
-==47803== 
-==47803== HEAP SUMMARY:
-==47803==     in use at exit: 10 bytes in 1 blocks
-==47803==   total heap usage: 11 allocs, 10 frees, 263,598 bytes allocated
-==47803== 
-==47803== 10 bytes in 1 blocks are still reachable in loss record 1 of 1
-==47803==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==47803==    by 0x1167B5: ft_substr (in /home/vanfossi/Cub3D/cub3D)
-==47803==    by 0x116BD8: get_rest (in /home/vanfossi/Cub3D/cub3D)
-==47803==    by 0x116D71: get_next_line (in /home/vanfossi/Cub3D/cub3D)
-==47803==    by 0x1130F5: get_notexpath (map_check.c:21)
-==47803==    by 0x11278C: map_init (map.c:49)
-==47803==    by 0x111C5A: create_cub (init2.c:65)
-==47803==    by 0x10FA34: main (main.c:49)
-==47803== 
-==47803== LEAK SUMMARY:
-==47803==    definitely lost: 0 bytes in 0 blocks
-==47803==    indirectly lost: 0 bytes in 0 blocks
-==47803==      possibly lost: 0 bytes in 0 blocks
-==47803==    still reachable: 10 bytes in 1 blocks
-==47803==         suppressed: 0 bytes in 0 blocks
-==47803== 
-==47803== For lists of detected and suppressed errors, rerun with: -s
-==47803== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==21203== Memcheck, a memory error detector
+==21203== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==21203== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==21203== Command: ./cub3D maps/bad/textures_none.cub
+==21203== 
+==21203== 
+==21203== HEAP SUMMARY:
+==21203==     in use at exit: 10 bytes in 1 blocks
+==21203==   total heap usage: 11 allocs, 10 frees, 263,614 bytes allocated
+==21203== 
+==21203== 10 bytes in 1 blocks are still reachable in loss record 1 of 1
+==21203==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21203==    by 0x116815: ft_substr (in /home/vanfossi/Cub3D/cub3D)
+==21203==    by 0x116C38: get_rest (in /home/vanfossi/Cub3D/cub3D)
+==21203==    by 0x116DD1: get_next_line (in /home/vanfossi/Cub3D/cub3D)
+==21203==    by 0x112F95: get_notexpath (map_check.c:21)
+==21203==    by 0x113A1C: map_init (map_init.c:17)
+==21203==    by 0x111C84: create_cub (init2.c:66)
+==21203==    by 0x10FA34: main (main.c:49)
+==21203== 
+==21203== LEAK SUMMARY:
+==21203==    definitely lost: 0 bytes in 0 blocks
+==21203==    indirectly lost: 0 bytes in 0 blocks
+==21203==      possibly lost: 0 bytes in 0 blocks
+==21203==    still reachable: 10 bytes in 1 blocks
+==21203==         suppressed: 0 bytes in 0 blocks
+==21203== 
+==21203== For lists of detected and suppressed errors, rerun with: -s
+==21203== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

@@ -1,0 +1,14 @@
+NO ./tiles/Rock.xpm
+SO ./tiles/Stone.xpm
+WE ./tiles/Wood.xpm
+EA ./tiles/Bricks.xpm
+F 30,100,30
+C 10,50,120
+
+1111111
+1000001
+1011101
+101 101
+1011101
+100N001
+1111111

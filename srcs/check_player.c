@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:12:23 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/08 10:26:34 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/09 10:56:58 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	check_player(t_cub *cub)
 	}
 	if (p != 1)
 	{
-		printf("Invalid player count.\n");
+		printf("Error\nInvalid player count.\n");
 		return (0);
 	}
 	return (1);
