@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: jelucian <jelucian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/09 11:10:06 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:17:01 by jelucian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	copy_buffer(t_draw *dest, const t_draw *src, t_cub *cub)
 {
-	ft_memcpyfast(dest->data, src->data, (cub->winsize_x * cub->winsize_y)
-		* sizeof(int));
+	ft_memcpyfast(dest->data, src->data,
+		(cub->winsize_x * cub->winsize_y) * sizeof(int));
 }
 
 void	cap_fps(t_cub *cub)
@@ -37,8 +37,8 @@ int	render_loop(t_cub *cub)
 	draw_walls(cub);
 	draw_minimap(cub);
 	mlx_put_image_to_window(cub->mlx, cub->window, cub->buffer->img, 0, 0);
-	move_player(cub);
 	mouse_rotate(cub);
+	move_player(cub);
 	cap_fps(cub);
 	return (1);
 }
@@ -57,8 +57,8 @@ int	main(int argc, char **argv)
 	mlx_hook(cub->window, KeyPress, KeyPressMask, handle_key, cub);
 	mlx_hook(cub->window, KeyRelease, KeyRelease, handle_keyrelease, cub);
 	mlx_do_key_autorepeatoff(cub->mlx);
-	// mlx_mouse_hide(cub->mlx, cub->window);
 	set_playerinitialrot(cub);
+	mlx_mouse_get_pos(cub->mlx, cub->window, &cub->mouse_x, &cub->mouse_y);
 	mlx_loop_hook(cub->mlx, render_loop, cub);
 	mlx_loop(cub->mlx);
 	mlx_do_key_autorepeaton(cub->mlx);

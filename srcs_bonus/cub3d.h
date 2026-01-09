@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: jelucian <jelucian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/08 18:34:51 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:11:18 by jelucian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,15 @@
 
 typedef struct s_v3
 {
-	int		x;
-	int		y;
-	int		z;
+	int				x;
+	int				y;
+	int				z;
 }	t_v3;
 
 typedef struct s_intv2
 {
-	int	x;
-	int	y;
+	int				x;
+	int				y;
 }	t_intv2;
 
 typedef struct s_v2
@@ -81,48 +81,50 @@ typedef struct s_draw
 	int				pos_y;
 	int				width;
 	int				height;
-}			t_draw;
+}	t_draw;
 
 typedef struct s_bk
 {
-	int		x;
-	int		y;
-	float	rt;
-}			t_bk;
+	int				x;
+	int				y;
+	float			rt;
+}	t_bk;
 
 typedef struct s_vert
 {
-	float	wall_x;
-	float	tex_pos;
-	int		tex_x;
-	int		tex_y;
-	float	step;
-	int		shade;
-	t_draw	*cur_tex;
+	float			wall_x;
+	float			tex_pos;
+	int				tex_x;
+	int				tex_y;
+	float			step;
+	int				shade;
+	t_draw			*cur_tex;
 }	t_vert;
 
 typedef struct s_player
 {
-	int		col_true;
-	t_v2	*pos;
-	t_v2	*dir;
-	t_v2	*plane;
-	t_v3	*input;
-	float	speed;
-	float	rot_speed;
+	int				col_true;
+	t_v2			*pos;
+	t_v2			*dir;
+	t_v2			*plane;
+	t_v3			*input;
+	t_v3			*input_mouse;
+
+	float			speed;
+	float			rot_speed;
 }	t_player;
 
 typedef struct s_minimap
 {
-	float	zoom;
-	int		map_sizey;
-	int		map_sizex;
-	float	xpos;
-	float	ypos;
-	int		x;
-	int		y;
-	float	xmap;
-	float	ymap;
+	float			zoom;
+	int				map_sizey;
+	int				map_sizex;
+	float			xpos;
+	float			ypos;
+	int				x;
+	int				y;
+	float			xmap;
+	float			ymap;
 }	t_minimap;
 
 typedef struct s_cub
@@ -163,52 +165,55 @@ typedef struct s_cub
 	struct timeval	old_time;
 	double			delta_time;
 	int				map_fullscreen;
+	int				mouse_x;
+	int				mouse_y;
+	int				mouse_active;
 }	t_cub;
 
 typedef struct s_ray
 {
-	float	camera_x;
-	float	raydir_x;
-	float	raydir_x1;
-	float	raydir_y;
-	float	raydir_y1;
-	float	side_disty;
-	float	side_distx;
-	float	delta_distx;
-	float	delta_disty;
-	float	perpwall_dist;
-	float	floor_stepx;
-	float	floor_stepy;
-	float	row_distance;
-	float	floor_x;
-	float	floor_y;
-	int		draw_start;
-	int		draw_end;
-	int		line_height;
-	int		step_x;
-	int		step_y;
-	int		hit;
-	int		side;
-	int		map_x;
-	int		map_y;
+	float			camera_x;
+	float			raydir_x;
+	float			raydir_x1;
+	float			raydir_y;
+	float			raydir_y1;
+	float			side_disty;
+	float			side_distx;
+	float			delta_distx;
+	float			delta_disty;
+	float			perpwall_dist;
+	float			floor_stepx;
+	float			floor_stepy;
+	float			row_distance;
+	float			floor_x;
+	float			floor_y;
+	int				draw_start;
+	int				draw_end;
+	int				line_height;
+	int				step_x;
+	int				step_y;
+	int				hit;
+	int				side;
+	int				map_x;
+	int				map_y;
 }	t_ray;
 
-//FUNCTIONS
-//BONUS.C
+// FUNCTIONS
+// BONUS.C
 void		draw_square(t_cub *cub, int x0, int y0, int size);
 void		draw_minimap(t_cub *cub);
 void		draw_minimap_helper(t_cub *cub, t_minimap *mi);
 void		draw_line(t_v2 p1, t_v2 p2, t_cub *cub, int norminette);
 void		draw_minimap_player(t_cub *cub, t_minimap *mi);
 
-//BONUS2.C
+// BONUS2.C
 int			is_colliding(t_cub *c, float x, float y);
 void		move_col(t_cub *c, t_player *p);
 void		mouse_rotate(t_cub *cub);
 void		draw_hline(t_cub *cub, int x1, int x2, int y);
 void		draw_circle(t_cub *cub, int x0, int y0, int radius);
 
-//BONUS3.C
+// BONUS3.C
 t_minimap	*malloc_minimap(void);
 void		draw_hline_w(t_cub *cub, int x1, int x2, int y);
 
@@ -355,6 +360,7 @@ void		move_nocol(t_cub *c, t_player *p);
 void		move_player(t_cub *c);
 t_v2		rotate_vector(const t_v2 *vector, int deg);
 void		set_playerinitialrot(t_cub *c);
+void		mouseinput_player(t_cub *c);
 
 //PARSEUTILS.C
 char		*parse_texturepath(char *line);

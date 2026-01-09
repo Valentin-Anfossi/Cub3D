@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: jelucian <jelucian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 09:09:20 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/08 18:58:59 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:01:33 by jelucian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ t_cub	*create_cub(char *path)
 	cub->mlx = mlx_init();
 	if (init_img(cub))
 		return (NULL);
-	cub->window = mlx_new_window
-		(cub->mlx, cub->winsize_x, cub->winsize_y, "Cub3d");
+	cub->window = mlx_new_window(cub->mlx,
+			cub->winsize_x, cub->winsize_y, "Cub3d");
 	if (!cub->window)
 	{
 		free(cub);
@@ -92,13 +92,13 @@ void	set_floatmap(t_cub *c)
 		while (y < c->map_size_y)
 		{
 			if (c->map[x][y] == WALL || c->map[x][y] == DOOR_V ||
-					c->map[x][y] == DOOR_H)
+				c->map[x][y] == DOOR_H)
 				c->floatmap[x][y] = 1.0f;
 			else
 				c->floatmap[x][y] = 0.0f;
-			y ++;
+			y++;
 		}
-		x ++;
+		x++;
 	}
 }
 
@@ -113,7 +113,7 @@ void	init_floatmap(t_cub *c)
 		c->floatmap[i] = malloc(sizeof(float) * c->map_size_y);
 		if (!c->floatmap[i])
 			return ;
-		i ++;
+		i++;
 	}
 	set_floatmap(c);
 }

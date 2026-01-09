@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: jelucian <jelucian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 17:50:58 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/08 18:17:01 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/09 14:50:29 by jelucian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,29 @@ void	move_player(t_cub *c)
 			- p->plane->y * sin(p->rot_speed * p->input->y);
 		p->plane->y = oldplane_x * sin(p->rot_speed * p->input->y)
 			+ p->plane->y * cos(p->rot_speed * p->input->y);
+	}
+	mouseinput_player(c);
+}
+
+void	mouseinput_player(t_cub *c)
+{
+	float		olddir_x;
+	float		oldplane_x;
+	t_player	*p;
+
+	p = c->player;
+	if (p->input_mouse->y != 0)
+	{
+		olddir_x = p->dir->x;
+		p->dir->x = p->dir->x * cos(p->rot_speed * p->input_mouse->y)
+			- p->dir->y * sin(p->rot_speed * p->input_mouse->y);
+		p->dir->y = olddir_x * sin(p->rot_speed * p->input_mouse->y)
+			+ p->dir->y * cos(p->rot_speed * p->input_mouse->y);
+		oldplane_x = p->plane->x;
+		p->plane->x = p->plane->x * cos(p->rot_speed * p->input_mouse->y)
+			- p->plane->y * sin(p->rot_speed * p->input_mouse->y);
+		p->plane->y = oldplane_x * sin(p->rot_speed * p->input_mouse->y)
+			+ p->plane->y * cos(p->rot_speed * p->input_mouse->y);
 	}
 }
 

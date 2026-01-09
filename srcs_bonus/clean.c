@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: jelucian <jelucian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 08:31:24 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/09 11:10:13 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:00:18 by jelucian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	free_player(t_player *p)
 	free(p->pos);
 	free(p->plane);
 	free(p->input);
+	free(p->input_mouse);
 	free(p->dir);
 	free(p);
 }
@@ -61,7 +62,6 @@ void	free_map(t_cub *cub)
 void	free_all(t_cub *cub)
 {
 	mlx_do_key_autorepeaton(cub->mlx);
-	// mlx_mouse_show(cub->mlx, cub->window);
 	free_texture(cub);
 	free_player(cub->player);
 	free_map(cub);

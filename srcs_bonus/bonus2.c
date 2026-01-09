@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: jelucian <jelucian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:58:19 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/08 18:40:10 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:03:17 by jelucian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_colliding(t_cub *c, float x, float y)
 {
-	int		check[4];
+	int	check[4];
 
 	check[0] = (int)(x - COL_DIST);
 	check[1] = (int)(x + COL_DIST);
@@ -58,13 +58,8 @@ void	mouse_rotate(t_cub *cub)
 	int	y;
 
 	mlx_mouse_get_pos(cub->mlx, cub->window, &x, &y);
-	if (cub->player->input->y == 0)
-	{
-		cub->player->input->y = (int)((-(x - (cub->winsize_x / 2)))
-				* MOUSE_SENS);
-	}
-	mlx_mouse_move(cub->mlx, cub->window, cub->winsize_x / 2,
-		cub->winsize_y / 2);
+	cub->player->input_mouse->y = -((x - cub->mouse_x) * MOUSE_SENS);
+	cub->mouse_x = x;
 }
 
 void	draw_hline(t_cub *cub, int x1, int x2, int y)

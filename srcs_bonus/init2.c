@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: jelucian <jelucian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 09:09:20 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/07 11:55:23 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/09 14:53:26 by jelucian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_player	*player_init(t_cub *cub)
 	p->pos = malloc(sizeof(t_v2));
 	p->plane = malloc(sizeof(t_v2));
 	p->input = malloc(sizeof(t_v3));
+	p->input_mouse = malloc(sizeof(t_v3));
 	p->dir = malloc(sizeof(t_v2));
 	p->dir->x = 0.0;
 	p->dir->y = 1.0;
@@ -32,6 +33,9 @@ t_player	*player_init(t_cub *cub)
 	p->input->x = 0;
 	p->input->y = 0;
 	p->input->z = 0;
+	p->input_mouse->x = 0;
+	p->input_mouse->y = 0;
+	p->input_mouse->z = 0;
 	return (p);
 }
 
@@ -55,6 +59,8 @@ t_cub	*create_cub_h(char *path)
 	cub->map_fullscreen = 0;
 	cub->player_pos = malloc(sizeof(int) * 2);
 	cub->delta_time = 0;
+	cub->mouse_x = 0;
+	cub->mouse_y = 0;
 	return (cub);
 }
 
