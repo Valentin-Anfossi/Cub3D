@@ -1,29 +1,29 @@
-==21113== Memcheck, a memory error detector
-==21113== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==21113== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==21113== Command: ./cub3D maps/bad/map_first.cub
-==21113== 
-==21113== 
-==21113== HEAP SUMMARY:
-==21113==     in use at exit: 5 bytes in 1 blocks
-==21113==   total heap usage: 10 allocs, 9 frees, 263,588 bytes allocated
-==21113== 
-==21113== 5 bytes in 1 blocks are still reachable in loss record 1 of 1
-==21113==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==21113==    by 0x116815: ft_substr (in /home/vanfossi/Cub3D/cub3D)
-==21113==    by 0x116C38: get_rest (in /home/vanfossi/Cub3D/cub3D)
-==21113==    by 0x116DD1: get_next_line (in /home/vanfossi/Cub3D/cub3D)
-==21113==    by 0x112F95: get_notexpath (map_check.c:21)
-==21113==    by 0x113A1C: map_init (map_init.c:17)
-==21113==    by 0x111C84: create_cub (init2.c:66)
-==21113==    by 0x10FA34: main (main.c:49)
-==21113== 
-==21113== LEAK SUMMARY:
-==21113==    definitely lost: 0 bytes in 0 blocks
-==21113==    indirectly lost: 0 bytes in 0 blocks
-==21113==      possibly lost: 0 bytes in 0 blocks
-==21113==    still reachable: 5 bytes in 1 blocks
-==21113==         suppressed: 0 bytes in 0 blocks
-==21113== 
-==21113== For lists of detected and suppressed errors, rerun with: -s
-==21113== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==3244== Memcheck, a memory error detector
+==3244== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==3244== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==3244== Command: ./cub3D maps/bad/map_first.cub
+==3244== 
+==3244== 
+==3244== HEAP SUMMARY:
+==3244==     in use at exit: 5 bytes in 1 blocks
+==3244==   total heap usage: 10 allocs, 9 frees, 263,588 bytes allocated
+==3244== 
+==3244== 5 bytes in 1 blocks are still reachable in loss record 1 of 1
+==3244==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3244==    by 0x1165B5: ft_substr (in /home/vanfossi/Cub3D/cub3D)
+==3244==    by 0x1169D8: get_rest (in /home/vanfossi/Cub3D/cub3D)
+==3244==    by 0x116B71: get_next_line (in /home/vanfossi/Cub3D/cub3D)
+==3244==    by 0x112E95: get_notexpath (map_check.c:21)
+==3244==    by 0x11391C: map_init (map_init.c:17)
+==3244==    by 0x111B84: create_cub (init2.c:66)
+==3244==    by 0x10F954: main (main.c:49)
+==3244== 
+==3244== LEAK SUMMARY:
+==3244==    definitely lost: 0 bytes in 0 blocks
+==3244==    indirectly lost: 0 bytes in 0 blocks
+==3244==      possibly lost: 0 bytes in 0 blocks
+==3244==    still reachable: 5 bytes in 1 blocks
+==3244==         suppressed: 0 bytes in 0 blocks
+==3244== 
+==3244== For lists of detected and suppressed errors, rerun with: -s
+==3244== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
