@@ -1,14 +1,14 @@
-==3301== Memcheck, a memory error detector
-==3301== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==3301== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==3301== Command: ./cub3D maps/bad/player_on_edge.cub
-==3301== 
-==3301== 
-==3301== HEAP SUMMARY:
-==3301==     in use at exit: 0 bytes in 0 blocks
-==3301==   total heap usage: 97 allocs, 97 frees, 268,913 bytes allocated
-==3301== 
-==3301== All heap blocks were freed -- no leaks are possible
-==3301== 
-==3301== For lists of detected and suppressed errors, rerun with: -s
-==3301== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==37405== Memcheck, a memory error detector
+==37405== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==37405== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==37405== Command: ./cub3D maps/bad/player_on_edge.cub
+==37405== 
+==37405== 
+==37405== HEAP SUMMARY:
+==37405==     in use at exit: 0 bytes in 0 blocks
+==37405==   total heap usage: 94 allocs, 94 frees, 268,793 bytes allocated
+==37405== 
+==37405== All heap blocks were freed -- no leaks are possible
+==37405== 
+==37405== For lists of detected and suppressed errors, rerun with: -s
+==37405== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

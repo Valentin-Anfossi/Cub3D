@@ -1,14 +1,14 @@
-==3283== Memcheck, a memory error detector
-==3283== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==3283== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==3283== Command: ./cub3D maps/bad/map_too_small.cub
-==3283== 
-==3283== 
-==3283== HEAP SUMMARY:
-==3283==     in use at exit: 0 bytes in 0 blocks
-==3283==   total heap usage: 57 allocs, 57 frees, 268,159 bytes allocated
-==3283== 
-==3283== All heap blocks were freed -- no leaks are possible
-==3283== 
-==3283== For lists of detected and suppressed errors, rerun with: -s
-==3283== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==37380== Memcheck, a memory error detector
+==37380== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==37380== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==37380== Command: ./cub3D maps/bad/map_too_small.cub
+==37380== 
+==37380== 
+==37380== HEAP SUMMARY:
+==37380==     in use at exit: 0 bytes in 0 blocks
+==37380==   total heap usage: 54 allocs, 54 frees, 268,039 bytes allocated
+==37380== 
+==37380== All heap blocks were freed -- no leaks are possible
+==37380== 
+==37380== For lists of detected and suppressed errors, rerun with: -s
+==37380== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
