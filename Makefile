@@ -6,7 +6,7 @@
 #    By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/09 17:41:00 by vanfossi          #+#    #+#              #
-#    Updated: 2026/01/26 13:30:38 by vanfossi         ###   ########.fr        #
+#    Updated: 2026/01/26 18:33:45 by vanfossi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,15 +42,19 @@ SRCS_BONUS  = 	./srcs_bonus/bonus2_bonus.c ./srcs_bonus/bonus3_bonus.c ./srcs_bo
 
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
+CC = cc
+
+FLAGS = -Wall -Wextra -Werror
+
 MLX = ./minilibx-linux/libmlx_Linux.a
 
 all: $(NAME)
 
 bonus: $(OBJS_BONUS) $(MLX) $(LIBFT)
-	cc -g -Wall -Wextra -Werror $(SRCS_BONUS) $(MLX) $(LIBFT) -o $(NAME) -lX11 -lXext -lm -O3
+	$(CC) $(FLAGS) $(OBJS_BONUS) $(MLX) $(LIBFT) -o $(NAME) -lX11 -lXext -lm -O3
 
 $(NAME): $(OBJS) $(MLX) $(LIBFT)
-	cc -g -Wall -Wextra -Werror $(SRCS) $(MLX) $(LIBFT) -o $(NAME) -lX11 -lXext -lm -O3
+	$(CC) -g $(FLAGS) $(OBJS) $(MLX) $(LIBFT) -o $(NAME) -lX11 -lXext -lm -O3
 
 %.o: %.c
 	@$(CC) $(FLAGS) -c $< -o $@

@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:41:27 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/08 10:32:12 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/26 18:52:21 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,19 @@ int	is_line_empty(char *line)
 int	get_floorclr(t_cub *cub)
 {
 	char	*line;
+	char	*temp;
 
 	line = get_next_line(cub->map_fd);
 	while (is_line_empty(line))
 	{
-		free(line);
+		temp = line;
 		line = get_next_line(cub->map_fd);
+		free(temp);
 	}
 	if (!line)
+	{
 		return (0);
+	}
 	if (!line[0] || !line[1] || line[0] != 'F' || line[1] != ' ')
 	{
 		free(line);
@@ -76,11 +80,13 @@ int	get_clclr(t_cub *cub)
 int	parse_color2(char *line)
 {
 	int		color;
+	int 	i;
 	char	**split;
 
-	while (!ft_isdigit(*line) && *line && *line != '-')
-		line ++;
-	split = ft_split(line, ',');
+	i = 0;
+	while (!ft_isdigit(line[i]) && line[i] && line[i] != '-')
+		i ++;
+	split = ft_split(&line[i], ',');
 	color = 0;
 	while (split[color])
 	{
