@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/26 13:28:04 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/27 15:35:04 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -365,3 +365,6 @@ void		mouseinput_player(t_cub *c);
 //PARSEUTILS.C
 char		*parse_texturepath(char *line);
 int			parse_color(char *line);
+
+//GNL_CLEANER.C
+int			gnl_cleaner(char *line, int fd);

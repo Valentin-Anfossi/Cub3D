@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init2.c                                            :+:      :+:    :+:   */
+/*   init2_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jelucian <jelucian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 09:09:20 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/09 14:53:26 by jelucian         ###   ########.fr       */
+/*   Updated: 2026/01/27 15:36:53 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_cub	*create_cub(char *path)
 
 	cub = create_cub_h(path);
 	map_init(cub);
+	close(cub->map_fd);
 	cub->minimap = malloc_minimap();
 	cub->mlx = mlx_init();
 	if (init_img(cub))

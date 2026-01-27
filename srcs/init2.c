@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 09:09:20 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/26 18:24:03 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/27 14:56:15 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ t_cub	*create_cub(char *path)
 
 	cub = create_cub_h(path);
 	map_init(cub);
+	close(cub->map_fd);
 	cub->mlx = mlx_init();
 	if (init_img(cub))
 		return (NULL);

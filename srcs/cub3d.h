@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jelucian <jelucian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/09 14:47:39 by jelucian         ###   ########.fr       */
+/*   Updated: 2026/01/27 14:12:01 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -342,3 +342,6 @@ void		set_playerinitialrot(t_cub *c);
 //PARSEUTILS.C
 char		*parse_texturepath(char *line);
 int			parse_color(char *line);
+
+//GNL_CLEANER.C
+int			gnl_cleaner(char *line, int fd);

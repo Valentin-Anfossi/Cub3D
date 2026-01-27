@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   check_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:03:43 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/09 11:00:27 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/27 16:53:47 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ int	check_mapstr(t_cub *c)
 	while (i < c->map_size_y)
 	{
 		if (!char_check (c->map_str[i]))
+		{
 			return (0);
+		}
 		i ++;
 	}
 	return (1);
@@ -76,20 +78,25 @@ int	textfiles_check(t_cub *c)
 	test_fd = open(c->no_texpath, O_RDONLY);
 	if (test_fd == -1)
 		return (0);
+	close(test_fd);
 	test_fd = open(c->so_texpath, O_RDONLY);
 	if (test_fd == -1)
 		return (0);
+	close(test_fd);
 	test_fd = open(c->we_texpath, O_RDONLY);
 	if (test_fd == -1)
 		return (0);
+	close(test_fd);
 	test_fd = open(c->ea_texpath, O_RDONLY);
 	if (test_fd == -1)
 		return (0);
+	close(test_fd);
 	return (1);
 }
 
 void	check_map(t_cub *c)
 {
+	close(c->map_fd);
 	if (!check_mapstr(c))
 	{
 		exit_maperror(c);
@@ -110,9 +117,7 @@ void	check_map(t_cub *c)
 		exit_maperror(c);
 	}
 	else if (!check_player(c))
-	{
 		exit_maperror(c);
-	}
 	else
 		return ;
 }

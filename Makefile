@@ -6,7 +6,7 @@
 #    By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/09 17:41:00 by vanfossi          #+#    #+#              #
-#    Updated: 2026/01/26 18:33:45 by vanfossi         ###   ########.fr        #
+#    Updated: 2026/01/27 16:54:25 by vanfossi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS	= 	./srcs/check_map.c ./srcs/check_map2.c ./srcs/clean.c \
 			./srcs/map_utils.c ./srcs/map.c ./srcs/movement.c \
 			./srcs/parseutils.c ./srcs/file_check.c ./srcs/map_check.c \
 			./srcs/map_check2.c ./srcs/check_mapstr.c ./srcs/check_player.c \
-			./srcs/map_init.c \
+			./srcs/map_init.c ./srcs/gnl_cleaner.c \
 
 OBJS    =	$(SRCS:.c=.o)
 
@@ -37,7 +37,8 @@ SRCS_BONUS  = 	./srcs_bonus/bonus2_bonus.c ./srcs_bonus/bonus3_bonus.c ./srcs_bo
 				./srcs_bonus/ft_memcpyfast_bonus.c ./srcs_bonus/handle_keys_bonus.c ./srcs_bonus/img_bonus.c \
 				./srcs_bonus/init2_bonus.c ./srcs_bonus/init3_bonus.c ./srcs_bonus/init_bonus.c ./srcs_bonus/main_bonus.c\
 				./srcs_bonus/map_bonus.c ./srcs_bonus/map_check2_bonus.c ./srcs_bonus/map_check_bonus.c \
-				./srcs_bonus/map_init_bonus.c ./srcs_bonus/map_utils_bonus.c ./srcs_bonus/movement_bonus.c ./srcs_bonus/parseutils_bonus.c
+				./srcs_bonus/map_init_bonus.c ./srcs_bonus/map_utils_bonus.c ./srcs_bonus/movement_bonus.c ./srcs_bonus/parseutils_bonus.c \
+				./srcs_bonus/gnl_cleaner_bonus.c
 
 
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)

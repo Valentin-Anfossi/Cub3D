@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_check.c                                       :+:      :+:    :+:   */
+/*   file_check_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 06:37:43 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/09 11:03:47 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/27 15:35:40 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ void	file_check(int argc, char **argv)
 		file_error(3);
 	i = read(temp_fd, &buf, (size_t)8);
 	if (i == 0)
+	{
+		close(temp_fd);
 		file_error(5);
+	}
 	close(temp_fd);
 }

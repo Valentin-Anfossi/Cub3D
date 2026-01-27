@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check2.c                                       :+:      :+:    :+:   */
+/*   map_check2_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:41:27 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/08 10:32:12 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/27 16:51:37 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,13 @@ int	get_floorclr(t_cub *cub)
 		line = get_next_line(cub->map_fd);
 	}
 	if (!line)
-		return (0);
+		return (gnl_cleaner(line, cub->map_fd));
 	if (!line[0] || !line[1] || line[0] != 'F' || line[1] != ' ')
-	{
-		free(line);
-		return (0);
-	}
+		return (gnl_cleaner(line, cub->map_fd));
 	cub->fl_color = parse_color2(line);
-	free(line);
 	if (cub->fl_color == -1)
-		return (0);
+		return (gnl_cleaner(line, cub->map_fd));
+	free(line);
 	return (1);
 }
 
@@ -60,16 +57,13 @@ int	get_clclr(t_cub *cub)
 		line = get_next_line(cub->map_fd);
 	}
 	if (!line)
-		return (0);
+		return (gnl_cleaner(line, cub->map_fd));
 	if (!line[0] || !line[1] || line[0] != 'C' || line[1] != ' ')
-	{
-		free(line);
-		return (0);
-	}
+		return (gnl_cleaner(line, cub->map_fd));
 	cub->ce_color = parse_color2(line);
-	free(line);
 	if (cub->ce_color == -1)
-		return (0);
+		return (gnl_cleaner(line, cub->map_fd));
+	free(line);
 	return (1);
 }
 

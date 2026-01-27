@@ -1,29 +1,25 @@
-==37417== Memcheck, a memory error detector
-==37417== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==37417== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==37417== Command: ./cub3D maps/bad/textures_missing.cub
-==37417== 
-==37417== 
-==37417== HEAP SUMMARY:
-==37417==     in use at exit: 3 bytes in 1 blocks
-==37417==   total heap usage: 19 allocs, 18 frees, 263,679 bytes allocated
-==37417== 
-==37417== 3 bytes in 1 blocks are still reachable in loss record 1 of 1
-==37417==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==37417==    by 0x4089B2: ft_substr (in /home/vanfossi/Documents/Git_Cub3D/cub3D)
-==37417==    by 0x408DD3: get_rest (in /home/vanfossi/Documents/Git_Cub3D/cub3D)
-==37417==    by 0x408F69: get_next_line (in /home/vanfossi/Documents/Git_Cub3D/cub3D)
-==37417==    by 0x4059B4: get_wetexpath (map_check.c:0)
-==37417==    by 0x406180: map_init (map_init.c:27)
-==37417==    by 0x404588: create_cub (init2.c:66)
-==37417==    by 0x404B60: main (main.c:49)
-==37417== 
-==37417== LEAK SUMMARY:
-==37417==    definitely lost: 0 bytes in 0 blocks
-==37417==    indirectly lost: 0 bytes in 0 blocks
-==37417==      possibly lost: 0 bytes in 0 blocks
-==37417==    still reachable: 3 bytes in 1 blocks
-==37417==         suppressed: 0 bytes in 0 blocks
-==37417== 
-==37417== For lists of detected and suppressed errors, rerun with: -s
-==37417== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==57629== Memcheck, a memory error detector
+==57629== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==57629== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==57629== Command: ./cub3D maps/bad/textures_missing.cub
+==57629== 
+==57629== 
+==57629== FILE DESCRIPTORS: 6 open (3 std) at exit.
+==57629== Open file descriptor 24: /home/vanfossi/.vscode-server/data/logs/20260127T113110/remoteTelemetry.log
+==57629==    <inherited from parent>
+==57629== 
+==57629== Open file descriptor 23: /home/vanfossi/.vscode-server/data/logs/20260127T113110/remoteagent.log
+==57629==    <inherited from parent>
+==57629== 
+==57629== Open file descriptor 22: /home/vanfossi/.vscode-server/data/logs/20260127T113110/ptyhost.log
+==57629==    <inherited from parent>
+==57629== 
+==57629== 
+==57629== HEAP SUMMARY:
+==57629==     in use at exit: 0 bytes in 0 blocks
+==57629==   total heap usage: 73 allocs, 73 frees, 264,697 bytes allocated
+==57629== 
+==57629== All heap blocks were freed -- no leaks are possible
+==57629== 
+==57629== For lists of detected and suppressed errors, rerun with: -s
+==57629== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
