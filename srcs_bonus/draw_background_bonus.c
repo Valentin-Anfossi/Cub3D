@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_background.c                                  :+:      :+:    :+:   */
+/*   draw_background_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 02:22:29 by vanfossi/je       #+#    #+#             */
-/*   Updated: 2025/12/13 06:13:50 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/29 00:01:46 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ float	drawbk_helper(t_cub *c, int bky)
 	float	re;
 
 	re = (float)(bky - c->winsize_y / 2) / (c->winsize_y);
-	re = remap(re, 0, 1.25);
+	re = remap(re, 0, 1);
 	return (re);
 }
 
@@ -44,7 +44,7 @@ t_draw	*draw_background(t_cub *cub)
 		{
 			if (bk.y < cub->winsize_y / 2)
 			{
-				bk.rt = remap(1 - (float)bk.y / (cub->winsize_y / 2), 0, 1.25);
+				bk.rt = remap(1 - (float)bk.y / (cub->winsize_y / 2), 0, 1);
 				put_pixel(bg, bk.x, bk.y, color_mult(cub->ce_color, bk.rt));
 			}
 			else
