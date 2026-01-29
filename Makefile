@@ -6,7 +6,7 @@
 #    By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/09 17:41:00 by vanfossi          #+#    #+#              #
-#    Updated: 2026/01/27 16:54:25 by vanfossi         ###   ########.fr        #
+#    Updated: 2026/01/29 16:00:20 by vanfossi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ bonus: $(OBJS_BONUS) $(MLX) $(LIBFT)
 	$(CC) $(FLAGS) $(OBJS_BONUS) $(MLX) $(LIBFT) -o $(NAME) -lX11 -lXext -lm -O3
 
 $(NAME): $(OBJS) $(MLX) $(LIBFT)
-	$(CC) -g $(FLAGS) $(OBJS) $(MLX) $(LIBFT) -o $(NAME) -lX11 -lXext -lm -O3
+	$(CC) $(FLAGS) $(OBJS) $(MLX) $(LIBFT) -o $(NAME) -lX11 -lXext -lm -O3
 
 %.o: %.c
 	@$(CC) $(FLAGS) -c $< -o $@
