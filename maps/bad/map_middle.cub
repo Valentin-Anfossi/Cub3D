@@ -1,7 +1,7 @@
-NO ./sprites/north.xpm
-SO ./sprites/south.xpm
-WE ./sprites/west.xpm
-EA ./sprites/east.xpm
+NO ./tiles/Bricks.xpm
+SO ./tiles/Wood.xpm
+WE ./tiles/Stone.xpm
+EA ./tiles/Rock.xpm
 
 11111
 10001
