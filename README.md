@@ -15,10 +15,16 @@ Cub3D is a simple raycaster first-person game based on classics like wolfenstein
 & DOOM.
 
 It reads a map (in the .cub format) and renders it as an explorable world in 3D ! (wow)
+
 In its mandatory form, you can look around using WASD for movement and the arrow keys
 to look left and right.
 
-# That's cool and all but how does it work ?
+The bonus part brings some additional features like wall collisions (with sliding (wow))
+a map that can be displayed in fullscreen (diablo style), sprinting, maybe doors and more ?
+
+Guess you'll have to try to find out !
+
+# So cool (thank you) but how does it work ?
 
 The main rendering part uses a DDA algorithm (Digital Differential Analysis).
 But how does it work exactly ?
@@ -28,7 +34,7 @@ For each vertical line of your little window, we send a ray from the player posi
 using a vector that represents your field of view (ie: leftmost ray goes at an angle while
 the one at the center goes straight ahead), we then use the DDA to quickly compute 
 where this ray will hit a wall. When it does, we store the distance value and use
-it to draw vertical lines with a height corresponding to the distance.
+it to draw centered vertical lines with a height corresponding to the distance.
 
 And voila ! With some additional simple math we look into a texture file, plop
 down some pixels of the appropriate colors and you got a wall (wow)
@@ -36,12 +42,7 @@ down some pixels of the appropriate colors and you got a wall (wow)
 That way of doing things brings limitations, the biggest one is that your world
 must be square. The DDA needs integers to do its comparison magic therefore a uniform
 scale is not negotiable. 
-It can be dealt with but I'm going to be expelled in 3 weeks so I can't be arsed (wow).
-
-The bonus part brings some additional features like wall collisions (with sliding (wow))
-a map that can be displayed in fullscreen (diablo style), sprinting, maybe doors and more ?
-
-Guess you'll have to try to find out !
+It can be improved but I'm going to be expelled in 3 weeks so I can't be bothered (wow).
 
 # Instructions :
 
