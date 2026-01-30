@@ -40,7 +40,7 @@ And voila ! With some additional simple math we look into a texture file, plop
 down some pixels of the appropriate colors and you got a wall (wow)
 
 That way of doing things brings limitations, the biggest one is that your world
-must be square. The DDA needs integers to do its comparison magic therefore a uniform
+must be full of cubes. The DDA needs integers to do its comparison magic therefore a uniform
 scale is not negotiable. 
 It can be improved but I'm going to be expelled in 3 weeks so I can't be bothered (wow).
 
