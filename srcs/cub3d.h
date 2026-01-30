@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/27 14:12:01 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 20:07:24 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <math.h>
 #include <sys/time.h>
 #include <unistd.h>
+#include "config.h"
 
 #define EMPTY 0
 #define WALL 1
@@ -27,29 +28,9 @@
 #define P_EAST 8
 #define P_WEST 9
 #define MAP_SIZE 500
-#define FOV 90
-#define SHADE_DIST 7
-#define COL_DIST .1
-
-#define WIN_SIZEX 1280
-#define WIN_SIZEY 920
-
 #define ERROR_MAP 2
 #define ERROR_INPUT 1
-
 #define MULT 128
-
-#define KEY_UP 119
-#define KEY_DOWN 115
-#define KEY_LEFT 65361
-#define KEY_RIGHT 65363
-#define KEY_STLEFT 97
-#define KEY_STRIGHT 100
-#define KEY_MOUSE 112
-#define KEY_MAP 32
-#define TARGET_FPS 60
-#define ROT_SPEED 0.05
-#define MOUSE_SENS 0.5
 
 typedef struct s_v3
 {
