@@ -69,20 +69,29 @@ There's also usable maps in the maps/ maps_bonus/ folders and textures in the ti
 # Ressources :
 
 https://lodev.org/cgtutor/ 
+
 an amazing collections of blog articles covering everything you could ever need
 for this project (and more). Mostly in CPP but explanations and diagrams makes it
 easy to port to C.
 
+
 https://www.geeksforgeeks.org/computer-graphics/dda-line-generation-algorithm-computer-graphics/
+
 https://en.wikipedia.org/wiki/Digital_differential_analyzer_(graphics_algorithm)
+
 Main ressources used to understand apply and debug the DDA algo in our project.
 
+
 https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html
+
 https://medium.com/@jalal92/understanding-the-minilibx-a-practical-dive-into-x-window-programming-api-in-c-cb8a6f72bec3
+
 Minilibx docs, probably the most obscure part of this project. Doc is sparse and doesn't
 cover everything there is to know but what can you do.
 
+
 https://flakdeau19.itch.io/high-resolution-pixel-art-textures?download
+
 Cool free texture pack ✨
 
 **About AI use** : I asked it to fix my makefile once and it didn't work :/
