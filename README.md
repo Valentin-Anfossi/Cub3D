@@ -14,22 +14,28 @@
 
 Cub3D is a simple raycaster first-person game based on classics like wolfenstein3D
 & DOOM.
+
 It reads a map (in the .cub format) and renders it as an explorable world in 3D ! (wow)
 In its mandatory form, you can look around using WASD for movement and the arrow keys
 to look left and right.
+
 The main rendering part uses a DDA algorithm (Digital Differential Analysis).
-But how does it work exactly ? Well lemme tell you :
+But how does it work exactly ?
+
+Well lemme tell you :
 For each vertical line of your little window, we send a ray from the player position
 using a vector that represents your field of view (ie: leftmost ray goes at an angle while
 the one at the center goes straight ahead), we then use the DDA to quickly compute 
 where this ray will hit a wall. When it does, we store the distance value and use
 it to draw vertical lines with a height corresponding to the distance.
+
 And voila ! With some additional simple math we look into a texture file, plop
 down some pixels of the appropriate colors and you got a wall (wow)
+
 That way of doing things brings limitations, the biggest one is that your world
 must be square. The DDA needs integers to do its comparison magic therefore a uniform
-scale is not negotiable. It can be dealt with but I'm going to be expelled in 3 weeks
-so I can't be arsed (wow).
+scale is not negotiable. 
+It can be dealt with but I'm going to be expelled in 3 weeks so I can't be arsed (wow).
 
 The bonus part brings some additional features like wall collisions (with sliding (wow))
 a map that can be displayed in fullscreen (diablo style), sprinting, maybe doors and more ?
@@ -45,7 +51,7 @@ Both executables share the same name so remember to **make fclean** before rebui
 It needs the minilibx and libft to work but they're included and get built with make
 
 to execute : **./cub3D path/to/map.cub**
-In the **cub3D.h** you'll find multiple defines for changing keybinds and window resolutions
+In the **cub3D.h** you'll find multiple defines for changing keybinds and window resolution
 
 # Ressources :
 ==============
