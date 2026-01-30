@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:21:13 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/30 04:18:50 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 15:01:27 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,8 @@ int	init_img(t_cub *cub)
 	cub->background = draw_background(cub);
 	if (!cub->buffer)
 		return (1);
-	cub->texture_no = malloc(sizeof(t_draw));
-	cub->texture_so = malloc(sizeof(t_draw));
-	cub->texture_we = malloc(sizeof(t_draw));
-	cub->texture_ea = malloc(sizeof(t_draw));
-	cub->texture_do = malloc(sizeof(t_draw));
+	if (!malloc_textures(cub))
+		return (1);
 	cub->texture_no->img = mlx_xpm_file_to_image(cub->mlx, cub->no_texpath,
 			&cub->texture_no->width, &cub->texture_no->height);
 	cub->texture_so->img = mlx_xpm_file_to_image(cub->mlx, cub->so_texpath,

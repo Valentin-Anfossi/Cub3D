@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 04:46:49 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/30 06:09:11 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 15:01:48 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	event_interact(t_cub *cub)
 	}
 	else if (cub->map[(int)f.x][(int)f.y] == DOOR_O)
 	{
-		if (!((int)f.x == (int)cub->player->pos->x && (int)f.y == (int)cub->player->pos->y))
+		if (!((int)f.x == (int)cub->player->pos->x && (int)f.y
+				== (int)cub->player->pos->y))
 		{
 			cub->map[(int)f.x][(int)f.y] = DOOR_C;
 		}

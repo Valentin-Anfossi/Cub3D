@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 09:09:20 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/30 04:23:46 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 15:48:05 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_cub	*create_cub_h(char *path)
 	cub->so_texpath = NULL;
 	cub->we_texpath = NULL;
 	cub->ea_texpath = NULL;
+	cub->do_texpath = NULL;
 	cub->ce_color = 0;
 	cub->fl_color = 0;
 	cub->map_fullscreen = 0;

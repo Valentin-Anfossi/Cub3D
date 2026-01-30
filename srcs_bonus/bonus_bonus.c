@@ -6,23 +6,11 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 15:19:47 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/30 04:20:16 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 14:55:07 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./cub3d_bonus.h"
-
-void	draw_square(t_cub *cub, int x0, int y0, int size)
-{
-	int	y;
-
-	y = y0;
-	while (y < (y0 + size))
-	{
-		draw_hline(cub, x0, x0 + size, y);
-		y ++;
-	}
-}
 
 void	draw_minimap(t_cub *cub)
 {
@@ -48,10 +36,21 @@ void	draw_minimap(t_cub *cub)
 	draw_minimap_helper(cub, mi);
 }
 
-void	draw_minimap_helper(t_cub *cub, t_minimap *mi)
+void	draw_minimap_helper2(t_cub *cub, t_minimap *mi)
 {
 	int	wall;
 
+	wall = cub->map[(int)mi->xmap][(int)mi->ymap];
+	if (wall == 1)
+		put_pixel(cub->buffer, mi->y, mi->x,
+			create_argb(1, 200, 200, 200));
+	else if (wall == DOOR_C || wall == DOOR_O)
+		put_pixel(cub->buffer, mi->y, mi->x,
+			create_argb(1, 0, 0, 255));
+}
+
+void	draw_minimap_helper(t_cub *cub, t_minimap *mi)
+{
 	mi->y = 0;
 	mi->x = 0;
 	while (mi->y <= mi->map_sizex)
@@ -64,46 +63,13 @@ void	draw_minimap_helper(t_cub *cub, t_minimap *mi)
 			if (mi->xmap < cub->map_size_y && mi->xmap
 				>= 0 && mi->ymap < cub->map_size_x && mi->ymap >= 0)
 			{
-				wall = cub->map[(int)mi->xmap][(int)mi->ymap];
-				if (wall == 1)
-					put_pixel(cub->buffer, mi->y, mi->x,
-						create_argb(1, 200, 200, 200));
-				else if (wall == DOOR_C || wall == DOOR_O)
-					put_pixel(cub->buffer, mi->y, mi->x,
-						create_argb(1, 0, 0, 255));
+				draw_minimap_helper2(cub, mi);
 			}
 			mi->x ++;
 		}
 		mi->y ++;
 	}
 	draw_minimap_player(cub, mi);
-}
-
-void	draw_line(t_v2 p1, t_v2 p2, t_cub *cub, int norminette)
-{
-	float	dx;
-	float	dy;
-	float	x;
-	float	y;
-	float	step;
-
-	dx = p2.x - p1.x;
-	dy = p2.y - p1.y;
-	if (fabs(dx) >= fabs(dy))
-		step = fabs(dx);
-	else
-		step = fabs(dy);
-	dx = dx / step;
-	dy = dy / step;
-	x = p1.x;
-	y = p1.y;
-	while (norminette <= step)
-	{
-		put_pixel(cub->buffer, x, y, create_argb(1, 255, 64, 64));
-		x = x + dx;
-		y = y + dy;
-		norminette ++;
-	}
 }
 
 void	draw_minimap_player(t_cub *cub, t_minimap *mi)

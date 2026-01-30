@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/30 06:07:51 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 15:01:03 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,6 +259,10 @@ float		wall_shade(float dist, int side);
 int			has_hitwall(t_cub *cub, int map_x, int map_y);
 int			has_hitvoid(t_cub *cub, int map_x, int map_y);
 
+//DRAW_UTILS2.C
+void		draw_square(t_cub *cub, int x0, int y0, int size);
+void		draw_line(t_v2 p1, t_v2 p2, t_cub *cub, int norminette);
+
 //DRAW_VERTICAL.C
 void		draw_vside(t_cub *cub, t_ray *r, t_vert *v);
 void		draw_vertical(t_cub *cub, t_ray *r, int x);
@@ -307,6 +311,7 @@ void		init_floatmap(t_cub *c);
 //INIT3.C
 void		init_shadelut(t_cub *cub);
 void		init_map(t_cub *cub);
+int			malloc_textures(t_cub *cub);
 
 //MAIN.C
 void		copy_buffer(t_draw *dest, const t_draw *src, t_cub *cub);

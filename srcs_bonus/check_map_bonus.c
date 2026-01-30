@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:03:43 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/30 04:28:37 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 15:47:41 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	param_check(t_cub *c)
 	if (!c->we_texpath)
 		return (0);
 	if (!c->ea_texpath)
+		return (0);
+	if (!c->do_texpath)
 		return (0);
 	if (!c->fl_color)
 		return (0);
