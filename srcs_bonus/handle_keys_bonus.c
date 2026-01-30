@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 10:30:17 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/30 06:09:24 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 20:14:50 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	handle_key(int keycode, t_cub *cub)
 		cub->map_fullscreen = !cub->map_fullscreen;
 	if (keycode == KEY_USE)
 		event_interact(cub);
+	if (keycode == KEY_SPRINT)
+		cub->player->speed = .1;
 	return (0);
 }
 
@@ -49,6 +51,8 @@ int	handle_keyrelease(int keycode, t_cub *cub)
 		cub->player->input->z -= 1;
 	if (keycode == KEY_STRIGHT)
 		cub->player->input->z += 1;
+	if (keycode == KEY_SPRINT)
+		cub->player->speed = .05;
 	return (0);
 }
 
