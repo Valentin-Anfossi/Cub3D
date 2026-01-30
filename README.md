@@ -19,6 +19,9 @@ It reads a map (in the .cub format) and renders it as an explorable world in 3D 
 In its mandatory form, you can look around using WASD for movement and the arrow keys
 to look left and right.
 
+# That's cool and all but how does it work ?
+====================
+
 The main rendering part uses a DDA algorithm (Digital Differential Analysis).
 But how does it work exactly ?
 
@@ -39,18 +42,21 @@ It can be dealt with but I'm going to be expelled in 3 weeks so I can't be arsed
 
 The bonus part brings some additional features like wall collisions (with sliding (wow))
 a map that can be displayed in fullscreen (diablo style), sprinting, maybe doors and more ?
+
 Guess you'll have to try to find out !
 
 # Instructions :
 ================
 
 **make**		>> builds the mandatory part
+
 **make bonus**	>> builds the bonus part
 
 Both executables share the same name so remember to **make fclean** before rebuilding !
 It needs the minilibx and libft to work but they're included and get built with make
 
 to execute : **./cub3D path/to/map.cub**
+
 In the **cub3D.h** you'll find multiple defines for changing keybinds and window resolution
 
 # Ressources :
