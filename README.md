@@ -24,7 +24,7 @@ a map that can be displayed in fullscreen (diablo style), sprinting, maybe doors
 
 Guess you'll have to try to find out !
 
-# So cool (thank you) but how does it work ?
+# How does it work ?
 
 The main rendering part uses a DDA algorithm (Digital Differential Analysis).
 But how does it work exactly ?
