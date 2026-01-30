@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/30 04:05:37 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 05:02:41 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,10 +124,12 @@ typedef struct s_cub
 	t_draw			*texture_so;
 	t_draw			*texture_we;
 	t_draw			*texture_ea;
+	t_draw			*texture_do;
 	char			*no_texpath;
 	char			*so_texpath;
 	char			*we_texpath;
 	char			*ea_texpath;
+	char			*do_texpath;
 	unsigned int	shade_lut[256][256];
 	int				winsize_x;
 	int				winsize_y;
@@ -317,6 +319,8 @@ int			get_notexpath(t_cub *cub);
 int			get_sotexpath(t_cub *cub);
 int			get_wetexpath(t_cub *cub);
 int			get_eatexpath(t_cub *cub);
+int			get_dotexpath(t_cub *cub);
+
 
 //MAP_CHECK2.C
 int			is_line_empty(char *line);
@@ -351,3 +355,7 @@ int			parse_color(char *line);
 
 //GNL_CLEANER.C
 int			gnl_cleaner(char *line, int fd);
+
+//INTERACT_BONUS.C
+int			is_door(t_cub *cub);
+void		event_interact(t_cub *cub);

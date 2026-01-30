@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 03:25:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/30 04:04:50 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 05:41:02 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 #define KEY_STRIGHT 100
 #define KEY_MOUSE 112
 #define KEY_MAP 32
+#define KEY_USE 102
+#define KEY_SPRINT 65505
 
-#define SHADE_DIST 7
+#define SHADE_DIST 4
 #define COL_DIST .1

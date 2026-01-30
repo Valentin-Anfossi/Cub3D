@@ -22,13 +22,11 @@ Cub3D is a simple raycaster first-person game based on classics like wolfenstein
 
 It reads a map (in the .cub format) and renders it as an explorable world in 3D ! (wow)
 
-In its mandatory form, you move with WASD and the arrow keys to look left and right.
+In its mandatory form, you move with WASD and use the arrow keys to look left and right.
 
 The bonus part brings some additional features like wall collisions (with sliding (wow))
-a map that can be displayed in fullscreen (diablo style), sprinting, mouse view,
- maybe doors and more ?
-
-Guess you'll have to play and find out !
+a map that can be displayed in fullscreen (diablo style), sprinting, mouse view and interactable
+doors.
 
 # How does it work ?
 
@@ -37,8 +35,8 @@ But how does it work exactly ?
 
 Well lemme tell you :
 For each vertical line of your little window, we send a ray from the player position
-using a vector that represents your field of view (ie: leftmost ray goes at an angle while
-the one at the center goes straight ahead), we then use the DDA to quickly compute 
+using a vector that represents your field of view (ie: leftmost ray goes at a leftward angle 
+while the one at the center goes straight ahead), we then use the DDA to quickly compute 
 where this ray will hit a wall. When it does, we store the distance value and use
 it to draw centered vertical lines with a height corresponding to the distance.
 
@@ -61,9 +59,12 @@ It needs the minilibx and libft to work but they're included and get built with 
 
 to execute : **./cub3D path/to/map.cub**
 
-In the **cub3D.h** you'll find multiple defines for changing keybinds and window resolution
+**Maps for the bonus part are in maps/bonus/**
 
-There's also usable maps in the maps/ folder and textures in the tiles/ folder.
+In the **config.h** you'll find multiple defines for changing keybinds, window resolution
+and other settings.
+
+There's also usable maps in the maps/ maps_bonus/ folders and textures in the tiles/ folder.
 
 # Ressources :
 

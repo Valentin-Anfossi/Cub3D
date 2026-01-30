@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map2.c                                       :+:      :+:    :+:   */
+/*   check_map2_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jelucian <jelucian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 02:21:45 by vanfossi/je       #+#    #+#             */
-/*   Updated: 2026/01/09 15:17:19 by jelucian         ###   ########.fr       */
+/*   Updated: 2026/01/30 04:10:33 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	exit_maperror(t_cub *c)
 	free (c->we_texpath);
 	free (c->no_texpath);
 	free (c->so_texpath);
+	free (c->do_texpath);
 	free (c->player_pos);
 	if (c->map_str)
 	{

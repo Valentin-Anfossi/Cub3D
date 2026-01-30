@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:58:19 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/27 16:51:50 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 04:44:27 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,12 @@ int	is_colliding(t_cub *c, float x, float y)
 		c->map[check[0]][(int)y] == 1 ||
 		c->map[check[1]][(int)y] == 1 ||
 		c->map[(int)x][check[2]] == 1 ||
-		c->map[(int)x][check[3]] == 1);
+		c->map[(int)x][check[3]] == 1 ||
+		c->map[check[0]][(int)y] == 4 ||
+		c->map[check[1]][(int)y] == 4 ||
+		c->map[(int)x][check[2]] == 4 ||
+		c->map[(int)x][check[3]] == 4
+	);
 }
 
 void	move_col(t_cub *c, t_player *p)

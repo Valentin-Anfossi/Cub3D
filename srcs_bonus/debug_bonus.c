@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.c                                            :+:      :+:    :+:   */
+/*   debug_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:22:46 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/08 19:04:32 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 04:23:30 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	debug_printmap(t_cub *cub)
 				printf("⬜");
 			else if (cub->map[j][i] == EMPTY)
 				printf("⬛");
-			else if (cub->map[j][i] == DOOR_H || cub->map[j][i] == DOOR_V)
+			else if (cub->map[j][i] == DOOR_C || cub->map[j][i] == DOOR_O)
 				printf("🚪");
 			else
 				printf("🙎");

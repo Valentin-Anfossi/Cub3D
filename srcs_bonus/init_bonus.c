@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:21:13 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/08 10:29:04 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 04:18:50 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,13 @@ int	data_img(t_cub *cub)
 			cub->texture_we->img,
 			&cub->texture_we->bpp, &cub->texture_we->length,
 			&cub->texture_we->endian);
+	cub->texture_do->data = (unsigned char *)mlx_get_data_addr(
+			cub->texture_do->img,
+			&cub->texture_do->bpp, &cub->texture_do->length,
+			&cub->texture_do->endian);
 	if (!cub->texture_no->data || !cub->texture_so->data
-		|| !cub->texture_ea->data || !cub->texture_we->data)
+		|| !cub->texture_ea->data || !cub->texture_we->data
+		|| !cub->texture_do->data)
 		return (1);
 	return (0);
 }
@@ -75,6 +80,7 @@ int	init_img(t_cub *cub)
 	cub->texture_so = malloc(sizeof(t_draw));
 	cub->texture_we = malloc(sizeof(t_draw));
 	cub->texture_ea = malloc(sizeof(t_draw));
+	cub->texture_do = malloc(sizeof(t_draw));
 	cub->texture_no->img = mlx_xpm_file_to_image(cub->mlx, cub->no_texpath,
 			&cub->texture_no->width, &cub->texture_no->height);
 	cub->texture_so->img = mlx_xpm_file_to_image(cub->mlx, cub->so_texpath,
@@ -83,8 +89,10 @@ int	init_img(t_cub *cub)
 			&cub->texture_we->width, &cub->texture_we->height);
 	cub->texture_ea->img = mlx_xpm_file_to_image(cub->mlx, cub->ea_texpath,
 			&cub->texture_ea->width, &cub->texture_ea->height);
+	cub->texture_do->img = mlx_xpm_file_to_image(cub->mlx, cub->do_texpath,
+			&cub->texture_do->width, &cub->texture_do->height);
 	if (!cub->texture_no->img || !cub->texture_so->img
-		|| !cub->texture_we->img || !cub->texture_ea->img)
+		|| !cub->texture_we->img || !cub->texture_ea->img || !cub->texture_do)
 		return (1);
 	if (data_img(cub))
 		return (1);

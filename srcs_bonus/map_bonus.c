@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:26:27 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/27 16:52:27 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 04:21:19 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,10 @@ void	add_to_map(int x, int y, t_cub *cub)
 		cub->map[x][y] = P_EAST;
 	else if (c == 'W')
 		cub->map[x][y] = P_WEST;
+	else if (c == 'O')
+		cub->map[x][y] = DOOR_O;
+	else if (c == 'C')
+		cub->map[x][y] = DOOR_C;
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 	{
 		cub->player_pos[0] = x;

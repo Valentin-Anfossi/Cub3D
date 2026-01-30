@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus.c                                            :+:      :+:    :+:   */
+/*   bonus_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 15:19:47 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/08 18:43:01 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 04:20:16 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ void	draw_minimap_helper(t_cub *cub, t_minimap *mi)
 				wall = cub->map[(int)mi->xmap][(int)mi->ymap];
 				if (wall == 1)
 					put_pixel(cub->buffer, mi->y, mi->x,
-						create_argb(1, 0, 255, 0));
+						create_argb(1, 200, 200, 200));
+				else if (wall == DOOR_C || wall == DOOR_O)
+					put_pixel(cub->buffer, mi->y, mi->x,
+						create_argb(1, 0, 0, 255));
 			}
 			mi->x ++;
 		}

@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 09:09:20 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/27 15:36:53 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 04:23:46 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ void	set_floatmap(t_cub *c)
 		y = 0;
 		while (y < c->map_size_y)
 		{
-			if (c->map[x][y] == WALL || c->map[x][y] == DOOR_V ||
-					c->map[x][y] == DOOR_H)
+			if (c->map[x][y] == WALL || c->map[x][y] == DOOR_O ||
+					c->map[x][y] == DOOR_C)
 				c->floatmap[x][y] = 1.0f;
 			else
 				c->floatmap[x][y] = 0.0f;

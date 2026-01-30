@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 09:21:52 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/27 16:53:21 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 04:29:57 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,31 @@ int	get_eatexpath(t_cub *cub)
 	while (line[index] == ' ')
 		index++;
 	cub->ea_texpath = ft_substr(line, index, ft_strlen(line) - (index + 1));
+	free(line);
+	return (1);
+}
+
+int	get_dotexpath(t_cub *cub)
+{
+	char	*line;
+	int		index;
+
+	index = 0;
+	line = get_next_line(cub->map_fd);
+	while (ft_strlen(line) == 1)
+	{
+		free(line);
+		line = get_next_line(cub->map_fd);
+	}
+	while (line[index] == ' ')
+		index++;
+	if (!line[index] || !line[index + 1]
+		|| line[index] != 'D' || line[index + 1] != 'O')
+		return (gnl_cleaner(line, cub->map_fd));
+	index += 2;
+	while (line[index] == ' ')
+		index++;
+	cub->do_texpath = ft_substr(line, index, ft_strlen(line) - (index + 1));
 	free(line);
 	return (1);
 }

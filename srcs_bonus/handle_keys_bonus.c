@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_keys.c                                      :+:      :+:    :+:   */
+/*   handle_keys_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jelucian <jelucian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 10:30:17 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/09 15:16:33 by jelucian         ###   ########.fr       */
+/*   Updated: 2026/01/30 05:11:51 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	handle_key(int keycode, t_cub *cub)
 {
+	printf("%d\n",keycode);
 	if (keycode == 65307)
 		destroystuff(cub);
 	if (keycode == KEY_UP)
@@ -30,6 +31,8 @@ int	handle_key(int keycode, t_cub *cub)
 		cub->player->input->z -= 1;
 	if (keycode == KEY_MAP)
 		cub->map_fullscreen = !cub->map_fullscreen;
+	if (keycode == KEY_USE)
+		event_interact(cub);
 	return (0);
 }
 

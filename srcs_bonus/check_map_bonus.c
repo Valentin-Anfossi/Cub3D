@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:03:43 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/27 16:53:47 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 04:28:37 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	char_check(char *str)
 	{
 		c = str[i];
 		if (c != '0' && c != '1' && c != 'N' && c != 'S' && c != 'W'
-			&& c != 'E' && c != ' ' && c != '\n')
+			&& c != 'E' && c != ' ' && c != '\n' && c != 'C' && c != 'O')
 		{
 			printf("Error\nInvalid char in map.\n");
 			return (0);
@@ -88,6 +88,10 @@ int	textfiles_check(t_cub *c)
 		return (0);
 	close(test_fd);
 	test_fd = open(c->ea_texpath, O_RDONLY);
+	if (test_fd == -1)
+		return (0);
+	close(test_fd);
+	test_fd = open(c->do_texpath, O_RDONLY);
 	if (test_fd == -1)
 		return (0);
 	close(test_fd);

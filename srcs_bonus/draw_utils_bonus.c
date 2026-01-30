@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_utils.c                                       :+:      :+:    :+:   */
+/*   draw_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 02:21:22 by vanfossi/je       #+#    #+#             */
-/*   Updated: 2026/01/06 11:27:28 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 04:08:09 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ float	wall_shade(float dist, int side)
 int	has_hitwall(t_cub *cub, int map_x, int map_y)
 {
 	if (cub->map[map_x][map_y] == WALL)
+		return (1);
+	if (cub->map[map_x][map_y] == DOOR_C)
 		return (1);
 	else
 		return (0);

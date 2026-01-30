@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_vertical.c                                    :+:      :+:    :+:   */
+/*   draw_vertical_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 11:22:45 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/09 10:34:15 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 04:38:59 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,18 @@ void	draw_vside(t_cub *cub, t_ray *r, t_vert *v)
 {
 	if (r->side == 0)
 	{
-		if (r->step_x == -1)
-			v->cur_tex = cub->texture_so;
+		if(cub->map[r->map_x][r->map_y] == DOOR_C)
+			v->cur_tex = cub->texture_do;
+		else if (r->step_x == -1)
+				v->cur_tex = cub->texture_so;
 		else
 			v->cur_tex = cub->texture_no;
 	}
 	else
 	{
-		if (r->step_y == -1)
+		if(cub->map[r->map_x][r->map_y] == DOOR_C)
+			v->cur_tex = cub->texture_do;
+		else if (r->step_y == -1)
 			v->cur_tex = cub->texture_ea;
 		else
 			v->cur_tex = cub->texture_we;

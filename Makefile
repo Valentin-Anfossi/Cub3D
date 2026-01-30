@@ -6,7 +6,7 @@
 #    By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/09 17:41:00 by vanfossi          #+#    #+#              #
-#    Updated: 2026/01/29 16:00:20 by vanfossi         ###   ########.fr        #
+#    Updated: 2026/01/30 05:09:07 by vanfossi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRCS_BONUS  = 	./srcs_bonus/bonus2_bonus.c ./srcs_bonus/bonus3_bonus.c ./srcs_bo
 				./srcs_bonus/init2_bonus.c ./srcs_bonus/init3_bonus.c ./srcs_bonus/init_bonus.c ./srcs_bonus/main_bonus.c\
 				./srcs_bonus/map_bonus.c ./srcs_bonus/map_check2_bonus.c ./srcs_bonus/map_check_bonus.c \
 				./srcs_bonus/map_init_bonus.c ./srcs_bonus/map_utils_bonus.c ./srcs_bonus/movement_bonus.c ./srcs_bonus/parseutils_bonus.c \
-				./srcs_bonus/gnl_cleaner_bonus.c
+				./srcs_bonus/gnl_cleaner_bonus.c ./srcs_bonus/interact_bonus.c
 
 
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
