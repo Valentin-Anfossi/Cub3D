@@ -6,42 +6,40 @@
 #    By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/09 17:41:00 by vanfossi          #+#    #+#              #
-#    Updated: 2026/01/30 14:56:12 by vanfossi         ###   ########.fr        #
+#    Updated: 2026/01/30 19:58:59 by vanfossi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 NAME	= cub3D
 
 LIBFT	= ./libft/libft.a
 
-SRCS	= 	./srcs/check_map.c ./srcs/check_map2.c ./srcs/clean.c \
-			./srcs/colors_utils.c ./srcs/debug.c ./srcs/draw_background.c \
-			./srcs/draw_ray.c ./srcs/draw_utils.c ./srcs/draw_vertical.c \
-			./srcs/draw_walls.c ./srcs/drawer.c ./srcs/errors.c \
-			./srcs/ft_memcpyfast.c ./srcs/handle_keys.c ./srcs/img.c \
-			./srcs/init.c ./srcs/init2.c ./srcs/init3.c ./srcs/main.c \
-			./srcs/map_utils.c ./srcs/map.c ./srcs/movement.c \
-			./srcs/parseutils.c ./srcs/file_check.c ./srcs/map_check.c \
-			./srcs/map_check2.c ./srcs/check_mapstr.c ./srcs/check_player.c \
-			./srcs/map_init.c ./srcs/gnl_cleaner.c \
+SRCSFILES	= 	check_map.c check_map2.c clean.c \
+			colors_utils.c debug.c draw_background.c \
+			draw_ray.c draw_utils.c draw_vertical.c \
+			draw_walls.c drawer.c errors.c \
+			ft_memcpyfast.c handle_keys.c img.c \
+			init.c init2.c init3.c main.c \
+			map_utils.c map.c movement.c \
+			parseutils.c file_check.c map_check.c \
+			map_check2.c check_mapstr.c check_player.c \
+			map_init.c gnl_cleaner.c
+SRCS = 		$(addprefix ./srcs/,$(SRCSFILES))
+OBJS = 		$(patsubst ./srcs/%.c,obj/%.o,$(SRCS))
 
-OBJS    =	$(SRCS:.c=.o)
-
-SRCS_BONUS  = 	./srcs_bonus/bonus2_bonus.c ./srcs_bonus/bonus3_bonus.c ./srcs_bonus/bonus_bonus.c \
-				./srcs_bonus/check_map2_bonus.c ./srcs_bonus/check_map_bonus.c ./srcs_bonus/check_mapstr_bonus.c \
-				./srcs_bonus/check_player_bonus.c ./srcs_bonus/clean_bonus.c ./srcs_bonus/colors_utils_bonus.c \
-				./srcs_bonus/debug_bonus.c ./srcs_bonus/draw_background_bonus.c ./srcs_bonus/drawer_bonus.c \
-				./srcs_bonus/draw_ray_bonus.c ./srcs_bonus/draw_utils_bonus.c ./srcs_bonus/draw_vertical_bonus.c \
-				./srcs_bonus/draw_walls_bonus.c ./srcs_bonus/errors_bonus.c ./srcs_bonus/file_check_bonus.c \
-				./srcs_bonus/ft_memcpyfast_bonus.c ./srcs_bonus/handle_keys_bonus.c ./srcs_bonus/img_bonus.c \
-				./srcs_bonus/init2_bonus.c ./srcs_bonus/init3_bonus.c ./srcs_bonus/init_bonus.c ./srcs_bonus/main_bonus.c\
-				./srcs_bonus/map_bonus.c ./srcs_bonus/map_check2_bonus.c ./srcs_bonus/map_check_bonus.c \
-				./srcs_bonus/map_init_bonus.c ./srcs_bonus/map_utils_bonus.c ./srcs_bonus/movement_bonus.c ./srcs_bonus/parseutils_bonus.c \
-				./srcs_bonus/gnl_cleaner_bonus.c ./srcs_bonus/interact_bonus.c ./srcs_bonus/draw_utils2_bonus.c
-
-
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+SRCS_BONUSFILES  = 	bonus2_bonus.c bonus3_bonus.c bonus_bonus.c \
+				check_map2_bonus.c check_map_bonus.c check_mapstr_bonus.c \
+				check_player_bonus.c clean_bonus.c colors_utils_bonus.c \
+				debug_bonus.c draw_background_bonus.c drawer_bonus.c \
+				draw_ray_bonus.c draw_utils_bonus.c draw_vertical_bonus.c \
+				draw_walls_bonus.c errors_bonus.c file_check_bonus.c \
+				ft_memcpyfast_bonus.c handle_keys_bonus.c img_bonus.c \
+				init2_bonus.c init3_bonus.c init_bonus.c main_bonus.c\
+				map_bonus.c map_check2_bonus.c map_check_bonus.c \
+				map_init_bonus.c map_utils_bonus.c movement_bonus.c parseutils_bonus.c \
+				gnl_cleaner_bonus.c interact_bonus.c draw_utils2_bonus.c
+SRCS_BONUS = $(addprefix ./srcs_bonus/,$(SRCS_BONUSFILES))
+OBJS_BONUS = $(patsubst ./srcs_bonus/%.c,obj_bonus/%.o,$(SRCS_BONUS))
 
 CC = cc
 
@@ -57,8 +55,13 @@ bonus: $(OBJS_BONUS) $(MLX) $(LIBFT)
 $(NAME): $(OBJS) $(MLX) $(LIBFT)
 	$(CC) $(FLAGS) $(OBJS) $(MLX) $(LIBFT) -o $(NAME) -lX11 -lXext -lm -O3
 
-%.o: %.c
-	@$(CC) $(FLAGS) -c $< -o $@
+obj_bonus/%.o: ./srcs_bonus/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(FLAGS) -c $< -o $@
+
+obj/%.o: ./srcs/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(FLAGS) -c $< -o $@
 
 $(LIBFT):
 	@make -C ./libft
