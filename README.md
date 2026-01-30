@@ -82,6 +82,9 @@ https://medium.com/@jalal92/understanding-the-minilibx-a-practical-dive-into-x-w
 Minilibx docs, probably the most obscure part of this project. Doc is sparse and doesn't
 cover everything there is to know but what can you do.
 
+https://flakdeau19.itch.io/high-resolution-pixel-art-textures?download
+Cool free texture pack ✨
+
 **About AI use** : I asked it to fix my makefile once and it didn't work :/
 
 # TLDR 
