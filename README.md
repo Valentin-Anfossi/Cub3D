@@ -57,6 +57,8 @@ to execute : **./cub3D path/to/map.cub**
 
 In the **cub3D.h** you'll find multiple defines for changing keybinds and window resolution
 
+There's also usable maps in the maps/ folder and textures in the tiles/ folder.
+
 # Ressources :
 
 https://lodev.org/cgtutor/ 
