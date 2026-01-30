@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 10:30:17 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/30 05:11:51 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 06:09:24 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	handle_key(int keycode, t_cub *cub)
 {
-	printf("%d\n",keycode);
 	if (keycode == 65307)
 		destroystuff(cub);
 	if (keycode == KEY_UP)

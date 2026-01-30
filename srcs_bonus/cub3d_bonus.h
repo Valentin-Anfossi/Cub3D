@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:21:56 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/30 05:02:41 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 06:07:51 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -320,7 +320,6 @@ int			get_sotexpath(t_cub *cub);
 int			get_wetexpath(t_cub *cub);
 int			get_eatexpath(t_cub *cub);
 int			get_dotexpath(t_cub *cub);
-
 
 //MAP_CHECK2.C
 int			is_line_empty(char *line);

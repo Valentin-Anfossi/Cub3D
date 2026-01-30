@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean.c                                            :+:      :+:    :+:   */
+/*   clean_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jelucian <jelucian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 08:31:24 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/09 15:00:18 by jelucian         ###   ########.fr       */
+/*   Updated: 2026/01/30 06:13:45 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	free_texture(t_cub *cub)
 	free(cub->we_texpath);
 	free(cub->no_texpath);
 	free(cub->so_texpath);
+	free(cub->do_texpath);
 	mlx_destroy_image(cub->mlx, cub->buffer->img);
 	free(cub->buffer);
 	mlx_destroy_image(cub->mlx, cub->texture_no->img);
@@ -28,6 +29,8 @@ void	free_texture(t_cub *cub)
 	free(cub->texture_we);
 	mlx_destroy_image(cub->mlx, cub->texture_ea->img);
 	free(cub->texture_ea);
+	mlx_destroy_image(cub->mlx, cub->texture_do->img);
+	free(cub->texture_do);
 	mlx_destroy_image(cub->mlx, cub->background->img);
 	free(cub->background);
 	mlx_destroy_image(cub->mlx, cub->buffer_old->img);

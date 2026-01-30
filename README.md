@@ -99,6 +99,7 @@ Cool free texture pack ✨
 # TLDR 
 
 make bonus
+
 ./cub3d maps/bonus/01.cub
 
 have fun !
