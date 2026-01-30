@@ -22,14 +22,13 @@ Cub3D is a simple raycaster first-person game based on classics like wolfenstein
 
 It reads a map (in the .cub format) and renders it as an explorable world in 3D ! (wow)
 
-In its mandatory form, you can look around using WASD for movement and the arrow keys
-to look left and right.
+In its mandatory form, you move with WASD and the arrow keys to look left and right.
 
 The bonus part brings some additional features like wall collisions (with sliding (wow))
 a map that can be displayed in fullscreen (diablo style), sprinting, mouse view,
  maybe doors and more ?
 
-Guess you'll have to try to find out !
+Guess you'll have to play and find out !
 
 # How does it work ?
 
@@ -46,7 +45,7 @@ it to draw centered vertical lines with a height corresponding to the distance.
 And voila ! With some additional simple math we look into a texture file, plop
 down some pixels of the appropriate colors and you got a wall (wow)
 
-That way of doing things brings limitations, the biggest one is that your world
+That way of rendering 3D worlds brings limitations, the biggest one is that your world
 must be full of cubes. The DDA needs integers to do its comparison magic therefore a uniform
 scale is not negotiable. 
 It can be improved but we're going to be expelled in 3 weeks so we can't be bothered (wow).
@@ -82,7 +81,7 @@ https://medium.com/@jalal92/understanding-the-minilibx-a-practical-dive-into-x-w
 Minilibx docs, probably the most obscure part of this project. Doc is sparse and doesn't
 cover everything there is to know but what can you do.
 
-**About AI use** : I asked it to fix my makefile once and it didn't work.
+**About AI use** : I asked it to fix my makefile once and it didn't work :/
 
 # TLDR 
 
