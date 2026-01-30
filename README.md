@@ -27,7 +27,8 @@ In its mandatory form, you can look around using WASD for movement and the arrow
 to look left and right.
 
 The bonus part brings some additional features like wall collisions (with sliding (wow))
-a map that can be displayed in fullscreen (diablo style), sprinting, maybe doors and more ?
+a map that can be displayed in fullscreen (diablo style), sprinting, mouse view,
+ maybe doors and more ?
 
 Guess you'll have to try to find out !
 
