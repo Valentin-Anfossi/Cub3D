@@ -10,7 +10,6 @@
           ░░░░░░░░░    ░░░░░░░░   ░░░░░░░░░░░   ░░░░░░░░  ░░░░░░░░░░   
 
 # Description :
-===============
 
 Cub3D is a simple raycaster first-person game based on classics like wolfenstein3D
 & DOOM.
@@ -20,7 +19,6 @@ In its mandatory form, you can look around using WASD for movement and the arrow
 to look left and right.
 
 # That's cool and all but how does it work ?
-====================
 
 The main rendering part uses a DDA algorithm (Digital Differential Analysis).
 But how does it work exactly ?
@@ -46,7 +44,6 @@ a map that can be displayed in fullscreen (diablo style), sprinting, maybe doors
 Guess you'll have to try to find out !
 
 # Instructions :
-================
 
 **make**		>> builds the mandatory part
 
@@ -60,7 +57,6 @@ to execute : **./cub3D path/to/map.cub**
 In the **cub3D.h** you'll find multiple defines for changing keybinds and window resolution
 
 # Ressources :
-==============
 
 https://lodev.org/cgtutor/ 
 an amazing collections of blog articles covering everything you could ever need
