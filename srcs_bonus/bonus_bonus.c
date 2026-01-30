@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 15:19:47 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/30 14:55:07 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/01/30 16:03:14 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,12 @@ void	draw_minimap_helper2(t_cub *cub, t_minimap *mi)
 	if (wall == 1)
 		put_pixel(cub->buffer, mi->y, mi->x,
 			create_argb(1, 200, 200, 200));
-	else if (wall == DOOR_C || wall == DOOR_O)
+	else if (wall == DOOR_C)
 		put_pixel(cub->buffer, mi->y, mi->x,
 			create_argb(1, 0, 0, 255));
+	else if (wall == DOOR_O)
+		put_pixel(cub->buffer, mi->y, mi->x,
+			create_argb(1, 0, 255, 0));
 }
 
 void	draw_minimap_helper(t_cub *cub, t_minimap *mi)
