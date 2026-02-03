@@ -6,13 +6,13 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 03:25:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/02/03 06:49:18 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/02/03 13:30:59 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define WIN_SIZEX 1280
-#define WIN_SIZEY 920
-#define FOV 90
+#define WIN_SIZEX 1920
+#define WIN_SIZEY 1000
+#define FOV 75
 #define TARGET_FPS 60
 
 #define ROT_SPEED 0.05

@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 10:30:17 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/30 20:15:06 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/02/03 13:26:50 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,17 @@ int	handle_key(int keycode, t_cub *cub)
 int	handle_keyrelease(int keycode, t_cub *cub)
 {
 	if (keycode == KEY_UP)
-		cub->player->input->x -= 1;
+		cub->player->input->x = 0;
 	if (keycode == KEY_DOWN)
-		cub->player->input->x += 1;
+		cub->player->input->x = 0;
 	if (keycode == KEY_LEFT)
-		cub->player->input->y -= 1;
+		cub->player->input->y = 0;
 	if (keycode == KEY_RIGHT)
-		cub->player->input->y += 1;
+		cub->player->input->y = 0;
 	if (keycode == KEY_STLEFT)
-		cub->player->input->z -= 1;
+		cub->player->input->z = 0;
 	if (keycode == KEY_STRIGHT)
-		cub->player->input->z += 1;
+		cub->player->input->z = 0;
 	return (0);
 }
 
