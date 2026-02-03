@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 03:25:37 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/30 20:08:26 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/02/03 06:49:00 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 #define ROT_SPEED 0.05
 #define MOUSE_SENS 0.1
+#define SPEED 0.1
 
 #define KEY_UP 119
 #define KEY_DOWN 115

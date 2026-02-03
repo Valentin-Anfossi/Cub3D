@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by jelucian, vanfossi*
+*This project has been created as part of the 42 curriculum by <vanfossi>[, <jelucian>[*
 
 		   █████████  █████  █████ ███████████   ████████  ██████████  
 		  ███░░░░░███░░███  ░░███ ░░███░░░░░███ ███░░░░███░░███░░░░███ 
@@ -30,25 +30,23 @@ The bonus part brings some additional features like wall collisions (with slidin
 a map that can be displayed in fullscreen (diablo style), sprinting, mouse view and interactable
 doors.
 
-# How does it work ?
+# Technical :
 
 The main rendering part uses a DDA algorithm (Digital Differential Analysis).
-But how does it work exactly ?
 
-Well lemme tell you :
-For each vertical line of your little window, we send a ray from the player position
+For each vertical line of your window, we send a ray from the player position
 using a vector that represents your field of view (ie: leftmost ray goes at a leftward angle 
 while the one at the center goes straight ahead), we then use the DDA to quickly compute 
 where this ray will hit a wall. When it does, we store the distance value and use
 it to draw centered vertical lines with a height corresponding to the distance.
 
-And voila ! With some additional simple math we look into a texture file, plop
-down some pixels of the appropriate colors and you got a wall (wow)
+With some additional simple math we look into a texture file, put
+down some pixels of the appropriate colors and you have a wall.
 
 That way of rendering 3D worlds brings limitations, the biggest one is that your world
 must be full of cubes. The DDA needs integers to do its comparison magic therefore a uniform
-scale is not negotiable. 
-It can be improved but we're going to be expelled in 3 weeks so we can't be bothered (wow).
+scale is essential.
+It can be improved with various techniques, all of them we didn't have the time to implement.
 
 # Instructions :
 
@@ -61,10 +59,10 @@ It needs the minilibx and libft to work but they're included and get built with 
 
 to execute : **./cub3D path/to/map.cub**
 
-In the **config.h** you'll find multiple defines for changing keybinds, window resolution
-and other settings.
+In the **config.h** and **config_bonus.h** you'll find multiple defines for changing keybinds
+, window resolution and other settings.
 
-There's also usable maps in the maps/ maps_bonus/ folders and textures in the tiles/ folder.
+There's also usable maps in the maps/ & maps_bonus/ folders and textures in the tiles/ folder.
 
 **Maps for the bonus part are in maps/bonus/**
 

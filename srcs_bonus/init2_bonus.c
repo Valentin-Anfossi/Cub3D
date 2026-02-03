@@ -6,7 +6,7 @@
 /*   By: vanfossi <vanfossi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 09:09:20 by vanfossi          #+#    #+#             */
-/*   Updated: 2026/01/30 15:48:05 by vanfossi         ###   ########.fr       */
+/*   Updated: 2026/02/03 06:49:44 by vanfossi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_player	*player_init(t_cub *cub)
 	p->pos->y = (float)cub->player_pos[1] + .5;
 	p->plane->x = 0.66;
 	p->plane->y = 0.0;
-	p->speed = .05;
+	p->speed = SPEED;
 	p->rot_speed = ROT_SPEED;
 	p->input->x = 0;
 	p->input->y = 0;
