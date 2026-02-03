@@ -9,14 +9,6 @@
          ░░█████████  ░░████████   ███████████ ░░████████  ██████████  
           ░░░░░░░░░    ░░░░░░░░   ░░░░░░░░░░░   ░░░░░░░░  ░░░░░░░░░░   
 
-<img width="1278" height="914" alt="image" src="https://github.com/user-attachments/assets/b875e439-7300-4b34-9557-ccd1019c40c2" />
-
-- [Description :](#description-)
-- [How does it work ?](#how-does-it-work-)
-- [Instructions :](#instructions-)
-- [Ressources :](#ressources-)
-- [TLDR](#tldr)
-
 # Description :
 
 Cub3D is a simple raycaster first-person game based on classics like wolfenstein3D
