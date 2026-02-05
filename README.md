@@ -22,24 +22,6 @@ The bonus part brings some additional features like wall collisions (with slidin
 a map that can be displayed in fullscreen (diablo style), sprinting, mouse view and interactable
 doors.
 
-# Technical :
-
-The main rendering part uses a DDA algorithm (Digital Differential Analysis).
-
-For each vertical line of your window, we send a ray from the player position
-using a vector that represents your field of view (ie: leftmost ray goes at a leftward angle 
-while the one at the center goes straight ahead), we then use the DDA to quickly compute 
-where this ray will hit a wall. When it does, we store the distance value and use
-it to draw centered vertical lines with a height corresponding to the distance.
-
-With some additional simple math we look into a texture file, put
-down some pixels of the appropriate colors and you have a wall.
-
-That way of rendering 3D worlds brings limitations, the biggest one is that your world
-must be full of cubes. The DDA needs integers to do its comparison magic therefore a uniform
-scale is essential.
-It can be improved with various techniques, all of them we didn't have the time to implement.
-
 # Instructions :
 
 **make**		>> builds the mandatory part
@@ -57,6 +39,24 @@ In the **config.h** and **config_bonus.h** you'll find multiple defines for chan
 There's also usable maps in the maps/ & maps_bonus/ folders and textures in the tiles/ folder.
 
 **Maps for the bonus part are in maps/bonus/**
+
+# Technical :
+
+The main rendering part uses a DDA algorithm (Digital Differential Analysis).
+
+For each vertical line of your window, we send a ray from the player position
+using a vector that represents your field of view (ie: leftmost ray goes at a leftward angle 
+while the one at the center goes straight ahead), we then use the DDA to quickly compute 
+where this ray will hit a wall. When it does, we store the distance value and use
+it to draw centered vertical lines with a height corresponding to the distance.
+
+With some additional simple math we look into a texture file, put
+down some pixels of the appropriate colors and you have a wall.
+
+That way of rendering 3D worlds brings limitations, the biggest one is that your world
+must be full of cubes. The DDA needs integers to do its comparison magic therefore a uniform
+scale is essential.
+It can be improved with various techniques, all of them we didn't have the time to implement.
 
 # Ressources :
 
